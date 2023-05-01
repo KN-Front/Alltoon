@@ -2,6 +2,8 @@ import React from "react"
 import  "../styles/SearchWebtoon.css"
 export function SearchWebtoon(){
 
+
+    
     return(
         <div>
             <div className="SearchBar__search_area--L61RY">
