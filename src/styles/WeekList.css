@@ -1,0 +1,30 @@
+.SubNavigationBar__snb_list--tAZvu {
+    display: flex;
+    height: 100%;
+}
+
+.SubNavigationBar__snb_list--tAZvu .SubNavigationBar__item--tmE0E {
+    position: relative;
+    margin-right: 20px;
+    color: var(--color-text-primary);
+    line-height: 49px;
+}
+
+.SubNavigationBar__snb_list--tAZvu .SubNavigationBar__item--tmE0E .SubNavigationBar__link--PXX5B[aria-current=true] {
+    color: var(--color-webtoon-green);
+}
+
+.SubNavigationBar__snb_list--tAZvu .SubNavigationBar__item--tmE0E .SubNavigationBar__link--PXX5B {
+    display: block;
+    position: relative;
+    padding: 0 5px;
+    line-height: 49px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: var(--color-text-primary);
+}
+
+ul, ol {
+    list-style: none;
+}
