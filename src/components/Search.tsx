@@ -1,6 +1,6 @@
 import React from "react"
-import  "../styles/SearchWebtoon.css"
-export function SearchWebtoon(){
+import  "../styles/Search.css"
+export function Search(){
 
 
     
