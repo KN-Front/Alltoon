@@ -1,8 +1,27 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { buildUrl } from '../../common/utill/api';
 import axios from 'axios';
 
-// todo 웹툰 정보 가져오기
-export const getWebtoonInfo = createAsyncThunk('users/fetch', async () => {
-  const response = await axios.get('https://korea-webtoon-api.herokuapp.com')
-  return response.data
-})
+/**
+ * 웹툰 정보 API
+ * @param param 
+ * @returns 
+ */ 
+
+export const getWebtoonInfo = async (param: Object) =>{
+  let url = "https://korea-webtoon-api.herokuapp.com";
+  const response = await axios.get(buildUrl(url,param));
+  return response.data; 
+}
+
+/**
+ * 웹툰 정보 검색 API
+ * @param param 
+ * @returns 
+ */ 
+
+export const getSearchWebtoonInfo = async (param: Object) =>{
+  let url = "https://korea-webtoon-api.herokuapp.com/search	";
+  const response = await axios.get(buildUrl(url,param));
+  return response.data; 
+}
