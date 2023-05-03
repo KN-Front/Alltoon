@@ -4,7 +4,8 @@ import { WeekList } from '../components/WeeksList';
 import { WebtoonList } from '../components/WebtoonList';
 import { useAppSelector, useAppDispatch } from '../features/hooks';
 import {fetchWebtoonList} from '../features/webtoon/webtoonActions'
-export function Main() {
+
+const Main = () => {
 
   const dispatch = useAppDispatch();
 
@@ -36,3 +37,5 @@ export function Main() {
     </div>
   );
 }
+
+export default Main;
