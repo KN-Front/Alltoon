@@ -23,10 +23,9 @@ function App() {
     <div className='App'>
         <Routes>
           <Route path = "/" element ={<Layout/>}/>
-          <Route index element = {<Main/>}/>
-          <Route path='search' element = {<SearchPage/>}/>
+            <Route index element = {<Main/>}/>
+            <Route path='search' element = {<SearchPage/>}/>
         </Routes>
-        <Main />
     </div>
   );
 }
