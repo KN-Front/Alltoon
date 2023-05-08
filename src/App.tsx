@@ -22,9 +22,10 @@ function App() {
   return (
     <div className='App'>
         <Routes>
-          <Route path = "/" element ={<Layout/>}/>
+          <Route path = "/" element ={<Layout/>}>
             <Route index element = {<Main/>}/>
             <Route path='search' element = {<SearchPage/>}/>
+          </Route>
         </Routes>
     </div>
   );

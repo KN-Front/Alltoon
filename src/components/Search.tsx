@@ -1,6 +1,11 @@
 import React, {useState} from "react"
 import  "../styles/Search.css"
 import {useNavigate, Link} from "react-router-dom"
+
+/**
+ * 웹툰 검색 컴포넌트 
+ * @returns 
+ */
 export function Search(){
     
     /**
@@ -20,7 +25,7 @@ export function Search(){
         setSearchValue("쎈놈");
         navigate(`/search?search=${searchValue}`);
     }
-    //todo search 리렌더링 많이된다고 오류남
+
     return(
         <div>
             <div className="SearchBar__search_area--L61RY">

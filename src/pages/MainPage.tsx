@@ -22,9 +22,6 @@ const Main = () => {
     <div>
       <div>
         <div>
-          <Search/>
-        </div>
-        <div>
             슬라이드 
         </div>
         <div>
