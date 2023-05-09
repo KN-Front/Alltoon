@@ -63,6 +63,12 @@ export const webtoonList = (state:RootState) => state.webtoon.webtoonList;
  */
 export const weeksList = (state:RootState) => state.webtoon.weeks;
 
+/**
+ * 서비스 목록
+ * @param state 
+ * @returns 
+ */
+export const serviceList = (state:RootState) => state.webtoon.service;
 
 export const webtoonActions = webtoonSlice.actions;
 
