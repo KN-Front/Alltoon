@@ -13,12 +13,12 @@ export function WeekList(){
     const weeks = useSelector(weeksList);
     const service = useSelector(serviceList);
 
-    const [selectedWeek, setSelectedWeek] = useState('');
-    const [selectedService, setSelectedService] = useState('');
+    const [selectedWeek, setSelectedWeek] = useState('mon');
+    const [selectedService, setSelectedService] = useState('naver');
     const searchWebtoon = (week: string) =>{
       setSelectedWeek(week);
       let param = {
-        service : "naver",
+        service : selectedService,
         updateDay : selectedWeek
       }
       dispatch(fetchWebtoonList(param))
