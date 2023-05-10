@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { weeksList, serviceList } from "../features/webtoon/webtoonSlice";
 import { fetchWebtoonList} from "../features/webtoon/webtoonActions"

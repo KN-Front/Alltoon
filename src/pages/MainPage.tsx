@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Search } from '../components/Search';
+import React, { useEffect} from 'react';
 import { WeekList } from '../components/WeeksList';
 import { WebtoonList } from '../components/WebtoonList';
-import { useAppSelector, useAppDispatch } from '../features/hooks';
+import { useAppDispatch } from '../features/hooks';
 import {fetchWebtoonList} from '../features/webtoon/webtoonActions'
 
 const Main = () => {
