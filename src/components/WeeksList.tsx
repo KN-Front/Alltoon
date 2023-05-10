@@ -38,8 +38,8 @@ export function WeekList(){
               ))}
 
               <select id="selectBox" value={selectedService} onChange={handleServiceChange}>
-                          {service.map((item)=>(
-                              <option value = {item} > {item}</option>
+                          {service.map((item,index)=>(
+                              <option key={index} value = {item} > {item}</option>
                           ))}
               </select>
           </ul>  

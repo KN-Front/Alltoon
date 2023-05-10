@@ -13,7 +13,7 @@ export function WebtoonList(){
         <div>
             {
                 list.map((data,key)=>(
-                    <div>
+                    <div key={key}>
                         <li> 작가 : {data.author}</li>
                         <li> 제목 : {data.title}</li>
                         <li> 도메인 : {data.service}</li>
