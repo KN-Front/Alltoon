@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import  "../styles/Search.css"
 import {useNavigate, Link} from "react-router-dom"
+import {fetchSearchList} from "../features/webtoon/webtoonActions"
+import { useAppDispatch } from "../features/hooks"
 
 /**
  * 웹툰 검색 컴포넌트 
@@ -13,7 +15,7 @@ export function Search(){
      */
     const [searchValue, setSearchValue] = useState("");
     const navigate = useNavigate();
-    
+    const dispatch = useAppDispatch();
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.target.value);
     }
@@ -22,8 +24,13 @@ export function Search(){
      * 웹툰 검색 
      */ 
     const search = () =>{
-        setSearchValue("쎈놈");
-        navigate(`/search?search=${searchValue}`);
+        //setSearchValue("쎈놈");
+        let param = {
+            keyword : "쎈놈"
+        }
+        dispatch(fetchSearchList(param));
+        
+        navigate(`/search`);
     }
 
     return(

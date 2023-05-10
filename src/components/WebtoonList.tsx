@@ -8,7 +8,6 @@ import { webtoonList } from "../features/webtoon/webtoonSlice"
  */
 export function WebtoonList(){
     const list: Array<any> = useSelector(webtoonList);
-    console.log(list);
     return(
         <div>
             {

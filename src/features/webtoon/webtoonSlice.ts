@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchWebtoonList} from './webtoonActions'
+import { fetchWebtoonList, fetchSearchList} from './webtoonActions'
 import { RootState } from '../store'
 
 /**
@@ -22,6 +22,7 @@ const initialState = {
             {key: "sun" ,value : "일"}],
   service : ["naver", "kakao", "kakaoPage"],
   webtoonList : [] ,
+  searchList : [],
   error : ''
 }
 
@@ -45,9 +46,20 @@ const webtoonSlice = createSlice({
       .addCase(fetchWebtoonList.rejected, (state,action) => {
         // state.error = action.error.message;
       })
+      .addCase(fetchSearchList.pending, (state)=>{
+      
+      })
+      .addCase(fetchSearchList.fulfilled, (state, action) => {
+        state.searchList = action.payload;
+      })
+      .addCase(fetchSearchList.rejected, (state,action) => {
+        // state.error = action.error.message;
+      })
     
   }
 })
+
+
 
 /**
  * 웹툰 목록
@@ -55,6 +67,13 @@ const webtoonSlice = createSlice({
  * @returns 
  */
 export const webtoonList = (state:RootState) => state.webtoon.webtoonList;
+
+/**
+ * 검색 목록
+ * @param state 
+ * @returns 
+ */
+export const searchList = (state:RootState) => state.webtoon.searchList;
 
 /**
  * 요일 목록
@@ -69,6 +88,7 @@ export const weeksList = (state:RootState) => state.webtoon.weeks;
  * @returns 
  */
 export const serviceList = (state:RootState) => state.webtoon.service;
+
 
 export const webtoonActions = webtoonSlice.actions;
 
