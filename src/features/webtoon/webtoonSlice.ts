@@ -10,7 +10,8 @@ interface initialState{
   weeks : Array<Object>,
   service : Array<String>,
   webtoonList : Array<Object>,
-  error: any
+  error: any,
+  searchParam: Object
 }
 const initialState = {
   weeks : [ {key: "mon" ,value : "월"}, 
@@ -23,7 +24,10 @@ const initialState = {
   service : ["naver", "kakao", "kakaoPage"],
   webtoonList : [] ,
   searchList : [],
-  error : ''
+  error : '',
+  searchParam : {
+
+  }
 }
 
 /**
