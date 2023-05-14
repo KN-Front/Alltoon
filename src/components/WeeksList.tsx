@@ -14,9 +14,6 @@ export function WeekList(){
     const service = useSelector(serviceList);
     const param = useSelector(searchParam);
 
-    const [selectedWeek, setSelectedWeek] = useState('');
-    const [selectedService, setSelectedService] = useState('');
-
     /**
      * 웹툰 검색
      * @param week 
@@ -26,7 +23,7 @@ export function WeekList(){
     }
 
     /**
-     * 웹툰 서비스
+     * service 기준 웹툰 검색 
      * @param e 
      */
     const getServiceParam = (e:React.ChangeEvent<HTMLSelectElement>) =>{
@@ -34,6 +31,10 @@ export function WeekList(){
       searchWebtoon();
     }
 
+    /**
+     * 요일 기준 웹툰 검색 
+     * @param e 
+     */
     const getWeekParam = (week: string) =>{
       dispatch(webtoonActions.setSearchParamUpdateDay(week));
       searchWebtoon();
@@ -48,7 +49,7 @@ export function WeekList(){
                   <button key={item.key} onClick={()=> getWeekParam(item.key)}>{item.value}</button>
               ))}
 
-              <select id="selectBox" value={selectedService} onChange={getServiceParam}>
+              <select id="selectBox" onChange={getServiceParam}>
                           {service.map((item,index)=>(
                               <option key={index} value = {item} > {item}</option>
                           ))}
