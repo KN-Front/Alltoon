@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import  "../styles/Search.css"
+import "../styles/Search.css"
 import {useNavigate, useLocation} from "react-router-dom"
 import {fetchSearchList} from "../features/webtoon/webtoonActions"
 import { useAppDispatch } from "../features/hooks"
@@ -45,14 +45,16 @@ export function Search(){
     }
 
     return(
-        <div>
-            <div className="SearchBar__search_area--L61RY">
-                <input type = "text" className="SearchBar__search_input--k5nfk"
-                        onChange={setKeyword}
-                       />
-                <button className="SearchBar__btn_search--SsL7v"
-                        onClick={()=>{search()}}>
-                        검색</button>
+        <div className="BrandBar__right--uve_C">
+            <div className="BrandBar__search_wrap--Bevo_">
+                <div className="SearchBar__search_area--L61RY">
+                    <input type = "text" className="SearchBar__search_input--k5nfk"
+                            onChange={setKeyword}
+                        />
+                    <button className="SearchBar__btn_search--SsL7v"
+                            onClick={()=>{search()}}>
+                            검색</button>
+                </div>
             </div>
         </div>
     );

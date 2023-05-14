@@ -17,16 +17,24 @@ const Main = () => {
 
   return (
     <div>
+        <hr/>
+
       <div>
         <div>
             슬라이드 
         </div>
+        <hr/>
+
         <div>
           <WeekList/>
         </div>
+        <hr/>
+
         <div>
           <WebtoonList/>
         </div>
+        <hr/>
+
       </div>
     </div>
   );
