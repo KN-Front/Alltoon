@@ -26,7 +26,10 @@ const initialState = {
   searchList : [],
   error : '',
   searchParam : {
-
+    page : 1 ,
+    perPage : 20,
+    service : 'naver',
+    updateDay : 'mon'
   }
 }
 
@@ -37,7 +40,12 @@ const webtoonSlice = createSlice({
   name: 'webtoon',
   initialState,
   reducers: {
- 
+    setSearchParamService: (state, action) =>{
+      state.searchParam.service = action.payload;
+    },
+    setSearchParamUpdateDay: (state,action) =>{
+      state.searchParam.updateDay = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -93,6 +101,12 @@ export const weeksList = (state:RootState) => state.webtoon.weeks;
  */
 export const serviceList = (state:RootState) => state.webtoon.service;
 
+/**
+ * 검색 파라미터 목록 
+ * @param state 
+ * @returns 
+ */
+export const searchParam = (state:RootState) => state.webtoon.searchParam;
 
 export const webtoonActions = webtoonSlice.actions;
 

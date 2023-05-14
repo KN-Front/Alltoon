@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { weeksList, serviceList } from "../features/webtoon/webtoonSlice";
+import { weeksList, serviceList, webtoonActions, searchParam } from "../features/webtoon/webtoonSlice";
 import { fetchWebtoonList} from "../features/webtoon/webtoonActions"
 import { useAppDispatch } from "../features/hooks"
 import "../styles/WeekList.css"
@@ -12,32 +12,43 @@ export function WeekList(){
     const dispatch = useAppDispatch();
     const weeks = useSelector(weeksList);
     const service = useSelector(serviceList);
+    const param = useSelector(searchParam);
 
-    const [selectedWeek, setSelectedWeek] = useState('mon');
-    const [selectedService, setSelectedService] = useState('naver');
-    const searchWebtoon = (week: string) =>{
-      setSelectedWeek(week);
-      let param = {
-        service : selectedService,
-        updateDay : selectedWeek
-      }
+    const [selectedWeek, setSelectedWeek] = useState('');
+    const [selectedService, setSelectedService] = useState('');
+
+    /**
+     * 웹툰 검색
+     * @param week 
+     */
+    const searchWebtoon = () =>{
       dispatch(fetchWebtoonList(param))
-
     }
 
-    const handleServiceChange = (e:React.ChangeEvent<HTMLSelectElement>) =>{
-      setSelectedService(e.target.value);
-        
+    /**
+     * 웹툰 서비스
+     * @param e 
+     */
+    const getServiceParam = (e:React.ChangeEvent<HTMLSelectElement>) =>{
+      dispatch(webtoonActions.setSearchParamService(e.target.value));
+      searchWebtoon();
     }
+
+    const getWeekParam = (week: string) =>{
+      dispatch(webtoonActions.setSearchParamUpdateDay(week));
+      searchWebtoon();
+    }
+
+
     return(
     <div>
         <nav>
           <ul className="SubNavigationBar__snb_list--tAZvu">    
               {weeks.map((item) => (
-                  <button key={item.key} onClick={()=> searchWebtoon(item.key)}>{item.value}</button>
+                  <button key={item.key} onClick={()=> getWeekParam(item.key)}>{item.value}</button>
               ))}
 
-              <select id="selectBox" value={selectedService} onChange={handleServiceChange}>
+              <select id="selectBox" value={selectedService} onChange={getServiceParam}>
                           {service.map((item,index)=>(
                               <option key={index} value = {item} > {item}</option>
                           ))}
