@@ -18,7 +18,7 @@ export function WeekList(){
      * 웹툰 검색
      * @param week 
      */
-    const searchWebtoon = () =>{
+    const search = () =>{
       dispatch(fetchWebtoonList(param))
     }
 
@@ -28,7 +28,7 @@ export function WeekList(){
      */
     const getServiceParam = (e:React.ChangeEvent<HTMLSelectElement>) =>{
       dispatch(webtoonActions.setSearchParamService(e.target.value));
-      searchWebtoon();
+      search();
     }
 
     /**
@@ -37,16 +37,18 @@ export function WeekList(){
      */
     const getWeekParam = (week: string) =>{
       dispatch(webtoonActions.setSearchParamUpdateDay(week));
-      searchWebtoon();
+      search();
     }
 
 
     return(
-    <div>
-        <nav>
+    <div className="SubNavigationBar__snb_wrap--A5gfM">
+        <nav className="snb_nav">
           <ul className="SubNavigationBar__snb_list--tAZvu">    
               {weeks.map((item) => (
-                  <button key={item.key} onClick={()=> getWeekParam(item.key)}>{item.value}</button>
+                <li key={item.key} className="SubNavigationBar__item--tmE0E">
+                  <a aria-current= {param.updateDay == item.key ? true : false} onClick={()=> getWeekParam(item.key)} className="SubNavigationBar__link--PXX5B">{item.value} </a>
+                </li>
               ))}
 
               <select id="selectBox" onChange={getServiceParam}>
