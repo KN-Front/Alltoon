@@ -11,30 +11,12 @@ export function WebtoonList(){
     const list: Array<any> = useSelector(webtoonList);
     const selectedWeek = useSelector(searchParam).updateDay;
 
-    const getWeek = () =>{
-        if(selectedWeek == 'mon'){
-            return '월'
-        }else if(selectedWeek == 'tue'){
-            return '화'
-        }else if(selectedWeek == 'wed'){
-            return '수'
-        }else if(selectedWeek == 'thu'){
-            return '목'
-        }else if(selectedWeek == 'fri'){
-            return '금'
-        }else if(selectedWeek == 'sat'){
-            return '토'
-        }else if(selectedWeek == 'sun '){
-            return '일'
-        }
-    }
-
     return(
         <div>
             <div className="ComponentHead__component_head--O2tPr">
                 <div className="ComponentHead__title_area--IEQEG">
                     <h2 className="ComponentHead__title--TjYVo">
-                        <span className="ComponentHead__text--dhKW7"> {getWeek()}요일 전체웹툰</span>
+                        <span className="ComponentHead__text--dhKW7"> {selectedWeek}요일 전체웹툰</span>
                     </h2>
                 </div>
             </div>
