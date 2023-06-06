@@ -113,6 +113,46 @@
     color: var(--color-text-primary);
 }
 
+.ContentList__content_list--q5KXY .ContentList__info_area--bXx7h {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 2px;
+    position: relative;
+    padding-top: 10px;
+    height: 63px;
+}
+
+.ContentTitle__title_area--x24vt .ContentTitle__title--e3qXt {
+    text-align: left;
+    color: var(--color-text-primary);
+    word-break: break-word;
+}
+
+.ContentAuthor__author_wrap--fV7Lo {
+    position: relative;
+}
+
+.ContentAuthor__author--CTAAP {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    word-break: break-word;
+}
+
+a:hover, a:focus, a:visited {
+    text-decoration: none;
+}
+
+.ContentTitle__title_area--x24vt[href]:hover .ContentTitle__title--e3qXt {
+    text-decoration: underline;
+}
 img, svg {
     vertical-align: top;
 }
@@ -124,6 +164,11 @@ img, fieldset {
 img {
     overflow-clip-margin: content-box;
     overflow: clip;
+}
+
+body, input, textarea, select, button, table {
+    font-family: Pretendard,Helvetica,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","맑은 고딕","Malgun Gothic","돋움",Dotum,sans-serif;
+    font-size: 12px;
 }
 
 :root, ::after, ::before {
