@@ -7,13 +7,23 @@ import { RootState } from '../store'
  */
 
 interface initialState{
-  weeks : Array<Object>,
+  weeks : Array<{
+    key : string ,
+    value : string 
+  }>,
   service : Array<String>,
   webtoonList : Array<Object>,
+  searchList : Array<Object>,
   error: any,
-  searchParam: Object
+  searchParam: {
+    page: number,
+    perPage : number,
+    service : string,
+    updateDay : string
+  }
 }
-const initialState = {
+
+const initialState: initialState = {
   weeks : [ {key: "mon" ,value : "월"}, 
             {key: "tue" ,value : "화"},
             {key: "wed" ,value : "수"},
@@ -45,6 +55,9 @@ const webtoonSlice = createSlice({
     },
     setSearchParamUpdateDay: (state,action) =>{
       state.searchParam.updateDay = action.payload;
+    },
+    setPushWebtoonList:(state,action) =>{
+      state.webtoonList.push(action.payload);
     }
   },
   extraReducers: (builder) => {
@@ -56,7 +69,7 @@ const webtoonSlice = createSlice({
         state.webtoonList = action.payload;
       })
       .addCase(fetchWebtoonList.rejected, (state,action) => {
-        // state.error = action.error.message;
+        state.error = action.error.message;
       })
       .addCase(fetchSearchList.pending, (state)=>{
       
@@ -65,7 +78,7 @@ const webtoonSlice = createSlice({
         state.searchList = action.payload;
       })
       .addCase(fetchSearchList.rejected, (state,action) => {
-        // state.error = action.error.message;
+        state.error = action.error.message;
       })
     
   }
