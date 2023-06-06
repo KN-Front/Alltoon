@@ -22,7 +22,7 @@ export function WebtoonList(){
             </div>
             <ul className="ContentList__content_list--q5KXY">
             {
-                list.map((data,key)=>(
+                list?.map((data,key)=>(
                     <li key={key} className="item">
                         <a href={data.url}>
                             <div className="Poster__thumbnail_area--gviWY Poster__type160x207--EQAM8">
@@ -30,11 +30,20 @@ export function WebtoonList(){
                                 <img src={data.img} alt={data.title} className="Poster__image--d9XTI"></img>
                             </div>
                         </a>
-                        <div>
-                            {data.title}
-                            {data.author}
-                            {data.service}
-                            {data.fanCount}
+                        <div className="ContentList__info_area--bXx7h">
+                            <a className="ContentTitle__title_area--x24vt" href={data.url}>
+                                <span className="ContentTitle__title--e3qXt">
+                                    <span className="text">
+                                      {data.title}
+                                    </span>
+                                </span>
+                            </a>
+                            <div className="ContentAuthor__author_wrap--fV7Lo">
+                                <a className="ContentAuthor__author--CTAAP">
+                                 {data.author}
+                                </a>
+                            </div>
+                            {/* {data.fanCount} */}
                         </div>
                     </li>
                 ))}
