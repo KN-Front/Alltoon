@@ -53,7 +53,7 @@ export function WeekList(){
         <nav className="snb_nav">
           <ul className="SubNavigationBar__snb_list--tAZvu">    
               {weeks.map((item) => (
-                <li key={item.key} className="SubNavigationBar__item--tmE0E">
+                <li key={item.key?.toString()} className="SubNavigationBar__item--tmE0E">
                   <a aria-current= {param.updateDay == item.key ? true : false} onClick={()=> getWeekParam(item.key)} className="SubNavigationBar__link--PXX5B">{item.value} </a>
                 </li>
               ))}

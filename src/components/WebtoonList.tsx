@@ -1,7 +1,9 @@
 import React, {useRef, useEffect} from "react";
 import '../styles/WebtoonList.css'
 import { useSelector } from "react-redux";
-import { webtoonList,searchParam } from "../features/webtoon/webtoonSlice"
+import { webtoonList,searchParam,webtoonActions } from "../features/webtoon/webtoonSlice"
+import { useAppDispatch } from "../features/hooks"
+import {getWebtoonInfo} from "../common/api/webtoonAPI"
 
 /**
  * 웹툰 목록 컴포넌트
@@ -9,8 +11,9 @@ import { webtoonList,searchParam } from "../features/webtoon/webtoonSlice"
  */
 export function WebtoonList(){
     const list: Array<any> = useSelector(webtoonList);
-    const selectedWeek = useSelector(searchParam).updateDay;
+    const param = useSelector(searchParam);
     const scrollRef = useRef<any>(null);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         const scrollContainer = scrollRef.current;
@@ -21,7 +24,7 @@ export function WebtoonList(){
             scrollContainer.clientHeight;
     
           if (isScrolledToBottom) {
-            handleScrollToBottom();
+            getNextWebtoonList();
           }
         };
     
@@ -32,8 +35,15 @@ export function WebtoonList(){
         };
       }, []);
 
-      const handleScrollToBottom = () => {
+      const getNextWebtoonList = () => {
+        let nextParam = {...param}
+        nextParam.page++;
+        webtoonActions.setsearchParam(nextParam);
+        let a = getWebtoonInfo(nextParam)
+        
         // todo 웹툰 정보 가져오기
+        // webtoonActions.setPushWebtoonList(a.webtoons);
+
       };
 
 
@@ -42,7 +52,7 @@ export function WebtoonList(){
             <div className="ComponentHead__component_head--O2tPr">
                 <div className="ComponentHead__title_area--IEQEG">
                     <h2 className="ComponentHead__title--TjYVo">
-                        <span className="ComponentHead__text--dhKW7"> {selectedWeek}요일 전체웹툰</span>
+                        <span className="ComponentHead__text--dhKW7"> {param.updateDay}요일 전체웹툰</span>
                     </h2>
                 </div>
             </div>

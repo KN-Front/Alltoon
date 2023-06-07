@@ -50,6 +50,9 @@ const webtoonSlice = createSlice({
   name: 'webtoon',
   initialState,
   reducers: {
+    setsearchParam: (state,action) =>{
+      state.searchParam = action.payload;
+    },
     setSearchParamService: (state, action) =>{
       state.searchParam.service = action.payload;
     },
