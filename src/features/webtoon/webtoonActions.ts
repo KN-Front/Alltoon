@@ -1,16 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getWebtoonInfo, getSearchWebtoonInfo } from '../../common/api/webtoonAPI';
 
-
-
 /**
  * 웹툰 목록
  */
 export const fetchWebtoonList = createAsyncThunk(
   'webtoon/fetchWebtoonList', 
-  async (param:Object) => {
+  async (param:{
+    page : number ,
+    perPage : number,
+    service : String,
+    updateDay : String
+  }) => {
     const response = await getWebtoonInfo(param);
-    return response.webtoons;
+    return response;
 });
 
 /**
@@ -21,5 +24,5 @@ export const fetchSearchList = createAsyncThunk(
   'webtoon/fetchSearchList',
   async (param:Object)=>{
     const response = await getSearchWebtoonInfo(param);
-    return response.webtoons;
+    return response;
 });

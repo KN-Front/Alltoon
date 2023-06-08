@@ -14,7 +14,7 @@ import axios from 'axios';
 export const getWebtoonInfo = async (param: Object) =>{
   const url = "https://korea-webtoon-api.herokuapp.com";
   const response = await axios.get(buildUrl(url,param));
-  return response.data; 
+  return response.data.webtoons; 
 }
 
 /**

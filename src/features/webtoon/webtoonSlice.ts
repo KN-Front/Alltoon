@@ -69,7 +69,11 @@ const webtoonSlice = createSlice({
         
       })
       .addCase(fetchWebtoonList.fulfilled, (state, action) => {
-        state.webtoonList = action.payload;
+        if(action.meta.arg.page > 1){
+          state.webtoonList.push(action.payload);
+        }else{
+          state.webtoonList = action.payload;
+        }
       })
       .addCase(fetchWebtoonList.rejected, (state,action) => {
         state.error = action.error.message;

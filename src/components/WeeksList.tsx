@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { weeksList, serviceList, webtoonActions, searchParam } from "../features/webtoon/webtoonSlice";
 import { fetchWebtoonList} from "../features/webtoon/webtoonActions"
@@ -18,7 +18,12 @@ export function WeekList(){
      * 웹툰 검색
      * @param week 
      */
-    const search = (param: object) =>{
+    const search = (param: { 
+      page: number, 
+      perPage: number, 
+      service: String, 
+      updateDay: String 
+    }) =>{
       return dispatch(fetchWebtoonList(param));    
     }
 

@@ -3,8 +3,7 @@ import '../styles/WebtoonList.css'
 import { useSelector } from "react-redux";
 import { webtoonList,searchParam,webtoonActions } from "../features/webtoon/webtoonSlice"
 import { useAppDispatch } from "../features/hooks"
-import {getWebtoonInfo} from "../common/api/webtoonAPI"
-
+import {fetchWebtoonList} from "../features/webtoon/webtoonActions"
 /**
  * 웹툰 목록 컴포넌트
  * @returns 
@@ -35,16 +34,17 @@ export function WebtoonList(){
         };
       }, []);
 
+      /**
+       * 웹툰 검색
+       * @returns 
+       */
       const getNextWebtoonList = () => {
         let nextParam = {...param}
         nextParam.page++;
         webtoonActions.setsearchParam(nextParam);
-        let a = getWebtoonInfo(nextParam)
-        
-        // todo 웹툰 정보 가져오기
-        // webtoonActions.setPushWebtoonList(a.webtoons);
-
+        return dispatch(fetchWebtoonList(nextParam));
       };
+
 
 
     return(
