@@ -46,9 +46,10 @@ export function WeekList(){
      * 요일 기준 웹툰 검색 
      * @param e 
      */
-    const getWeekParam = (week: string) =>{
-      dispatch(webtoonActions.setSearchParamUpdateDay(week));
-      const Param = { ...param, updateDay : week};
+    const getWeekParam = (week: {key : String, value : String }) =>{
+      dispatch(webtoonActions.setSearchParamUpdateDay(week.key));
+      dispatch(webtoonActions.setselectedWeek(week.value));
+      const Param = { ...param, updateDay : week.key};
       search(Param);
     }
 
@@ -59,7 +60,7 @@ export function WeekList(){
           <ul className="SubNavigationBar__snb_list--tAZvu">    
               {weeks.map((item) => (
                 <li key={item.key?.toString()} className="SubNavigationBar__item--tmE0E">
-                  <a aria-current= {param.updateDay == item.key ? true : false} onClick={()=> getWeekParam(item.key)} className="SubNavigationBar__link--PXX5B">{item.value} </a>
+                  <a aria-current= {param.updateDay == item.key ? true : false} onClick={()=> getWeekParam(item)} className="SubNavigationBar__link--PXX5B">{item.value} </a>
                 </li>
               ))}
 

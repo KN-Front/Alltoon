@@ -8,8 +8,8 @@ import { RootState } from '../store'
 
 interface initialState{
   weeks : Array<{
-    key : string ,
-    value : string 
+    key : String ,
+    value : String 
   }>,
   service : Array<String>,
   webtoonList : Array<Object>,
@@ -18,9 +18,10 @@ interface initialState{
   searchParam: {
     page: number,
     perPage : number,
-    service : string,
-    updateDay : string
-  }
+    service : String,
+    updateDay : String
+  },
+  selectedWeek : String
 }
 
 const initialState: initialState = {
@@ -40,7 +41,8 @@ const initialState: initialState = {
     perPage : 20,
     service : 'naver',
     updateDay : 'mon'
-  }
+  },
+  selectedWeek : "월"
 }
 
 /**
@@ -59,18 +61,21 @@ const webtoonSlice = createSlice({
     setSearchParamUpdateDay: (state,action) =>{
       state.searchParam.updateDay = action.payload;
     },
-    setPushWebtoonList:(state,action) =>{
-      state.webtoonList.push(action.payload);
+    setselectedWeek: (state,action)=>{
+      state.selectedWeek = action.payload;
     }
   },
   extraReducers: (builder) => {
     builder
+      /**
+       * 요일별 웹툰 검색 
+       */
       .addCase(fetchWebtoonList.pending, (state)=>{
         
       })
       .addCase(fetchWebtoonList.fulfilled, (state, action) => {
         if(action.meta.arg.page > 1){
-          state.webtoonList.push(action.payload);
+          state.webtoonList = [...state.webtoonList, ...action.payload];
         }else{
           state.webtoonList = action.payload;
         }
@@ -78,6 +83,10 @@ const webtoonSlice = createSlice({
       .addCase(fetchWebtoonList.rejected, (state,action) => {
         state.error = action.error.message;
       })
+
+      /**
+       * 웹툰 검색 
+       */
       .addCase(fetchSearchList.pending, (state)=>{
       
       })
@@ -127,6 +136,13 @@ export const serviceList = (state:RootState) => state.webtoon.service;
  * @returns 
  */
 export const searchParam = (state:RootState) => state.webtoon.searchParam;
+
+/**
+ * 선택된 요일
+ * @param state 
+ * @returns 
+ */
+export const selectedWeek = (state:RootState) => state.webtoon.selectedWeek;
 
 export const webtoonActions = webtoonSlice.actions;
 
