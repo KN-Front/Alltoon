@@ -25,7 +25,7 @@ export const getWebtoonInfo = async (param: Object) =>{
  */ 
 
 export const getSearchWebtoonInfo = async (param: Object) =>{
-  const url = "https://korea-webtoon-api.herokuapp.com/search	";
+  const url = "https://korea-webtoon-api.herokuapp.com/search";
   const response = await axios.get(buildUrl(url,param));
   return response.data; 
 }

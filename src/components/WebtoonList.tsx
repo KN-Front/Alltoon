@@ -1,7 +1,7 @@
 import React, {useRef, useEffect} from "react";
 import '../styles/WebtoonList.css'
 import { useSelector } from "react-redux";
-import { webtoonList,searchParam,webtoonActions } from "../features/webtoon/webtoonSlice"
+import { webtoonList,searchParam,webtoonActions,selectedWeek } from "../features/webtoon/webtoonSlice"
 import { useAppDispatch } from "../features/hooks"
 import {fetchWebtoonList} from "../features/webtoon/webtoonActions"
 /**
@@ -11,6 +11,7 @@ import {fetchWebtoonList} from "../features/webtoon/webtoonActions"
 export function WebtoonList(){
     const list: Array<any> = useSelector(webtoonList);
     const param = useSelector(searchParam);
+    const week = useSelector(selectedWeek)
     const scrollRef = useRef<any>(null);
     const dispatch = useAppDispatch();
 
@@ -52,7 +53,7 @@ export function WebtoonList(){
             <div className="ComponentHead__component_head--O2tPr">
                 <div className="ComponentHead__title_area--IEQEG">
                     <h2 className="ComponentHead__title--TjYVo">
-                        <span className="ComponentHead__text--dhKW7"> {param.updateDay}요일 전체웹툰</span>
+                        <span className="ComponentHead__text--dhKW7"> {week}요일 전체웹툰</span>
                     </h2>
                 </div>
             </div>
