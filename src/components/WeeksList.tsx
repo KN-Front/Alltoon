@@ -12,24 +12,8 @@ export function WeekList(){
     const dispatch = useAppDispatch();
     const weeks = useSelector(weeksList);
     const service = useSelector(serviceList);
-    let param = useSelector(searchParam);
+    const param = useSelector(searchParam);
 
-    /**
-     * 웹툰 검색
-     * @param week 
-     */
-    const search = (param: { 
-      page: number, 
-      perPage: number, 
-      service: String, 
-      updateDay: String 
-    }) =>{
-      return dispatch(fetchWebtoonList(param));    
-    }
-
-    const setSearchParamService = (value: string)=>{
-      return dispatch(webtoonActions.setSearchParamService(value));
-    }
 
     /**
      * service 기준 웹툰 검색 
@@ -37,9 +21,8 @@ export function WeekList(){
      */
     const getServiceParam = (e:React.ChangeEvent<HTMLSelectElement>) =>{
       const service = e.target.value
-      setSearchParamService(service);
-      const Param = { ...param, service : service};
-      search(Param);
+      dispatch(webtoonActions.setSearchParamService(service));
+      dispatch(fetchWebtoonList());
     }
 
     /**
@@ -48,9 +31,9 @@ export function WeekList(){
      */
     const getWeekParam = (week: {key : String, value : String }) =>{
       dispatch(webtoonActions.setSearchParamUpdateDay(week.key));
-      dispatch(webtoonActions.setselectedWeek(week.value));
-      const Param = { ...param, updateDay : week.key};
-      search(Param);
+      dispatch(webtoonActions.setSelectedWeek(week.value));
+      dispatch(webtoonActions.setPage(1));
+      dispatch(fetchWebtoonList());
     }
 
 

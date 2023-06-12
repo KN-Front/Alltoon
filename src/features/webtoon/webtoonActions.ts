@@ -1,17 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getWebtoonInfo, getSearchWebtoonInfo } from '../../common/api/webtoonAPI';
-
+import { useSelector } from 'react-redux';
+import {searchParam} from '../webtoon/webtoonSlice'
+import { RootState } from '../store';
 /**
  * 웹툰 목록
  */
 export const fetchWebtoonList = createAsyncThunk(
   'webtoon/fetchWebtoonList', 
-  async (param:{
-    page : number ,
-    perPage : number,
-    service : String,
-    updateDay : String
-  }) => {
+  async (_,{ getState}) => {
+    const param = (getState() as RootState).webtoon.searchParam;
     const response = await getWebtoonInfo(param);
     return response;
 });

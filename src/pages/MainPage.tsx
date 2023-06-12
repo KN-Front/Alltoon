@@ -3,17 +3,13 @@ import { WeekList } from '../components/WeeksList';
 import { WebtoonList } from '../components/WebtoonList';
 import { useAppDispatch } from '../features/hooks';
 import {fetchWebtoonList} from '../features/webtoon/webtoonActions'
-import { searchParam, webtoonActions } from '../features/webtoon/webtoonSlice'
-import {getWebtoonInfo} from '../common/api/webtoonAPI'
-import { useSelector } from "react-redux";
+
 
 const Main = () => {
 
-  let [list, setList] = useState<any>();
   const dispatch = useAppDispatch();
-  const param = useSelector(searchParam)
   useEffect(()=>{
-    dispatch(fetchWebtoonList(param))
+    dispatch(fetchWebtoonList())
   },[]);
 
   return (

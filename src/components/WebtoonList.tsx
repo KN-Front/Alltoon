@@ -40,10 +40,9 @@ export function WebtoonList(){
        * @returns 
        */
       const getNextWebtoonList = () => {
-        let nextParam = {...param}
-        nextParam.page++;
-        webtoonActions.setsearchParam(nextParam);
-        return dispatch(fetchWebtoonList(nextParam));
+        
+        dispatch(webtoonActions.setNextPage());
+        dispatch(fetchWebtoonList());
       };
 
 

@@ -52,18 +52,52 @@ const webtoonSlice = createSlice({
   name: 'webtoon',
   initialState,
   reducers: {
+    /**
+     * searchParam 설정
+     * @param state 
+     * @param action 
+     */
     setsearchParam: (state,action) =>{
       state.searchParam = action.payload;
     },
+    /**
+     * searchParam 서비스 설정
+     * @param state 
+     * @param action 
+     */
     setSearchParamService: (state, action) =>{
       state.searchParam.service = action.payload;
     },
+    /**
+     * searchParam 요일 설정
+     * @param state 
+     * @param action 
+     */
     setSearchParamUpdateDay: (state,action) =>{
       state.searchParam.updateDay = action.payload;
     },
-    setselectedWeek: (state,action)=>{
+    /**
+     * searchParam 다음 페이지 설정
+     * @param state 
+     */
+    setPage: (state,action) =>{
+      state.searchParam.page = action.payload;
+    },
+    /**
+     * searchParam 다음 페이지 설정
+     * @param state 
+     */
+    setNextPage: (state) =>{
+      state.searchParam.page += 1;
+    },
+    /**
+     * 선택된 요일 설정
+     * @param state 
+     * @param action 
+     */
+    setSelectedWeek: (state,action)=>{
       state.selectedWeek = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -74,7 +108,7 @@ const webtoonSlice = createSlice({
         
       })
       .addCase(fetchWebtoonList.fulfilled, (state, action) => {
-        if(action.meta.arg.page > 1){
+        if(state.searchParam.page > 1){
           state.webtoonList = [...state.webtoonList, ...action.payload];
         }else{
           state.webtoonList = action.payload;
