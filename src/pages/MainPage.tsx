@@ -6,7 +6,6 @@ import {fetchWebtoonList} from '../features/webtoon/webtoonActions'
 
 
 const Main = () => {
-
   const dispatch = useAppDispatch();
   useEffect(()=>{
     dispatch(fetchWebtoonList())
