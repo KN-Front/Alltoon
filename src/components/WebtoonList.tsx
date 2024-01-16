@@ -1,5 +1,4 @@
 import React, {useRef, useEffect} from "react";
-import '../styles/WebtoonList.css'
 import { useSelector } from "react-redux";
 import { webtoonList,searchParam,webtoonActions,selectedWeek } from "../features/webtoon/webtoonSlice"
 import { useAppDispatch } from "../features/hooks"
@@ -16,7 +15,7 @@ export function WebtoonList(){
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        const scrollContainer = scrollRef.current;
+const scrollContainer = scrollRef.current;
     
         const handleScroll = () => {
           const isScrolledToBottom =
@@ -49,44 +48,21 @@ export function WebtoonList(){
 
     return(
         <div>
-            <div className="ComponentHead__component_head--O2tPr">
-                <div className="ComponentHead__title_area--IEQEG">
-                    <h2 className="ComponentHead__title--TjYVo">
-                        <span className="ComponentHead__text--dhKW7"> {week}요일 전체웹툰</span>
-                    </h2>
-                </div>
+            <div>
+                <span> {week}요일 전체웹툰</span>
             </div>
-            <div ref={scrollRef}
-                style={{
-                    height: '700px',
-                    overflow: 'auto',
-                }}
-                className="webtoonListScroll"
-                >
-                <ul className="ContentList__content_list--q5KXY">
+            <div ref={scrollRef}>
+                <ul>
                 {
                     list?.map((data,key)=>(
-                        <li key={key} className="item">
+                        <li key={key}>
                             <a href={data.url}>
-                                <div className="Poster__thumbnail_area--gviWY Poster__type160x207--EQAM8">
-                                    <div className="Poster__bullet_wrap--VcWFJ"></div>
-                                    <img src={data.img} alt={data.title} className="Poster__image--d9XTI"></img>
-                                </div>
+                                <img src={data.img} alt={data.title}></img>
                             </a>
-                            <div className="ContentList__info_area--bXx7h">
-                                <a className="ContentTitle__title_area--x24vt" href={data.url}>
-                                    <span className="ContentTitle__title--e3qXt">
-                                        <span className="text">
-                                        {data.title}
-                                        </span>
-                                    </span>
-                                </a>
-                                <div className="ContentAuthor__author_wrap--fV7Lo">
-                                    <a className="ContentAuthor__author--CTAAP">
-                                    {data.author}
-                                    </a>
-                                </div>
-                                {/* {data.fanCount} */}
+                            <div>
+                                {data.title}
+                                {data.author}
+                                {data.fanCount}
                             </div>
                         </li>
                     ))}

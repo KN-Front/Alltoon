@@ -1,15 +1,15 @@
 import React from 'react';
 import Main  from './pages/MainPage';
 import SearchPage  from './pages/SearchPage'
-import Nav from './components/Nav';
+import Header from './components/Heaer';
 import { Routes, Route, Outlet} from "react-router-dom"
-
+import "./styles/webtoon.css"
 import './App.css';
 
 const Layout = () =>{
   return(
     <div>
-      <Nav/>
+      <Header/>
       <Outlet/>
     </div>
     

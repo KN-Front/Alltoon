@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { weeksList, serviceList, webtoonActions, searchParam } from "../features/webtoon/webtoonSlice";
 import { fetchWebtoonList} from "../features/webtoon/webtoonActions"
 import { useAppDispatch } from "../features/hooks"
-import "../styles/WeekList.css"
 /**
  * 요일 목록 컴포넌트
  * @returns 
@@ -38,22 +37,20 @@ export function WeekList(){
 
 
     return(
-    <div className="SubNavigationBar__snb_wrap--A5gfM">
-        <nav className="snb_nav">
-          <ul className="SubNavigationBar__snb_list--tAZvu">    
+    <div>
+          <ul>    
               {weeks.map((item) => (
-                <li key={item.key?.toString()} className="SubNavigationBar__item--tmE0E">
-                  <a aria-current= {param.updateDay == item.key ? true : false} onClick={()=> getWeekParam(item)} className="SubNavigationBar__link--PXX5B">{item.value} </a>
+                <li key={item.key?.toString()}>
+                  <a aria-current= {param.updateDay == item.key ? true : false} onClick={()=> getWeekParam(item)}>{item.value} </a>
                 </li>
               ))}
 
-              <select id="selectBox" onChange={getServiceParam}>
+              <select onChange={getServiceParam}>
                           {service.map((item,index)=>(
                               <option key={index} value = {item.toString()} > {item}</option>
                           ))}
               </select>
           </ul>  
-        </nav> 
     </div>
     )
 }

@@ -14,11 +14,7 @@ const Main = () => {
 
   return (
     <div>
-        <hr/>
-
       <div>
-        <hr/>
-
         <div>
           <WeekList/>
         </div>
