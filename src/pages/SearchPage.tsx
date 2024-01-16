@@ -1,15 +1,15 @@
 import React from 'react'
-import {searchList} from '../features/webtoon/webtoonSlice'
-import {useSelector} from 'react-redux'
+import { searchWebtoon } from '../features/webtoon/webtoonSlice'
+import { useSelector } from 'react-redux'
+import { webtoonInfo } from '@/types'
 const SearchPage = () =>{
     
-    const list: Array<any> = useSelector(searchList);
+    const webtoon:webtoonInfo = useSelector(searchWebtoon);
 
-    if(list.length){
+    if(webtoon.webtoons.length){
         return(
             <div>
-                <button></button>
-                 { list.map((data)=>(
+                 { webtoon.webtoons.map((data)=>(
                         <div key={data._id}>
                             title : {data.title}
                             img : {data.img}

@@ -1,48 +1,71 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { fetchWebtoonList, fetchSearchList} from './webtoonActions'
-import { RootState } from '../store'
-
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchWebtoonList, fetchSearchList} from './webtoonActions';
+import { RootState } from '@/features/store';
+import { getWebtoonInfoParam, week, webtoonInfo, webtoons } from '@/types';
 /**
  * 웹툰 정보 state
  */
 
 interface initialState{
-  weeks : Array<{
-    key : String ,
-    value : String 
-  }>,
+  weeks : Array<week>,
   service : Array<String>,
-  webtoonList : Array<Object>,
-  searchList : Array<Object>,
-  error: any,
-  searchParam: {
-    page: number,
-    perPage : number,
-    service : String,
-    updateDay : String
-  },
-  selectedWeek : String
+  webtoonInfo : webtoonInfo,
+  searchList : webtoonInfo,
+  error: any|undefined,
+  searchParam: getWebtoonInfoParam,
 }
 
-const initialState: initialState = {
-  weeks : [ {key: "mon" ,value : "월"}, 
+const initialWebtoons: webtoons = {
+  _id: "",
+  webtoonId: 0,
+  title: "",
+  author: "",
+  url: "",
+  img: "",
+  service: "",
+  updateDays: [],
+  fanCount: null,
+  searchKeyword: "",
+  additional: {
+    new: false,
+    rest: false,
+    up: false,
+    adult: false,
+    singularityList: []
+  }
+}
+
+const initialWebtoonInfo: webtoonInfo = {
+  totalWebtoonCount: 0,
+  naverWebtoonCount: 0,
+  kakaoWebtoonCount: 0,
+  kakaoPageWebtoonCount: 0,
+  updatedWebtoonCount: 0,
+  createdWebtoonCount: 0,
+  lastUpdate: null,
+  webtoons: [initialWebtoons]
+};
+
+
+
+const initialState = {
+  service: ["naver", "kakao", "kakaoPage"],
+  weeks: [ {key: "mon" ,value : "월"}, 
             {key: "tue" ,value : "화"},
             {key: "wed" ,value : "수"},
             {key: "thu" ,value : "목"},
             {key: "fri" ,value : "금"},
             {key: "sat" ,value : "토"},
             {key: "sun" ,value : "일"}],
-  service : ["naver", "kakao", "kakaoPage"],
-  webtoonList : [] ,
-  searchList : [],
+  weekWebtoon: initialWebtoonInfo  ,
+  searchWebtoon: initialWebtoonInfo ,
   error : '',
-  searchParam : {
+  searchParam :{
     page : 1 ,
     perPage : 20,
     service : 'naver',
     updateDay : 'mon'
-  },
-  selectedWeek : "월"
+  }
 }
 
 /**
@@ -90,14 +113,6 @@ const webtoonSlice = createSlice({
     setNextPage: (state) =>{
       state.searchParam.page += 1;
     },
-    /**
-     * 선택된 요일 설정
-     * @param state 
-     * @param action 
-     */
-    setSelectedWeek: (state,action)=>{
-      state.selectedWeek = action.payload;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -109,14 +124,12 @@ const webtoonSlice = createSlice({
       })
       .addCase(fetchWebtoonList.fulfilled, (state, action) => {
         if(state.searchParam.page > 1){
-          state.webtoonList = [...state.webtoonList, ...action.payload];
+          state.weekWebtoon = {...state.weekWebtoon, ...action.payload};
         }else{
-          state.webtoonList = action.payload;
+          state.weekWebtoon = action.payload;
         }
       })
-      .addCase(fetchWebtoonList.rejected, (state,action) => {
-        state.error = action.error.message;
-      })
+     
 
       /**
        * 웹툰 검색 
@@ -125,11 +138,11 @@ const webtoonSlice = createSlice({
       
       })
       .addCase(fetchSearchList.fulfilled, (state, action) => {
-        state.searchList = action.payload;
+        state.searchWebtoon = action.payload;
       })
-      .addCase(fetchSearchList.rejected, (state,action) => {
-        state.error = action.error.message;
-      })
+      // .addCase(fetchSearchList.rejected, (state,action) => {
+      //   state.error = action.error.message;
+      // })
     
   }
 })
@@ -141,14 +154,14 @@ const webtoonSlice = createSlice({
  * @param state 
  * @returns 
  */
-export const webtoonList = (state:RootState) => state.webtoon.webtoonList;
+export const weekWebtoon = (state:RootState) => state.webtoon.weekWebtoon;
 
 /**
  * 검색 목록
  * @param state 
  * @returns 
  */
-export const searchList = (state:RootState) => state.webtoon.searchList;
+export const searchWebtoon = (state:RootState) => state.webtoon.searchWebtoon;
 
 /**
  * 요일 목록
@@ -170,13 +183,6 @@ export const serviceList = (state:RootState) => state.webtoon.service;
  * @returns 
  */
 export const searchParam = (state:RootState) => state.webtoon.searchParam;
-
-/**
- * 선택된 요일
- * @param state 
- * @returns 
- */
-export const selectedWeek = (state:RootState) => state.webtoon.selectedWeek;
 
 export const webtoonActions = webtoonSlice.actions;
 

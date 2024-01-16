@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import {useNavigate, useLocation} from "react-router-dom"
 import {fetchSearchList} from "../features/webtoon/webtoonActions"
 import { useAppDispatch } from "../features/hooks"
+import { getSearchWebtoonInfoParam } from '@/types';
 
 /**
  * 웹툰 검색 컴포넌트 
@@ -12,7 +13,7 @@ export function Search(){
     /**
      * 입력값 
      */
-    const [param, setParam] = useState({});
+    const [param, setParam] = useState<getSearchWebtoonInfoParam>({ keyword : ''});
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const location = useLocation().pathname;
@@ -43,10 +44,15 @@ export function Search(){
         }
     }
 
+    const handleEnter = (e: any) => {
+        if (e.key === 'Enter') {
+            search();
+        }
+    };
+
     return(
         <div className="seaerch">
-            <input type = "text" 
-                            onChange={setKeyword}/>
+            <input type = "text" onChange={setKeyword} onKeyDown={handleEnter}/>
             <button onClick={()=>{search()}}>
                     검색</button>
         </div>

@@ -1,8 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { weeksList, serviceList, webtoonActions, searchParam } from "../features/webtoon/webtoonSlice";
-import { fetchWebtoonList} from "../features/webtoon/webtoonActions"
-import { useAppDispatch } from "../features/hooks"
+import { fetchWebtoonList} from "../features/webtoon/webtoonActions";
+import { useAppDispatch } from "../features/hooks";
+import { week } from "@/types";
+import { findWeekValueByKey } from "../common/utill/week";
 /**
  * 요일 목록 컴포넌트
  * @returns 
@@ -13,35 +15,24 @@ export function WeekList(){
     const service = useSelector(serviceList);
     const param = useSelector(searchParam);
 
-
-    /**
-     * service 기준 웹툰 검색 
-     * @param e 
-     */
     const getServiceParam = (e:React.ChangeEvent<HTMLSelectElement>) =>{
       const service = e.target.value
       dispatch(webtoonActions.setSearchParamService(service));
       dispatch(fetchWebtoonList());
     }
 
-    /**
-     * 요일 기준 웹툰 검색 
-     * @param e 
-     */
-    const getWeekParam = (week: {key : String, value : String }) =>{
+    const getWeekParam = (week: week) =>{
       dispatch(webtoonActions.setSearchParamUpdateDay(week.key));
-      dispatch(webtoonActions.setSelectedWeek(week.value));
       dispatch(webtoonActions.setPage(1));
       dispatch(fetchWebtoonList());
     }
-
-
+    // currentWeek === item.value
     return(
     <div className="weekList">
           <ul>    
               {weeks.map((item) => (
-                <li key={item.key?.toString()}>
-                  <a aria-current= {param.updateDay == item.key ? true : false} onClick={()=> getWeekParam(item)}>{item.value} </a>
+                <li key={item.key} onClick={()=> getWeekParam(item)} className={`${ (item.key == param.updateDay)? 'active' : ''}`}>
+                  <a>{item.value} </a>
                 </li>
               ))}
           </ul>  

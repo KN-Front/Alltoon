@@ -6,7 +6,7 @@ import qs from 'qs';
  * @param params 
  * @returns 
  */
-export const buildUrl = ( url: String  ,params: Object | null) =>{
+export const buildUrl = ( url: String  ,params: any) =>{
   const queryString = qs.stringify(params);
     return `${url}?${queryString}`;
 }

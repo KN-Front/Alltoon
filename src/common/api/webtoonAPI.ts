@@ -1,6 +1,6 @@
 import { buildUrl } from '../utill/api';
 import axios from 'axios';
-
+import {getWebtoonInfoParam, getSearchWebtoonInfoParam} from '@/types/webtoon';
 /**
  * 웹툰 정보 API
  * @param param {Object}
@@ -11,10 +11,10 @@ import axios from 'axios';
  * @returns 
  */ 
 
-export const getWebtoonInfo = async (param: Object) =>{
+export const getWebtoonInfo = async (param: getWebtoonInfoParam) =>{
   const url = "https://korea-webtoon-api.herokuapp.com";
   const response = await axios.get(buildUrl(url,param));
-  return response.data.webtoons; 
+  return response.data; 
 }
 
 /**
@@ -24,7 +24,7 @@ export const getWebtoonInfo = async (param: Object) =>{
  * @returns 
  */ 
 
-export const getSearchWebtoonInfo = async (param: Object) =>{
+export const getSearchWebtoonInfo = async (param: getSearchWebtoonInfoParam) =>{
   const url = "https://korea-webtoon-api.herokuapp.com/search";
   const response = await axios.get(buildUrl(url,param));
   return response.data; 
