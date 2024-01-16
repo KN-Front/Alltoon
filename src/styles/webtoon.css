@@ -50,12 +50,12 @@ main .weekList ul {
 main .weekList ul li {
   justify-content: center;
   width: 100%;
-  font-size: 16px;
+  font-size: 19px;
   display: flex;
   cursor: pointer;
 }
 main .weekList ul .active {
-  color: #00dc64;
+  font-weight: bolder;
 }
 main .weekList select {
   margin-left: auto;
@@ -79,8 +79,8 @@ main .webtoonRow article {
   flex: 0 0 auto;
   padding-right: 1.25rem;
   padding-left: 1.25rem;
-  flex-basis: 25%;
-  max-width: 25%;
+  flex-basis: 20%;
+  max-width: 20%;
 }
 main .webtoonRow article .webtoonBox {
   border-radius: 4px;

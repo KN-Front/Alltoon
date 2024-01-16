@@ -51,13 +51,13 @@ main{
             li{
                 justify-content: center;
                 width: 100%;
-                font-size: 16px;
+                font-size: 19px;
                 display: flex;
                 cursor: pointer;
             }
 
             .active{
-                color: #00dc64;
+                font-weight: bolder;
             }
         }
     
@@ -86,8 +86,8 @@ main{
             flex: 0 0 auto;
             padding-right: 1.25rem;
             padding-left: 1.25rem;
-            flex-basis: 25%;
-            max-width: 25%;
+            flex-basis: 20%;
+            max-width: 20%;
     
             .webtoonBox{
                 border-radius: 4px;
