@@ -13,20 +13,10 @@ const Main = () => {
   },[]);
 
   return (
-    <div>
-      <div>
-        <div>
+    <main>
           <WeekList/>
-        </div>
-        <hr/>
-
-        <div>
           <WebtoonList/>
-        </div>
-        <hr/>
-
-      </div>
-    </div>
+    </main>
   );
 }
 

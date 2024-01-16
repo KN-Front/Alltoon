@@ -18,18 +18,16 @@ const Header = () =>{
     }
 
     return(
-        <div>
+        <header className="mainHeader">
             <div>
-                <h1>
+                <h2>
                     <a onClick={()=>moveMain()}>
-                        <span > 웹툰</span>
+                        <span > Webtoon</span>
                     </a>
-                    
-                </h1>
+                </h2>
             </div>
-            
             <Search/>
-        </div>
+        </header>
     )
 }
 

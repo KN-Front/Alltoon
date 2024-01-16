@@ -44,7 +44,7 @@ export function Search(){
     }
 
     return(
-        <div>
+        <div className="seaerch">
             <input type = "text" 
                             onChange={setKeyword}/>
             <button onClick={()=>{search()}}>

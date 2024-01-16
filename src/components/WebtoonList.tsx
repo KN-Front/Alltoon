@@ -47,28 +47,28 @@ const scrollContainer = scrollRef.current;
 
 
     return(
-        <div>
-            <div>
+        <div className="webtoonRow" ref={scrollRef}>
+            {/* <div>
                 <span> {week}요일 전체웹툰</span>
-            </div>
-            <div ref={scrollRef}>
-                <ul>
+            </div> */}
                 {
                     list?.map((data,key)=>(
-                        <li key={key}>
-                            <a href={data.url}>
+                        <article key={key}>
+                          <div className="webtoonBox">
+                            <header>
+                              <a>
                                 <img src={data.img} alt={data.title}></img>
-                            </a>
+                              </a>
+                            </header>
                             <div>
-                                {data.title}
-                                {data.author}
-                                {data.fanCount}
+                              <button>
+                                  {data.title}
+                              </button>
+                              <p>작가: {data.author}</p>
                             </div>
-                        </li>
+                          </div>
+                        </article>
                     ))}
-                </ul>
             </div>
-            
-        </div>
     )
 }

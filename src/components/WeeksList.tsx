@@ -37,20 +37,19 @@ export function WeekList(){
 
 
     return(
-    <div>
+    <div className="weekList">
           <ul>    
               {weeks.map((item) => (
                 <li key={item.key?.toString()}>
                   <a aria-current= {param.updateDay == item.key ? true : false} onClick={()=> getWeekParam(item)}>{item.value} </a>
                 </li>
               ))}
-
-              <select onChange={getServiceParam}>
-                          {service.map((item,index)=>(
-                              <option key={index} value = {item.toString()} > {item}</option>
-                          ))}
-              </select>
           </ul>  
+          <select onChange={getServiceParam}>
+              {service.map((item,index)=>(
+                  <option key={index} value = {item.toString()} > {item}</option>
+              ))}
+          </select>
     </div>
     )
 }
