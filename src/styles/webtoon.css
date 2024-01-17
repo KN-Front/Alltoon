@@ -131,4 +131,94 @@ main img {
   height: 250px;
 }
 
+.searchList {
+  margin: 20px;
+}
+.searchList .serviceTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 5px;
+}
+.searchList .serviceTitle .serviceSub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 5px;
+}
+.searchList .serviceTitle .serviceSub h2 {
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+.searchList .serviceTitle .serviceSub span {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.5px;
+}
+.searchList .searchWebtoon {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  margin-top: 20px;
+  list-style: none;
+}
+.searchList .searchWebtoon li {
+  display: flex;
+  align-items: start;
+  column-gap: 16px;
+}
+.searchList .searchWebtoon li a {
+  display: block;
+}
+.searchList .searchWebtoon li a .poster {
+  width: 120px;
+  flex: none;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.searchList .searchWebtoon li a .poster img {
+  width: 120px;
+  height: 156px;
+}
+.searchList .searchWebtoon li .info a {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -0.5px;
+}
+.searchList .searchWebtoon li .info .detail {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3px;
+  row-gap: 2px;
+}
+.searchList .searchWebtoon li .info .detail span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-right: 4px;
+  height: 24px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.5px;
+}
+.searchList .searchWebtoon li .info .detail em {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.5px;
+}
+
 /*# sourceMappingURL=webtoon.css.map */
