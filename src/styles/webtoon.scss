@@ -45,11 +45,11 @@ main{
         display: flex;
         min-width: 730px;
         border-bottom: ridge;
+
         ul{
             display: flex;
             width: 75%;
             border-radius: 4px;
-            box-shadow: 0 1px 2px 0 rgba(168, 182, 191, 0.6);
 
             li{
                 justify-content: center;
@@ -209,7 +209,8 @@ main{
                 
                 a{
                     display: block;
-    
+                    text-decoration: none;
+                    color: black;
                     .poster{
                         width: 120px;
                         flex: none;
