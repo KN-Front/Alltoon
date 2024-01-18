@@ -169,6 +169,12 @@ main img {
   display: flex;
   flex-wrap: wrap;
 }
+@media (max-width: 1360px) {
+  .searchList .wrap .searchWebtoon {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+  }
+}
 .searchList .wrap .searchWebtoon {
   display: flex;
   flex-direction: column;

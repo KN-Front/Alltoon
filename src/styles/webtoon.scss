@@ -190,7 +190,12 @@ main{
     .wrap{
         display: flex;
         flex-wrap: wrap;
-
+        @media (max-width: 1360px){
+            .searchWebtoon{
+                flex-basis: 100%!important;
+                max-width: 100%!important;
+            }
+        }
         .searchWebtoon{
             display: flex;
             flex-direction: column;
