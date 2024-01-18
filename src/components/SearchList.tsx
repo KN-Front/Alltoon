@@ -4,14 +4,10 @@ import { useSelector } from 'react-redux'
 import { webtoonInfo,webtoons } from '@/types'
 
 const SearchList = () =>{
-    //TODO Naver, kakao, kakaoPage 별 값 나누기 
     const webtoon:webtoonInfo = useSelector(searchWebtoon);
     const[naverWebtoon, setNaverWebtoon] = useState<webtoons[]>([]);
     const[kakaoWebtoon, setKakaoWebtoon] = useState<webtoons[]>([]);
     const[kakaoPageWebtoon, setKakaoPageWebtoon] = useState<webtoons[]>([]);
-    useEffect(()=>{
-        clear()
-    },[]);
     
     useEffect(()=>{
         clear()
@@ -21,16 +17,16 @@ const SearchList = () =>{
     const clear = async() =>{
         setNaverWebtoon([]);
         setKakaoWebtoon([]);
-        setKakaoWebtoon([]);
+        setKakaoPageWebtoon([]);
     }
     const filterByService = async ()=>{
         webtoon.webtoons.forEach((webtoon)=>{
             if(webtoon.service === 'naver'){
-                setNaverWebtoon([...naverWebtoon, webtoon]);
+                setNaverWebtoon((prev) => [...prev, webtoon]);
             }else if(webtoon.service === 'kakao'){
-                setKakaoWebtoon([...kakaoWebtoon, webtoon]);
+                setKakaoWebtoon((prev) => [...prev, webtoon]);
             }else if(webtoon.service === 'kakaoPage'){
-                setKakaoPageWebtoon([...kakaoPageWebtoon, webtoon]);
+                setKakaoPageWebtoon((prev) => [...prev, webtoon]);
             }
         })
     }
@@ -45,8 +41,8 @@ const SearchList = () =>{
                     </div>
                 </div>
                 { Boolean(naverWebtoon) ? 
-                naverWebtoon.map((webtoon)=>(
-                    <ul className='searchWebtoon' key={webtoon._id}>
+                naverWebtoon.map((webtoon,index)=>(
+                    <ul className='searchWebtoon' key={index}>
                         <li>
                             <a>
                                 <div className='poster'>
@@ -76,8 +72,8 @@ const SearchList = () =>{
                     </div>
                 </div>
                 { Boolean(kakaoWebtoon) ? 
-                kakaoWebtoon.map((webtoon)=>(
-                    <ul className='searchWebtoon' key={webtoon._id}>
+                kakaoWebtoon.map((webtoon,index)=>(
+                    <ul className='searchWebtoon' key={index}>
                         <li>
                             <a>
                                 <div className='poster'>
@@ -107,8 +103,8 @@ const SearchList = () =>{
                     </div>
                 </div>
                 { Boolean(kakaoPageWebtoon) ? 
-                kakaoPageWebtoon.map((webtoon)=>(
-                    <ul className='searchWebtoon' key={webtoon._id}>
+                kakaoPageWebtoon.map((webtoon, index)=>(
+                    <ul className='searchWebtoon' key={index}>
                         <li>
                             <a>
                                 <div className='poster'>
