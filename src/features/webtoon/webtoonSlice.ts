@@ -65,7 +65,8 @@ const initialState = {
     perPage : 20,
     service : 'naver',
     updateDay : 'mon'
-  }
+  },
+  loading : false
 }
 
 /**
@@ -113,6 +114,10 @@ const webtoonSlice = createSlice({
     setNextPage: (state) =>{
       state.searchParam.page += 1;
     },
+
+    setLoading: (state,action)=>{
+      state.loading = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -135,7 +140,7 @@ const webtoonSlice = createSlice({
        * 웹툰 검색 
        */
       .addCase(fetchSearchList.pending, (state)=>{
-      
+        console.log('loading....')
       })
       .addCase(fetchSearchList.fulfilled, (state, action) => {
         state.searchWebtoon = action.payload;
@@ -183,6 +188,8 @@ export const serviceList = (state:RootState) => state.webtoon.service;
  * @returns 
  */
 export const searchParam = (state:RootState) => state.webtoon.searchParam;
+
+export const loading = (state:RootState) => state.webtoon.loading;
 
 export const webtoonActions = webtoonSlice.actions;
 
