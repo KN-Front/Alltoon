@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import { searchWebtoon } from '../features/webtoon/webtoonSlice'
 import { useSelector } from 'react-redux'
 import { webtoonInfo,webtoons } from '@/types'
+import { getUpdateWeekArrayToString } from '../common/utill/week'
 /** TODO
  * 1. 밑에 정보 표시하기
  * fanCount": 10,
@@ -12,7 +13,6 @@ import { webtoonInfo,webtoons } from '@/types'
         "up": false,
         "singularityList": []
     }
- * 2. 요일 배열 반환하기
  */
 const SearchList = () =>{
     const webtoon:webtoonInfo = useSelector(searchWebtoon);
@@ -109,9 +109,9 @@ const SearchList = () =>{
                                 <span>작가 : {sliceText(webtoon.author)}</span>
                             </div>
                             <div className='updateDay'>
-                                <span>업데이트 날짜 : {webtoon.updateDays}</span>
+                                <span>업데이트 날짜 : {getUpdateWeekArrayToString(webtoon.updateDays)}</span>
                             </div>
-                            <em>fan : {webtoon.fanCount}</em>
+                            <em>fan : {webtoon.fanCount} 만명</em>
                             <em>{webtoon.additional.new}</em>
 
                         </div>
