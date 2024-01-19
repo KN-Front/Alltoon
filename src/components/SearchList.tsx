@@ -3,6 +3,7 @@ import { searchWebtoon } from '../features/webtoon/webtoonSlice'
 import { useSelector } from 'react-redux'
 import { webtoonInfo,webtoons } from '@/types'
 import { getUpdateWeekArrayToString } from '../common/utill/week'
+import {AdultIcon, NewIcon, ResetIcon, UpIcon} from './icon';
 /** TODO
  * 1. 밑에 정보 표시하기
  * fanCount": 10,
@@ -52,8 +53,14 @@ const SearchList = () =>{
                 <div className='serviceSub'>
                     <h2>Naver</h2>
                     <p>{naverWebtoon.length} 개</p>
+                    <li>
+                        <AdultIcon/>
+                        <NewIcon/>
+                        <UpIcon/>
+                        <ResetIcon/>
+                    </li>
                 </div>
-            </div>
+            </div>    
             <div className='wrap'>
             { Boolean(naverWebtoon) ? 
             naverWebtoon.map((webtoon)=>(
