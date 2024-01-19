@@ -1,6 +1,7 @@
 import React, {useState} from "react"
-import {useNavigate, useLocation} from "react-router-dom"
-import {fetchSearchList} from "../features/webtoon/webtoonActions"
+import { useSelector } from 'react-redux'
+
+import { loading } from '../features/webtoon/webtoonSlice'
 import { useAppDispatch } from "../features/hooks"
 import "../styles/loading.css"
 /**
@@ -9,17 +10,18 @@ import "../styles/loading.css"
  */
 const Loading = () =>{
     
-    const dispatch = useAppDispatch();
+    const isLoading:boolean = useSelector(loading);
 
     return(
+        isLoading ? (
         <div className="dim">
             <div className="loading-container">
                 <div className="loading-spinner"></div>
                 <p className="loading-text">Loading...</p>
             </div>
         </div>
-        
-    );
+        ) : null
+    )
 
     
 }
