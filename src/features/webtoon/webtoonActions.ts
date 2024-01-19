@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getWebtoonInfo, getSearchWebtoonInfo } from '../../common/api/webtoonAPI';
 import { RootState } from '../store';
-import {getWebtoonInfoParam, getSearchWebtoonInfoParam} from '@/types/webtoon';
+import { getSearchWebtoonInfoParam } from '@/types/webtoon';
 
 /**
  * 웹툰 목록
