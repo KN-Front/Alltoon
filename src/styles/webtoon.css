@@ -256,4 +256,18 @@ main img {
   transition: all 0.25s ease-out;
 }
 
+.additional {
+  display: flex;
+  margin-top: 10px;
+  height: 1.5em;
+}
+.additional .upIcon {
+  margin-top: 2px;
+  margin-left: 3px;
+}
+.additional .resetIcon {
+  margin-top: 2px;
+  margin-left: 3px;
+}
+
 /*# sourceMappingURL=webtoon.css.map */

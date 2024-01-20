@@ -53,12 +53,6 @@ const SearchList = () =>{
                 <div className='serviceSub'>
                     <h2>Naver</h2>
                     <p>{naverWebtoon.length} 개</p>
-                    <li>
-                        <AdultIcon/>
-                        <NewIcon/>
-                        <UpIcon/>
-                        <ResetIcon/>
-                    </li>
                 </div>
             </div>    
             <div className='wrap'>
@@ -72,6 +66,16 @@ const SearchList = () =>{
                             </div>
                         </a> 
                         <div className='info'>
+                            <div className='additional'>
+                                {webtoon.additional.adult ? 
+                                <AdultIcon/> : null}
+                                {webtoon.additional.new ? 
+                                <NewIcon/> : null}
+                                {webtoon.additional.up ? 
+                                <UpIcon/> : null}
+                                {webtoon.additional.rest ? 
+                                <ResetIcon/> : null}
+                            </div>
                             <a href={webtoon.url}>
                                 <span>{webtoon.title}</span>
                             </a>
@@ -79,10 +83,9 @@ const SearchList = () =>{
                                 <span>작가 : {sliceText(webtoon.author)}</span>
                             </div>
                             <div className='updateDay'>
-                                <span>업데이트 날짜 : {webtoon.updateDays}</span>
+                                <span>업데이트 날짜 : {getUpdateWeekArrayToString(webtoon.updateDays)}</span>
                             </div>
-                            <em>업데이트 날짜 : {webtoon.updateDays}</em>
-
+                            
                         </div>
                     </li>
                 </ul>
@@ -109,6 +112,16 @@ const SearchList = () =>{
                             </div>
                         </a> 
                         <div className='info'>
+                            <div className='additional'>
+                                {webtoon.additional.adult ? 
+                                <AdultIcon/> : null}
+                                {webtoon.additional.new ? 
+                                <NewIcon/> : null}
+                                {webtoon.additional.up ? 
+                                <UpIcon/> : null}
+                                {webtoon.additional.rest ? 
+                                <ResetIcon/> : null}
+                            </div>
                             <a href={webtoon.url}>
                                 <span>{webtoon.title}</span>
                             </a>
@@ -118,9 +131,7 @@ const SearchList = () =>{
                             <div className='updateDay'>
                                 <span>업데이트 날짜 : {getUpdateWeekArrayToString(webtoon.updateDays)}</span>
                             </div>
-                            <em>fan : {webtoon.fanCount} 만명</em>
-                            <em>{webtoon.additional.new}</em>
-
+                            
                         </div>
                     </li>
                 </ul>
@@ -145,6 +156,16 @@ const SearchList = () =>{
                             </div>
                         </a> 
                         <div className='info'>
+                            <div className='additional'>
+                                {webtoon.additional.adult ? 
+                                <AdultIcon/> : null}
+                                {webtoon.additional.new ? 
+                                <NewIcon/> : null}
+                                {webtoon.additional.up ? 
+                                <UpIcon/> : null}
+                                {webtoon.additional.rest ? 
+                                <ResetIcon/> : null}
+                            </div>
                             <a href={webtoon.url}>
                                 <span>{webtoon.title}</span>
                             </a>
@@ -152,10 +173,9 @@ const SearchList = () =>{
                                 <span>작가 : {sliceText(webtoon.author)}</span>
                             </div>
                             <div className='updateDay'>
-                                <span>업데이트 날짜 : {webtoon.updateDays}</span>
+                                <span>업데이트 날짜 : {getUpdateWeekArrayToString(webtoon.updateDays)}</span>
                             </div>
-                            <em>업데이트 날짜 : {webtoon.updateDays}</em>
-
+                            
                         </div>
                     </li>
                 </ul>
