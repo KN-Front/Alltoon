@@ -1,10 +1,9 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { weeksList, serviceList, webtoonActions, searchParam } from "../features/webtoon/webtoonSlice";
-import { fetchWebtoonList} from "../features/webtoon/webtoonActions";
-import { useAppDispatch } from "../features/hooks";
-import { week } from "@/types";
-import { findWeekValueByKey } from "../common/utill/week";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { weeksList, serviceList, webtoonActions, searchParam } from '../features/webtoon/webtoonSlice';
+import { fetchWebtoonList} from '../features/webtoon/webtoonActions';
+import { useAppDispatch } from '../features/hooks';
+import { week } from '@/types';
 /**
  * 요일 목록 컴포넌트
  * @returns 

@@ -1,7 +1,7 @@
-import React, {useState} from "react"
-import {useNavigate, useLocation} from "react-router-dom"
-import {fetchSearchList} from "../features/webtoon/webtoonActions"
-import { useAppDispatch } from "../features/hooks"
+import React, {useState} from 'react';
+import {useNavigate, useLocation} from 'react-router-dom';
+import {fetchSearchList} from '../features/webtoon/webtoonActions';
+import { useAppDispatch } from '../features/hooks';
 import { getSearchWebtoonInfoParam } from '@/types';
 
 /**
