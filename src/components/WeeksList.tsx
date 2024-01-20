@@ -25,7 +25,7 @@ export function WeekList(){
       dispatch(webtoonActions.setPage(1));
       dispatch(fetchWebtoonList());
     }
-    // currentWeek === item.value
+
     return(
     <div className="weekList">
           <ul>    
