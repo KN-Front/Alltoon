@@ -4,17 +4,7 @@ import { useSelector } from 'react-redux'
 import { webtoonInfo,webtoons } from '@/types'
 import { getUpdateWeekArrayToString } from '../common/utill/week'
 import {AdultIcon, NewIcon, ResetIcon, UpIcon} from './icon';
-/** TODO
- * 1. 밑에 정보 표시하기
- * fanCount": 10,
-    "additional": {
-        "new": false,
-        "adult": false,
-        "rest": false,
-        "up": false,
-        "singularityList": []
-    }
- */
+
 const SearchList = () =>{
     const webtoon:webtoonInfo = useSelector(searchWebtoon);
     const[naverWebtoon, setNaverWebtoon] = useState<webtoons[]>([]);
