@@ -125,7 +125,7 @@ const webtoonSlice = createSlice({
        * 요일별 웹툰 검색 
        */
       .addCase(fetchWebtoonList.pending, (state)=>{
-        
+        state.loading = true;
       })
       .addCase(fetchWebtoonList.fulfilled, (state, action) => {
         if(state.searchParam.page > 1){
@@ -133,21 +133,26 @@ const webtoonSlice = createSlice({
         }else{
           state.weekWebtoon = action.payload;
         }
+        state.loading = false;
       })
-     
+      .addCase(fetchWebtoonList.rejected, (state)=>{
+        state.loading = false;
+      })
+      
 
       /**
        * 웹툰 검색 
        */
       .addCase(fetchSearchList.pending, (state)=>{
-        console.log('loading....')
+        state.loading = true;
       })
       .addCase(fetchSearchList.fulfilled, (state, action) => {
         state.searchWebtoon = action.payload;
+        state.loading = false;
       })
-      // .addCase(fetchSearchList.rejected, (state,action) => {
-      //   state.error = action.error.message;
-      // })
+      .addCase(fetchSearchList.rejected, (state) => {
+        state.loading = false;
+      })
     
   }
 })

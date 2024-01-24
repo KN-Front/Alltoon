@@ -21,7 +21,7 @@ function App() {
   return (
     
     <div className='App'>
-      {/* <Loading/> */}
+      <Loading/>
       <Routes>
         <Route path = "/" element ={<Layout/>}>
           <Route index element = {<Main/>}/>
