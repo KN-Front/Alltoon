@@ -62,7 +62,7 @@ const initialState = {
   error : '',
   searchParam :{
     page : 1 ,
-    perPage : 20,
+    perPage : 50,
     service : 'naver',
     updateDay : 'mon'
   },
