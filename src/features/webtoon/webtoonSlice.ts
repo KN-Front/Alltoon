@@ -1,20 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchWebtoonList, fetchSearchList} from './webtoonActions';
 import { RootState } from '@/features/store';
-import { getWebtoonInfoParam, week, webtoonInfo, webtoons } from '@/types';
-/**
- * 웹툰 정보 state
- */
-
-interface webtoonState{
-  service : Array<String>,
-  weeks : week[],
-  weekWebtoon: webtoonInfo,
-  searchWebtoon : webtoonInfo,
-  error: any|undefined,
-  searchParam: getWebtoonInfoParam,
-  loading: boolean
-}
+import { webtoonInfo, webtoons, webtoonState } from '@/types';
 
 const initialWebtoons: webtoons = {
   _id: "",
@@ -50,14 +37,14 @@ const initialWebtoonInfo: webtoonInfo = {
 
 
 const initialState: webtoonState = {
-  service: ["naver", "kakao", "kakaoPage"],
-  weeks: [ {key: "mon" ,value : "월"}, 
-            {key: "tue" ,value : "화"},
-            {key: "wed" ,value : "수"},
-            {key: "thu" ,value : "목"},
-            {key: "fri" ,value : "금"},
-            {key: "sat" ,value : "토"},
-            {key: "sun" ,value : "일"}],
+  service: ['naver', 'kakao', 'kakaoPage'],
+  weeks: [ {key: 'mon' ,value : '월'}, 
+            {key: 'tue' ,value : '화'},
+            {key: 'wed' ,value : '수'},
+            {key: 'thu' ,value : '목'},
+            {key: 'fri' ,value : '금'},
+            {key: 'sat' ,value : '토'},
+            {key: 'sun' ,value : '일'}],
   weekWebtoon: initialWebtoonInfo  ,
   searchWebtoon: initialWebtoonInfo ,
   error : '',

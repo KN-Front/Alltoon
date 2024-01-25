@@ -33,6 +33,7 @@ export interface webtoons{
       singularityList: Array
     }
 }
+
 export interface webtoonInfo {
     totalWebtoonCount: number,
     naverWebtoonCount: number,
@@ -42,4 +43,14 @@ export interface webtoonInfo {
     createdWebtoonCount: number,
     lastUpdate: string|null,
     webtoons: [webtoons]
-  }
+}
+
+export interface webtoonState{
+    service : Array<String>,
+    weeks : week[],
+    weekWebtoon: webtoonInfo,
+    searchWebtoon : webtoonInfo,
+    error: any|undefined,
+    searchParam: getWebtoonInfoParam,
+    loading: boolean
+}
