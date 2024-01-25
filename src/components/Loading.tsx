@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { loading } from '../features/webtoon/webtoonSlice';
-import '../styles/loading.css';
+import { loading } from '@/features/webtoon/webtoonSlice';
+import '@/styles/loading.css';
 /**
  * 웹툰 검색 컴포넌트 
  * @returns 
@@ -20,8 +20,6 @@ const Loading = () =>{
         </div>
         ) : null
     )
-
-    
 }
 
 export default Loading

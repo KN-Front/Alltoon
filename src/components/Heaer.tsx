@@ -1,4 +1,4 @@
-import { Search } from './Search';
+import { Search } from '@/components/Search';
 import {useNavigate, useLocation} from 'react-router-dom'
 /**
  * Nav 컴포넌트

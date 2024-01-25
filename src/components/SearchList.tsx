@@ -1,8 +1,8 @@
 import React, { useState,useEffect } from 'react';
-import { searchWebtoon } from '../features/webtoon/webtoonSlice';
 import { useSelector } from 'react-redux';
+import { searchWebtoon } from '@/features/webtoon/webtoonSlice';
 import { webtoonInfo,webtoons } from '@/types';
-import { getUpdateWeekArrayToString } from '../common/utill/week';
+import { getUpdateWeekArrayToString } from '@/common/utill/week';
 import {AdultIcon, NewIcon, ResetIcon, UpIcon} from './icon';
 
 const SearchList = () =>{

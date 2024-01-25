@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchList from '../components/SearchList'
+import SearchList from '@/components/SearchList'
 
 const SearchPage = () =>{
 

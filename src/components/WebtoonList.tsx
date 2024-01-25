@@ -1,8 +1,8 @@
 import React, {useRef, useEffect} from 'react';
 import { useSelector } from 'react-redux';
-import { weekWebtoon,searchParam,webtoonActions } from '../features/webtoon/webtoonSlice';
-import { useAppDispatch } from '../features/hooks';
-import {fetchWebtoonList} from '../features/webtoon/webtoonActions';
+import { weekWebtoon,searchParam,webtoonActions } from '@/features/webtoon/webtoonSlice';
+import { useAppDispatch } from '@/features/hooks';
+import {fetchWebtoonList} from '@/features/webtoon/webtoonActions';
 import { webtoonInfo } from '@/types';
 
 /**
