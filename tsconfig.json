@@ -19,11 +19,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
   },
   "include": [
     "src"
-  ]
+  ],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "extends": "./tsconfig.paths.json"
 }
