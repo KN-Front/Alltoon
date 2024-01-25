@@ -6,13 +6,14 @@ import { getWebtoonInfoParam, week, webtoonInfo, webtoons } from '@/types';
  * 웹툰 정보 state
  */
 
-interface initialState{
-  weeks : Array<week>,
+interface webtoonState{
   service : Array<String>,
-  webtoonInfo : webtoonInfo,
-  searchList : webtoonInfo,
+  weeks : week[],
+  weekWebtoon: webtoonInfo,
+  searchWebtoon : webtoonInfo,
   error: any|undefined,
   searchParam: getWebtoonInfoParam,
+  loading: boolean
 }
 
 const initialWebtoons: webtoons = {
@@ -48,7 +49,7 @@ const initialWebtoonInfo: webtoonInfo = {
 
 
 
-const initialState = {
+const initialState: webtoonState = {
   service: ["naver", "kakao", "kakaoPage"],
   weeks: [ {key: "mon" ,value : "월"}, 
             {key: "tue" ,value : "화"},
@@ -124,9 +125,7 @@ const webtoonSlice = createSlice({
       /**
        * 요일별 웹툰 검색 
        */
-      .addCase(fetchWebtoonList.pending, (state)=>{
-        state.loading = true;
-      })
+      .addCase(fetchWebtoonList.pending, (state)=>{state.loading = true;})
       .addCase(fetchWebtoonList.fulfilled, (state, action) => {
         if(state.searchParam.page > 1){
           state.weekWebtoon = {...state.weekWebtoon, ...action.payload};
@@ -135,24 +134,18 @@ const webtoonSlice = createSlice({
         }
         state.loading = false;
       })
-      .addCase(fetchWebtoonList.rejected, (state)=>{
-        state.loading = false;
-      })
+      .addCase(fetchWebtoonList.rejected, (state)=>{state.loading = false;})
       
 
       /**
        * 웹툰 검색 
        */
-      .addCase(fetchSearchList.pending, (state)=>{
-        state.loading = true;
-      })
+      .addCase(fetchSearchList.pending, (state)=>{state.loading = true;})
       .addCase(fetchSearchList.fulfilled, (state, action) => {
         state.searchWebtoon = action.payload;
         state.loading = false;
       })
-      .addCase(fetchSearchList.rejected, (state) => {
-        state.loading = false;
-      })
+      .addCase(fetchSearchList.rejected, (state) => {state.loading = false;})
     
   }
 })
