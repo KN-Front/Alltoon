@@ -1,3 +1,13 @@
+@charset "UTF-8";
+body {
+  font-family: Pretendard, Helvetica, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", "돋움", Dotum, sans-serif;
+}
+
+a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 기본 텍스트 색상 상속 */
+}
+
 .mainHeader {
   min-width: 1200px;
   padding: 1.5em 2em;
@@ -73,7 +83,7 @@ main .webtoonRow {
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  grid-template-columns: 20em 20em 20em 20em;
+  grid-template-columns: 180px 180px 180px 180px 180px 180px;
 }
 main .webtoonRow article {
   display: flex;
@@ -81,12 +91,9 @@ main .webtoonRow article {
   flex: 0 0 auto;
   padding-right: 1.25rem;
   padding-left: 1.25rem;
-  flex-basis: 20%;
   max-width: 20%;
 }
 main .webtoonRow article .webtoonBox {
-  border-radius: 4px;
-  box-shadow: 0 1px 2px 0 rgba(168, 182, 191, 0.6);
   flex: 1 1;
   margin: 1em 0;
   transition: all 0.25s ease-out;
@@ -105,29 +112,32 @@ main .webtoonRow article .webtoonBox header a {
 }
 main .webtoonRow article .webtoonBox header a img {
   transition: transform 0.3s ease;
+  width: 160px;
+  height: 270px;
 }
 main .webtoonRow article .webtoonBox header a img:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 main .webtoonRow article .webtoonBox div {
-  padding: 1.5em;
   word-break: break-all;
   color: var(--emojiCodeText);
+  float: left;
 }
-main .webtoonRow article .webtoonBox div button {
+main .webtoonRow article .webtoonBox div a span {
   background-color: transparent;
   border: none;
   color: inherit;
   font: inherit;
   padding: 0;
+  display: inline-block; /* 한 줄로 표시되도록 설정 */
+  max-width: 150px; /* 최대 너비 설정 */
+  overflow: hidden; /* 넘칠 경우 숨김 처리 */
+  text-overflow: ellipsis; /* 생략 부호로 설정 */
+  white-space: nowrap; /* 한 줄로 표시되도록 설정 */
 }
 main .webtoonRow article .webtoonBox div p {
   color: #999;
   word-break: normal;
-}
-main .webtoonRow article .webtoonBox:hover {
-  box-shadow: 0 10px 20px 0 rgba(168, 182, 191, 0.6);
-  transform: translateY(-1px);
 }
 main img {
   height: 250px;
