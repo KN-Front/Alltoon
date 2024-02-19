@@ -48,27 +48,27 @@ export function WebtoonList(){
 
     return(
         <div className="webtoonRow" ref={scrollRef}>
-            {/* <div>
-                <span> {week}요일 전체웹툰</span>
-            </div> */}
             {
-                webtoon.webtoons.map((data,key)=>(
-                    <article key={key}>
-                      <div className="webtoonBox">
-                        <header>
-                          <a href={data.url}>
-                            <img src={data.img} alt={data.title}></img>
-                          </a>
-                        </header>
-                        <div>
-                          <button>
-                              {data.title}
-                          </button>
-                          <p>작가: {data.author}</p>
-                        </div>
+              webtoon.webtoons.map((data,key)=>(
+                  <article key={key}>
+                    <div className="webtoonBox">
+                      <header>
+                        <a href={data.url}>
+                          <img src={data.img} alt={data.title}></img>
+                        </a>
+                      </header>
+                      <div>
+                        <a href={data.url}>
+                          <span>
+                            {data.title}
+                          </span>
+                        </a>
+                        <p>{data.author}</p>
                       </div>
-                    </article>
-                ))}
+                    </div>
+                  </article>
+              ))
+            }
             </div>
     )
 }
