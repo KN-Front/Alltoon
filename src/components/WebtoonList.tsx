@@ -1,74 +1,80 @@
-import React, {useRef, useEffect} from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { weekWebtoon,searchParam,webtoonActions } from '@/features/webtoon/webtoonSlice';
+import { weekWebtoon, searchParam, webtoonActions } from '@/features/webtoon/webtoonSlice';
 import { useAppDispatch } from '@/features/hooks';
-import {fetchWebtoonList} from '@/features/webtoon/webtoonActions';
+import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
 import { webtoonInfo } from '@/types';
+import { loading } from '@/features/webtoon/webtoonSlice';
+import Webtoon from './test/Webtoon';
 
 /**
  * 웹툰 목록 컴포넌트
- * @returns 
+ * @returns
  */
-export function WebtoonList(){
+export function WebtoonList() {
     const webtoon: webtoonInfo = useSelector(weekWebtoon);
     const param = useSelector(searchParam);
-    
+
     const scrollRef = useRef<any>(null);
     const dispatch = useAppDispatch();
+    const isLoading: boolean = useSelector(loading);
 
     useEffect(() => {
-      const scrollContainer = scrollRef.current;
-      const handleScroll = () => {
-        const isScrolledToBottom =
-          scrollContainer.scrollHeight - scrollContainer.scrollTop ===
-          scrollContainer.clientHeight;
-  
-        if (isScrolledToBottom) {
-          getNextWebtoonList();
-        }
-      };
-    
-      scrollContainer.addEventListener('scroll', handleScroll);
-    
-      return () => {
-        scrollContainer.removeEventListener('scroll', handleScroll);
-      };
+        const scrollContainer = scrollRef.current;
+        const handleScroll = () => {
+            const isScrolledToBottom =
+                scrollContainer.scrollHeight - scrollContainer.scrollTop === scrollContainer.clientHeight;
+
+            if (isScrolledToBottom) {
+                getNextWebtoonList();
+            }
+        };
+
+        scrollContainer.addEventListener('scroll', handleScroll);
+
+        return () => {
+            scrollContainer.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     /**
      * 웹툰 검색
-     * @returns 
+     * @returns
      */
     const getNextWebtoonList = () => {
-      dispatch(webtoonActions.setNextPage());
-      dispatch(fetchWebtoonList());
+        dispatch(webtoonActions.setNextPage());
+        dispatch(fetchWebtoonList());
     };
 
-
-
-    return(
+    return (
         <div className="webtoonRow" ref={scrollRef}>
-            {
-              webtoon.webtoons.map((data,key)=>(
-                  <article key={key}>
-                    <div className="webtoonBox">
-                      <header>
-                        <a href={data.url}>
-                          <img src={data.img} alt={data.title}></img>
-                        </a>
-                      </header>
-                      <div>
-                        <a href={data.url}>
-                          <span>
-                            {data.title}
-                          </span>
-                        </a>
-                        <p>{data.author}</p>
-                      </div>
+            {isLoading ? (
+                <Webtoon />
+            ) : (
+                <div className="w-full">
+                    <div id="body" className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4">
+                        {webtoon.webtoons.map((data, key) => (
+                            <div>
+                                <article key={key}>
+                                    <div className="webtoonBox">
+                                        <header>
+                                            <a href={data.url}>
+                                                <img src={data.img} alt={data.title}></img>
+                                            </a>
+                                        </header>
+                                        <div>
+                                            <a href={data.url}>
+                                                <span>{data.title}</span>
+                                            </a>
+                                            <p>{data.author}</p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        ))}
                     </div>
-                  </article>
-              ))
-            }
-            </div>
-    )
+                </div>
+            )}
+        </div>
+    );
 }
