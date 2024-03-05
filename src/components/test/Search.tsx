@@ -12,7 +12,7 @@ const Search = () => {
                         </div>
                         <input
                             className="bg-zinc-700/20 navbar-input px-6 border !w-[18rem] lg:!w-[32rem] border-zinc-700/10"
-                            placeholder="Discover the Series!"
+                            placeholder="Search Webtoon"
                         />
                     </div>
                 </div>
