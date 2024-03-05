@@ -1,34 +1,24 @@
-import { Search } from '@/components/Search';
-import {useNavigate, useLocation} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 /**
  * Nav 컴포넌트
- * @returns 
+ * @returns
  */
-const Header = () =>{
-
-    const navigate = useNavigate();
-    const loaction = useLocation().pathname;
-    /**
-     * main 이동
-     */
-    const moveMain = () => {
-        if(loaction !== '/'){
-            navigate('/');
-        }
-    }
-
-    return(
-        <header className="mainHeader">
-            <div>
-                <h2>
-                    <a onClick={()=>moveMain()}>
-                        <span > Webtoon</span>
-                    </a>
-                </h2>
+const Header = () => {
+    return (
+        <header className="mx-auto justify-center lg:px-24 px-6 relative w-full h-24 lg:mb-0 mb-8 lg:grid grid-cols-1 lg:grid-cols-12">
+            <div className="flex col-span-2 lg:justify-start justify-center items-center mx-auto mt-6">
+                <a href="/webtoon">Home</a>
             </div>
-            <Search/>
+            <div className="col-span-8 space-x-8 lg:mt-0 mt-4 justify-center flex items-center text-center mx-auto">
+                <div className="relative text-gray-400  font-medium transition-all duration-200 hover:text-white cursor-pointer">
+                    <Link to="/">Week</Link>
+                </div>
+                <div className="relative text-gray-400  font-medium transition-all duration-200 hover:text-white cursor-pointer">
+                    <Link to="/search">Search</Link>
+                </div>
+            </div>
         </header>
-    )
-}
+    );
+};
 
 export default Header;
