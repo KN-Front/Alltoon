@@ -54,19 +54,23 @@ export function WebtoonList() {
                 <div className="w-full">
                     <div id="body" className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4">
                         {webtoon.webtoons.map((data, key) => (
-                            <div>
+                            <div className="rounded">
                                 <article key={key}>
                                     <div className="webtoonBox">
                                         <header>
                                             <a href={data.url}>
-                                                <img src={data.img} alt={data.title}></img>
+                                                <img
+                                                    className="rounded bg-zinc-700/50"
+                                                    src={data.img}
+                                                    alt={data.title}
+                                                ></img>
                                             </a>
                                         </header>
                                         <div>
                                             <a href={data.url}>
                                                 <span>{data.title}</span>
                                             </a>
-                                            <p>{data.author}</p>
+                                            {/* <p>{data.author}</p> */}
                                         </div>
                                     </div>
                                 </article>
