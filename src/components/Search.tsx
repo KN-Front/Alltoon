@@ -50,7 +50,7 @@ export function Search() {
     };
 
     return (
-        <div className="browse-banner bg-zinc-700/20 rounded-lg">
+        <div className="browse-banner bg-zinc-700/50 rounded-lg">
             <div id="body" className="relative items-center text-center flex mx-auto justify-center">
                 <div className="flex flex-col mt-16">
                     <h1 className="text-white text-2xl font-semibold">Find the webtoons you're looking for!</h1>
