@@ -74,9 +74,6 @@ export function Search() {
                     </div>
                 </div>
             </div>
-            {/* <input type = "text" onChange={setKeyword} onKeyDown={handleEnter}/>
-            <button onClick={()=>{search()}}>
-                    검색</button> */}
         </div>
     );
 }
