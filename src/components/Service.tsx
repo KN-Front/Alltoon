@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { weeksList, serviceList, webtoonActions, searchParam, loading } from '@/features/webtoon/webtoonSlice';
+import { serviceList, webtoonActions } from '@/features/webtoon/webtoonSlice';
 import { useAppDispatch } from '@/features/hooks';
 import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
 

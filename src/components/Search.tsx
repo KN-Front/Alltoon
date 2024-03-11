@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { fetchSearchList } from '@/features/webtoon/webtoonActions';
 import { useAppDispatch } from '@/features/hooks';
 import { getSearchWebtoonInfoParam } from '@/types';
@@ -13,9 +12,7 @@ export function Search() {
      * 입력값
      */
     const [param, setParam] = useState<getSearchWebtoonInfoParam>({ keyword: '' });
-    const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const location = useLocation().pathname;
     /**
      * set 파라미터
      * @param e
@@ -31,16 +28,6 @@ export function Search() {
      */
     const search = () => {
         dispatch(fetchSearchList(param));
-        moveSearchPage();
-    };
-
-    /**
-     * search Page 이동
-     */
-    const moveSearchPage = () => {
-        if (location !== '/search') {
-            navigate(`/search`);
-        }
     };
 
     const handleEnter = (e: any) => {

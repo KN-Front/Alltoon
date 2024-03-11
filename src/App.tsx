@@ -3,9 +3,6 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 import Main from './pages/MainPage';
 import SearchPage from './pages/SearchPage';
 import Header from './components/Heaer';
-// import './styles/webtoon.css';
-// import './App.css';
-import Test from './components/test/Test';
 
 const Layout = () => {
     return (
