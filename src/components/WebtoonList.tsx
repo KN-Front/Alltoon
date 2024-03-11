@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { weekWebtoon, searchParam, webtoonActions } from '@/features/webtoon/webtoonSlice';
+import { weekWebtoon, webtoonActions } from '@/features/webtoon/webtoonSlice';
 import { useAppDispatch } from '@/features/hooks';
 import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
 import { webtoonInfo } from '@/types';
@@ -13,8 +13,6 @@ import Webtoon from './WebtoonLoading';
  */
 export function WebtoonList() {
     const webtoon: webtoonInfo = useSelector(weekWebtoon);
-    const param = useSelector(searchParam);
-
     const scrollRef = useRef<any>(null);
     const dispatch = useAppDispatch();
     const isLoading: boolean = useSelector(loading);

@@ -8,8 +8,6 @@ import {
     searchService,
 } from '@/features/webtoon/webtoonSlice';
 import { webtoons } from '@/types';
-import { getUpdateWeekArrayToString } from '@/common/utill/week';
-import { AdultIcon, NewIcon, ResetIcon, UpIcon } from './icon';
 import { loading } from '@/features/webtoon/webtoonSlice';
 import WebtoonLoading from './WebtoonLoading';
 
@@ -37,10 +35,6 @@ const SearchList = () => {
     useEffect(() => {
         filterByService();
     }, [service, allWebtoon]);
-
-    const sliceText = (text: string) => {
-        return `${text.slice(0, 35)}...`;
-    };
 
     return (
         <div className="w-full">

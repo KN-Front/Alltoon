@@ -3,26 +3,6 @@ import { fetchWebtoonList, fetchSearchList } from './webtoonActions';
 import { RootState } from '@/features/store';
 import { webtoonInfo, webtoons, webtoonState } from '@/types';
 
-const initialWebtoons: webtoons = {
-    _id: '',
-    webtoonId: 0,
-    title: '',
-    author: '',
-    url: '',
-    img: '',
-    service: '',
-    updateDays: [],
-    fanCount: null,
-    searchKeyword: '',
-    additional: {
-        new: false,
-        rest: false,
-        up: false,
-        adult: false,
-        singularityList: [],
-    },
-};
-
 const initialWebtoonInfo: webtoonInfo = {
     totalWebtoonCount: 0,
     naverWebtoonCount: 0,
