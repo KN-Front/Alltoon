@@ -1,38 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { searchWebtoon } from '@/features/webtoon/webtoonSlice';
-import { webtoonInfo, webtoons } from '@/types';
+import {
+    allWebtoons,
+    naverWebtoons,
+    kakaoWebtoons,
+    kakaoPageWebtoons,
+    searchService,
+} from '@/features/webtoon/webtoonSlice';
+import { webtoons } from '@/types';
 import { getUpdateWeekArrayToString } from '@/common/utill/week';
 import { AdultIcon, NewIcon, ResetIcon, UpIcon } from './icon';
 import { loading } from '@/features/webtoon/webtoonSlice';
 import WebtoonLoading from './WebtoonLoading';
 
 const SearchList = () => {
-    const webtoon: webtoonInfo = useSelector(searchWebtoon);
-    const [naverWebtoon, setNaverWebtoon] = useState<webtoons[]>([]);
-    const [kakaoWebtoon, setKakaoWebtoon] = useState<webtoons[]>([]);
-    const [kakaoPageWebtoon, setKakaoPageWebtoon] = useState<webtoons[]>([]);
+    const allWebtoon: webtoons[] = useSelector(allWebtoons);
+    const naverwebtoon: webtoons[] = useSelector(naverWebtoons);
+    const kakaowebtoon: webtoons[] = useSelector(kakaoWebtoons);
+    const kakaoPagewebtoon: webtoons[] = useSelector(kakaoPageWebtoons);
+    const [webtoons, setWebtoons] = useState<webtoons[]>([]);
     const isLoading: boolean = useSelector(loading);
-    useEffect(() => {
-        clear().then(filterByService);
-    }, [webtoon]);
+    const service = useSelector(searchService);
 
-    const clear = async () => {
-        setNaverWebtoon([]);
-        setKakaoWebtoon([]);
-        setKakaoPageWebtoon([]);
+    const filterByService = () => {
+        if (service === 'ALL') {
+            setWebtoons(allWebtoon);
+        } else if (service === 'NAVER') {
+            setWebtoons(naverwebtoon);
+        } else if (service === 'KAKAO') {
+            setWebtoons(kakaowebtoon);
+        } else if (service === 'KAKAOPAGE') {
+            setWebtoons(kakaoPagewebtoon);
+        }
     };
-    const filterByService = async () => {
-        webtoon.webtoons.forEach((webtoon) => {
-            if (webtoon.service === 'naver') {
-                setNaverWebtoon((prev) => [...prev, webtoon]);
-            } else if (webtoon.service === 'kakao') {
-                setKakaoWebtoon((prev) => [...prev, webtoon]);
-            } else if (webtoon.service === 'kakaoPage') {
-                setKakaoPageWebtoon((prev) => [...prev, webtoon]);
-            }
-        });
-    };
+
+    useEffect(() => {
+        filterByService();
+    }, [service]);
 
     const sliceText = (text: string) => {
         return `${text.slice(0, 35)}...`;
@@ -45,7 +49,7 @@ const SearchList = () => {
             ) : (
                 <div className="w-full">
                     <div id="body" className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4">
-                        {webtoon.webtoons.map((data, key) => (
+                        {webtoons.map((data, key) => (
                             <div key={key} className="rounded">
                                 <article>
                                     <div className="webtoonBox">
@@ -62,7 +66,7 @@ const SearchList = () => {
                                             <a href={data.url}>
                                                 <span>{data.title}</span>
                                             </a>
-                                            {/* <p>{data.author}</p> */}
+                                            <p>{data.author}</p>
                                         </div>
                                     </div>
                                 </article>
