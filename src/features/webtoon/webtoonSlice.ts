@@ -31,7 +31,7 @@ const initialWebtoonInfo: webtoonInfo = {
     updatedWebtoonCount: 0,
     createdWebtoonCount: 0,
     lastUpdate: null,
-    webtoons: [initialWebtoons],
+    webtoons: [],
 };
 
 const initialState: webtoonState = {
@@ -46,10 +46,10 @@ const initialState: webtoonState = {
         { key: 'sun', value: '일' },
     ],
     weekWebtoon: initialWebtoonInfo,
-    allWebtoons: [initialWebtoons],
-    naverWebtoons: [initialWebtoons],
-    kakaoWebtoons: [initialWebtoons],
-    kakaoPageWebtoons: [initialWebtoons],
+    allWebtoons: [],
+    naverWebtoons: [],
+    kakaoWebtoons: [],
+    kakaoPageWebtoons: [],
     error: '',
     searchParam: {
         page: 1,

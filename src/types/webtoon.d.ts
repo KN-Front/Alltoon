@@ -42,7 +42,7 @@ export interface webtoonInfo {
     updatedWebtoonCount: number;
     createdWebtoonCount: number;
     lastUpdate: string | null;
-    webtoons: [webtoons];
+    webtoons: webtoons[];
 }
 
 export interface webtoonState {
