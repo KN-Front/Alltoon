@@ -5,7 +5,7 @@ import { useAppDispatch } from '@/features/hooks';
 import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
 import { webtoonInfo } from '@/types';
 import { loading } from '@/features/webtoon/webtoonSlice';
-import Webtoon from './test/Webtoon';
+import Webtoon from './WebtoonLoading';
 
 /**
  * 웹툰 목록 컴포넌트
