@@ -8,3 +8,6 @@
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white"/>
   <img src = "https://img.shields.io/badge/tailwindcss-06B6D4?style=flat&logo=tailwindcss&logoColor=white"/> 
 </div>
+
+## Main
+![image](https://github.com/kwonyongjun1/webtoon/assets/70560755/0ce34b77-e3e4-4ca1-84f5-9f8347ae63c7)
