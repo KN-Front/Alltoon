@@ -58,9 +58,11 @@ const SearchList = () => {
                                         </header>
                                         <div>
                                             <a href={data.url}>
-                                                <span>{data.title}</span>
+                                                <p className="font-medium text-[16px] text-white capitalize line-clamp-1">
+                                                    {data.title}
+                                                </p>
+                                                <p className="font-medium text-zinc-300 text-sm">{data.author}</p>
                                             </a>
-                                            <p>{data.author}</p>
                                         </div>
                                     </div>
                                 </article>
