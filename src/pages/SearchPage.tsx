@@ -7,7 +7,6 @@ const SearchPage = () => {
     return (
         <div className="lg:px-24 mx-auto justify-center lg:mt-8 pt-10">
             <Search />
-            {/* <SearchList /> */}
             <div className="body mt-4 flex flew-row space-x-4">
                 <Sidebar />
                 <SearchList />
