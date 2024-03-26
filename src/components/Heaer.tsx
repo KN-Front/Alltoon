@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ThemeButton from '@/components/ThemeButton';
 /**
  * Nav 컴포넌트
  * @returns
@@ -16,6 +17,9 @@ const Header = () => {
         <div className="relative text-gray-400  font-medium transition-all duration-200 hover:text-white cursor-pointer">
           <Link to="/search">Search</Link>
         </div>
+      </div>
+      <div>
+        {/* <ThemeButton /> */}
       </div>
     </header>
   );
