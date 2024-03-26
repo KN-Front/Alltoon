@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import './global.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -15,7 +16,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
-        <App />
+        <RecoilRoot>
+          <App />
+        </RecoilRoot>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
