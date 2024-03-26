@@ -9,10 +9,6 @@
 {breaking change}
 ```
 
-
-
-
-
 ## 🤝 기본 규칙
 
 다른 개발자들이 커밋의 목적과 변경 내용을 빠르게 이해할 수 있도록 명확하고 간결하게 작성한다.
@@ -60,36 +56,6 @@
 
 이모지는 간단하게 커밋의 특성을 표현하는 데 사용될 수 있습니다.
 동료 개발자들의 커밋 목적이나 의도를 쉽게 식별할 수 있게 됩니다.
-
-> 더 많은 Gitmoji가 있는 [Gitmoji Site](https://gitmoji.dev/)
-
-### Gitmoji 예시
-|이모지|예약어|설명|원문|
-|--|----|----|----|
-|🎨|`:art:`|새 기능|Improve structure / format of the code.|
-|⚡️|`:zap:`|성능 개선|Improve performance.|
-|🔥|`:fire:`|코드/파일 삭제|Remove code or files.|
-|🐛|`:bug:`|**버그 수정**|Fix a bug.|
-|🚑️|`:ambulance:`|긴급 수정|Critical hotfix.|
-|✨|`:sparkles:`|**새 기능 추가**|Introduce new features.|
-|📝|`:memo:`|문서 추가/수정|Add or update documentation.|
-|🚀|`:rocket:`|배포|Deploy stuff.|
-|💄|`:lipstick:`|UI/스타일 파일 추가/수정|Add or update the UI and style files.|
-|🎉|`:tada:`|프로젝트 시작|Begin a project.|
-|✅|`:white_check_mark:`|**테스트 추가/수정**|Add, update, or pass tests.|
-|🔖|`:bookmark:`|릴리즈/버전 태그|Release / Version tags.|
-|⏪|`:rewind:`|변경 내용 되돌리기|Revert changes.|
-|🔀|`:twisted_rightwards_arrows:`|브랜치 합병|Merge branches.|
-|♻️|`:recycle:`|코드 리팩토링|Refactor code.|
-|🔧|`:wrench:`|구성 파일 추가/삭제|Add or update configuration files.|
-|🔨|`:hammer:`|개발 스크립트 추가/수정|Add or update development scripts.|
-|🚚|`:truck:`|리소스 이동, 이름 변경|Move or rename resources (e.g.: files paths routes).|
-|💡|`:bulb:`|주석 추가/수정|Add or update comments in source code.|
-|🗃|`:card_file_box:`|데이터베이스 관련 수정|Perform database related changes.|
-|⬆️|`:arrow_up:`|종속성 업그레이드|Upgrade dependencies.|
-|⬇️|`:arrow_down:`|종속성 다운그레이드|Downgrade dependencies.|
-|➕|`:heavy_plus_sign:`|의존성 추가|Add a dependency.|
-|➖|`:heavy_minus_sign:`|의존성 제거|Remove a dependency.|
 
 ### 2. {type}
 Type은 Commit의 종류를 나타냅니다.
