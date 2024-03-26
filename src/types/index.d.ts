@@ -1,1 +1,1 @@
-export * from './webtoon'
+export * from './webtoon';

@@ -6,21 +6,21 @@ import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
 import Service from '@/components/Service';
 
 const Main = () => {
-    const dispatch = useAppDispatch();
-    useEffect(() => {
-        dispatch(fetchWebtoonList());
-    }, []);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchWebtoonList());
+  }, []);
 
-    return (
-        <div className="lg:px-24 mx-auto justify-center lg:mt-8 pt-10">
-            <div className="flex flex-nowrap bg-zinc-700/50">
-                <Weeks />
-                <Service />
-            </div>
+  return (
+    <div className="lg:px-24 mx-auto justify-center lg:mt-8 pt-10">
+      <div className="flex flex-nowrap bg-zinc-700/50">
+        <Weeks />
+        <Service />
+      </div>
 
-            <WebtoonList />
-        </div>
-    );
+      <WebtoonList />
+    </div>
+  );
 };
 
 export default Main;

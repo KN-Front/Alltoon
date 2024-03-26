@@ -12,74 +12,80 @@ import Webtoon from './WebtoonLoading';
  * @returns
  */
 export function WebtoonList() {
-    const webtoon: webtoonInfo = useSelector(weekWebtoon);
-    const scrollRef = useRef<any>(null);
-    const dispatch = useAppDispatch();
-    const isLoading: boolean = useSelector(loading);
+  const webtoon: webtoonInfo = useSelector(weekWebtoon);
+  const scrollRef = useRef<any>(null);
+  const dispatch = useAppDispatch();
+  const isLoading: boolean = useSelector(loading);
 
-    useEffect(() => {
-        const scrollContainer = scrollRef.current;
-        const handleScroll = () => {
-            const isScrolledToBottom =
-                scrollContainer.scrollHeight - scrollContainer.scrollTop === scrollContainer.clientHeight;
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    const handleScroll = () => {
+      const isScrolledToBottom =
+        scrollContainer.scrollHeight - scrollContainer.scrollTop ===
+        scrollContainer.clientHeight;
 
-            if (isScrolledToBottom) {
-                getNextWebtoonList();
-            }
-        };
-
-        scrollContainer.addEventListener('scroll', handleScroll);
-
-        return () => {
-            scrollContainer.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    /**
-     * 웹툰 검색
-     * @returns
-     */
-    const getNextWebtoonList = () => {
-        dispatch(webtoonActions.setNextPage());
-        dispatch(fetchWebtoonList());
+      if (isScrolledToBottom) {
+        getNextWebtoonList();
+      }
     };
 
-    return (
-        <div className="webtoonRow" ref={scrollRef}>
-            {isLoading ? (
-                <Webtoon />
-            ) : (
-                <div className="w-full">
-                    <div id="body" className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4">
-                        {webtoon.webtoons.map((data, key) => (
-                            <div className="rounded">
-                                <article key={key}>
-                                    <div className="webtoonBox">
-                                        <header>
-                                            <a href={data.url}>
-                                                <img
-                                                    className="rounded bg-zinc-700/50"
-                                                    src={data.img}
-                                                    alt={data.title}
-                                                ></img>
-                                            </a>
-                                        </header>
+    scrollContainer.addEventListener('scroll', handleScroll);
 
-                                        <div>
-                                            <a href={data.url}>
-                                                <p className="font-medium text-[16px] text-white capitalize line-clamp-1">
-                                                    {data.title}
-                                                </p>
-                                                <p className="font-medium text-zinc-300 text-sm">{data.author}</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        ))}
+    return () => {
+      scrollContainer.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  /**
+   * 웹툰 검색
+   * @returns
+   */
+  const getNextWebtoonList = () => {
+    dispatch(webtoonActions.setNextPage());
+    dispatch(fetchWebtoonList());
+  };
+
+  return (
+    <div className="webtoonRow" ref={scrollRef}>
+      {isLoading ? (
+        <Webtoon />
+      ) : (
+        <div className="w-full">
+          <div
+            id="body"
+            className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
+          >
+            {webtoon.webtoons.map((data, key) => (
+              <div className="rounded">
+                <article key={key}>
+                  <div className="webtoonBox">
+                    <header>
+                      <a href={data.url}>
+                        <img
+                          className="rounded bg-zinc-700/50"
+                          src={data.img}
+                          alt={data.title}
+                        ></img>
+                      </a>
+                    </header>
+
+                    <div>
+                      <a href={data.url}>
+                        <p className="font-medium text-[16px] text-white capitalize line-clamp-1">
+                          {data.title}
+                        </p>
+                        <p className="font-medium text-zinc-300 text-sm">
+                          {data.author}
+                        </p>
+                      </a>
                     </div>
-                </div>
-            )}
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
         </div>
-    );
+      )}
+    </div>
+  );
 }

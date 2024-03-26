@@ -2,7 +2,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import webtoonReducer from './webtoon/webtoonSlice';
 export const store = configureStore({
   reducer: {
-    webtoon: webtoonReducer
+    webtoon: webtoonReducer,
   },
 });
 
