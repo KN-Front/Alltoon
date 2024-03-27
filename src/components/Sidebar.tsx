@@ -1,26 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from '@/features/hooks';
-import { webtoonActions } from '@/features/webtoon/webtoonSlice';
-import {
-  allWebtoons,
-  naverWebtoons,
-  kakaoWebtoons,
-  kakaoPageWebtoons,
-  searchService,
-} from '@/features/webtoon/webtoonSlice';
 import { webtoons } from '@/types';
+import { useRecoilState } from 'recoil';
+import { searchService } from '@/recoil/webtoon/atoms';
 
 const Sidebar = () => {
-  const dispatch = useAppDispatch();
-  const changeWeek = (service: string) => {
-    dispatch(webtoonActions.setsearchService(service));
+  const [service, setService] = useRecoilState(searchService);
+  const setSelectedService = (service: string) => {
+    setService(service);
   };
-  const allWebtoon: webtoons[] = useSelector(allWebtoons);
-  const naverWebtoon: webtoons[] = useSelector(naverWebtoons);
-  const kakaoWebtoon: webtoons[] = useSelector(kakaoWebtoons);
-  const kakaoPageWebtoon: webtoons[] = useSelector(kakaoPageWebtoons);
-  const currentService: string = useSelector(searchService);
+  const allWebtoon: webtoons[] = [];
+  const naverWebtoon: webtoons[] = [];
+  const kakaoWebtoon: webtoons[] = [];
+  const kakaoPageWebtoon: webtoons[] = [];
 
   return (
     <div className="hidden lg:block w-60 h-[64rem] overflow-auto rounded-lg bg-zinc-700/50 border border-zinc-700/10">
@@ -28,10 +19,10 @@ const Sidebar = () => {
         <div className="flex flex-col mt-1 overflow-auto">
           <div
             className={`bg-zinc-700/10 justify-between button-animate p-2 px-3 text-sm flex cursor-pointer mt-2 rounded-sm hover:bg-zinc-700/20 ${
-              currentService === 'ALL' ? 'bg-zinc-700/50' : 'bg-zinc-700/10'
+              service === 'ALL' ? 'bg-zinc-700/50' : 'bg-zinc-700/10'
             }`}
             onClick={() => {
-              changeWeek('ALL');
+              setSelectedService('ALL');
             }}
           >
             <p className="text-center">All</p>
@@ -41,10 +32,10 @@ const Sidebar = () => {
           </div>
           <div
             className={`bg-zinc-700/10 justify-between button-animate p-2 px-3 text-sm flex cursor-pointer mt-2 rounded-sm hover:bg-zinc-700/20 ${
-              currentService === 'NAVER' ? 'bg-zinc-700/50' : 'bg-zinc-700/10'
+              service === 'NAVER' ? 'bg-zinc-700/50' : 'bg-zinc-700/10'
             }`}
             onClick={() => {
-              changeWeek('NAVER');
+              setSelectedService('NAVER');
             }}
           >
             <p className="text-center">Naver</p>
@@ -54,10 +45,10 @@ const Sidebar = () => {
           </div>
           <div
             className={`bg-zinc-700/10 justify-between button-animate p-2 px-3 text-sm flex cursor-pointer mt-2 rounded-sm hover:bg-zinc-700/20 ${
-              currentService === 'KAKAO' ? 'bg-zinc-700/50' : 'bg-zinc-700/10'
+              service === 'KAKAO' ? 'bg-zinc-700/50' : 'bg-zinc-700/10'
             }`}
             onClick={() => {
-              changeWeek('KAKAO');
+              setSelectedService('KAKAO');
             }}
           >
             <p className="text-center">KaKao</p>
@@ -67,12 +58,10 @@ const Sidebar = () => {
           </div>
           <div
             className={`bg-zinc-700/10 justify-between button-animate p-2 px-3 text-sm flex cursor-pointer mt-2 rounded-sm hover:bg-zinc-700/20 ${
-              currentService === 'KAKAOPAGE'
-                ? 'bg-zinc-700/50'
-                : 'bg-zinc-700/10'
+              service === 'KAKAOPAGE' ? 'bg-zinc-700/50' : 'bg-zinc-700/10'
             }`}
             onClick={() => {
-              changeWeek('KAKAOPAGE');
+              setSelectedService('KAKAOPAGE');
             }}
           >
             <p className="text-center">KaKaoPage</p>

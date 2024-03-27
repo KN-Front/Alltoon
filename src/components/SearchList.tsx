@@ -1,40 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import {
-  allWebtoons,
-  naverWebtoons,
-  kakaoWebtoons,
-  kakaoPageWebtoons,
-  searchService,
-} from '@/features/webtoon/webtoonSlice';
-import { webtoons } from '@/types';
-import { loading } from '@/features/webtoon/webtoonSlice';
+import React from 'react';
+import { webtoonInfo, webtoons } from '@/types';
 import WebtoonLoading from './WebtoonLoading';
+import { useQuery } from 'react-query';
+import { getSearchWebtoonInfo } from '@/common/api/webtoonAPI';
+import { useRecoilValue } from 'recoil';
+import {
+  searchValue as searchValueState,
+  searchService as searchServiceState,
+} from '@/recoil/webtoon/atoms';
 
 const SearchList = () => {
-  const allWebtoon: webtoons[] = useSelector(allWebtoons);
-  const naverwebtoon: webtoons[] = useSelector(naverWebtoons);
-  const kakaowebtoon: webtoons[] = useSelector(kakaoWebtoons);
-  const kakaoPagewebtoon: webtoons[] = useSelector(kakaoPageWebtoons);
-  const [webtoons, setWebtoons] = useState<webtoons[]>([]);
-  const isLoading: boolean = useSelector(loading);
-  const service = useSelector(searchService);
+  const searchValue = useRecoilValue(searchValueState);
+  const searchService = useRecoilValue(searchServiceState);
 
-  const filterByService = () => {
-    if (service === 'ALL') {
-      setWebtoons(allWebtoon);
-    } else if (service === 'NAVER') {
-      setWebtoons(naverwebtoon);
-    } else if (service === 'KAKAO') {
-      setWebtoons(kakaowebtoon);
-    } else if (service === 'KAKAOPAGE') {
-      setWebtoons(kakaoPagewebtoon);
-    }
-  };
-
-  useEffect(() => {
-    filterByService();
-  }, [service, allWebtoon]);
+  const { isLoading, data, isError, error } = useQuery<webtoonInfo>(
+    ['getSearchWebtoonInfo', searchValue, searchService],
+    () => {
+      return getSearchWebtoonInfo({
+        keyword: searchValue,
+      });
+    },
+    {
+      select: (data) => {
+        if (!data)
+          return {
+            totalWebtoonCount: 0,
+            naverWebtoonCount: 0,
+            kakaoWebtoonCount: 0,
+            kakaoPageWebtoonCount: 0,
+            updatedWebtoonCount: 0,
+            createdWebtoonCount: 0,
+            lastUpdate: null,
+            webtoons: [],
+          }; // 데이터가 없을 경우 빈 객체 반환
+        return {
+          ...data,
+          webtoons: data.webtoons.filter(
+            (webtoon) => webtoon.service === searchService,
+          ),
+        };
+      },
+    },
+  );
 
   return (
     <div className="w-full">
@@ -46,7 +53,7 @@ const SearchList = () => {
             id="body"
             className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
           >
-            {webtoons.map((data, key) => (
+            {data?.webtoons.map((data, key) => (
               <div key={key} className="rounded">
                 <article>
                   <div className="webtoonBox">

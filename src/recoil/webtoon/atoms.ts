@@ -1,5 +1,5 @@
 import { webtoonInfo } from '@/types';
-import { atom, atomFamily } from 'recoil';
+import { atom } from 'recoil';
 
 const initialWebtoonInfo: webtoonInfo = {
   totalWebtoonCount: 0,
@@ -17,14 +17,14 @@ export const weekWebtoon = atom({
   default: initialWebtoonInfo,
 });
 
-export const param = atom({
-  key: 'param',
-  default: {
-    page: 1,
-    perPage: 50,
-    service: 'naver',
-    updateDay: 'mon',
-  },
+export const service = atom({
+  key: 'service',
+  default: 'naver',
+});
+
+export const updateDay = atom({
+  key: 'updateDay',
+  default: 'mon',
 });
 
 export const loading = atom({
@@ -32,7 +32,27 @@ export const loading = atom({
   default: false,
 });
 
+export const searchValue = atom({
+  key: 'searchValue',
+  default: '',
+});
+
 export const searchService = atom({
   key: 'searchService',
   default: 'ALL',
+});
+
+export const naverWebtoon = atom({
+  key: 'naverWebtoon',
+  default: [],
+});
+
+export const kakaoWebtoon = atom({
+  key: 'kakaoWebtoon',
+  default: [],
+});
+
+export const kakaoPageWebtoon = atom({
+  key: 'kakaoPageWebtoon',
+  default: [],
 });
