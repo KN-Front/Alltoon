@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Weeks from '@/components/Weeks';
 import WebtoonList from '@/components/WebtoonList';
-import { useAppDispatch } from '@/features/hooks';
-import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
 import Service from '@/components/Service';
 
 const Main = () => {
