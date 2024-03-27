@@ -18,9 +18,6 @@ const Header = () => {
           <Link to="/search">Search</Link>
         </div>
       </div>
-      <div>
-        {/* <ThemeButton /> */}
-      </div>
     </header>
   );
 };
