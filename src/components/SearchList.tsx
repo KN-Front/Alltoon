@@ -20,27 +20,6 @@ const SearchList = () => {
         keyword: searchValue,
       });
     },
-    {
-      select: (data) => {
-        if (!data)
-          return {
-            totalWebtoonCount: 0,
-            naverWebtoonCount: 0,
-            kakaoWebtoonCount: 0,
-            kakaoPageWebtoonCount: 0,
-            updatedWebtoonCount: 0,
-            createdWebtoonCount: 0,
-            lastUpdate: null,
-            webtoons: [],
-          }; // 데이터가 없을 경우 빈 객체 반환
-        return {
-          ...data,
-          webtoons: data.webtoons.filter(
-            (webtoon) => webtoon.service === searchService,
-          ),
-        };
-      },
-    },
   );
 
   return (
