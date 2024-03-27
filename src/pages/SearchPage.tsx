@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchList from '@/components/SearchList';
-import { Search } from '@/components/Search';
+import Search from '@/components/Search';
 import Sidebar from '@/components/Sidebar';
 
 const SearchPage = () => {
