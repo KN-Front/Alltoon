@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 body {
-  @apply text-black dark:text-white dark:bg-slate-800;
+  @apply text-black dark:text-white dark:bg-black;
   overflow-x: hidden !important;
 }
 
