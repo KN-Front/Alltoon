@@ -1,61 +1,44 @@
-import React, { useRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { weekWebtoon, webtoonActions } from '@/features/webtoon/webtoonSlice';
-import { useAppDispatch } from '@/features/hooks';
-import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
 import { webtoonInfo } from '@/types';
-import { loading } from '@/features/webtoon/webtoonSlice';
-import Webtoon from './WebtoonLoading';
+import Loading from './WebtoonLoading';
+import { useRecoilValue } from 'recoil';
+import {
+  service as serviceState,
+  updateDay as updateDayState,
+} from '@/recoil/webtoon/atoms';
+import { useQuery } from 'react-query';
+import { getWebtoonInfo } from '@/common/api/webtoonAPI';
 
 /**
  * 웹툰 목록 컴포넌트
  * @returns
  */
-export function WebtoonList() {
-  const webtoon: webtoonInfo = useSelector(weekWebtoon);
-  const scrollRef = useRef<any>(null);
-  const dispatch = useAppDispatch();
-  const isLoading: boolean = useSelector(loading);
+const WebtoonList = () => {
+  const updateDay = useRecoilValue(updateDayState);
+  const service = useRecoilValue(serviceState);
 
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    const handleScroll = () => {
-      const isScrolledToBottom =
-        scrollContainer.scrollHeight - scrollContainer.scrollTop ===
-        scrollContainer.clientHeight;
-
-      if (isScrolledToBottom) {
-        getNextWebtoonList();
-      }
-    };
-
-    scrollContainer.addEventListener('scroll', handleScroll);
-
-    return () => {
-      scrollContainer.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  /**
-   * 웹툰 검색
-   * @returns
-   */
-  const getNextWebtoonList = () => {
-    dispatch(webtoonActions.setNextPage());
-    dispatch(fetchWebtoonList());
-  };
+  const { isLoading, data, isError, error } = useQuery<webtoonInfo>(
+    ['getWebtoonInfo', updateDay, service],
+    () => {
+      return getWebtoonInfo({
+        page: 1,
+        perPage: 50,
+        service: service,
+        updateDay: updateDay,
+      });
+    },
+  );
 
   return (
-    <div className="webtoonRow" ref={scrollRef}>
+    <div className="webtoonRow">
       {isLoading ? (
-        <Webtoon />
+        <Loading />
       ) : (
         <div className="w-full">
           <div
             id="body"
             className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
           >
-            {webtoon.webtoons.map((data, key) => (
+            {data?.webtoons.map((data, key) => (
               <div className="rounded">
                 <article key={key}>
                   <div className="webtoonBox">
@@ -88,4 +71,6 @@ export function WebtoonList() {
       )}
     </div>
   );
-}
+};
+
+export default WebtoonList;
