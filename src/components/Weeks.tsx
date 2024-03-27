@@ -16,11 +16,6 @@ const Weeks = () => {
   const [updateDay, setUpdateDay] = useRecoilState(updateDayState);
 
   const getWeekParam = (week: week) => {
-    // dispatch(webtoonActions.setSearchParamUpdateDay(week.key));
-    // dispatch(webtoonActions.setPage(1));
-    // dispatch(fetchWebtoonList());
-
-    //fetchWebtoonList()
     setUpdateDay(week.key);
   };
 
