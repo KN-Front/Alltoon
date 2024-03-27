@@ -1,26 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import {
-  weeks as weekList,
-  webtoonActions,
-  searchParam,
-} from '@/features/webtoon/webtoonSlice';
-import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
-import { useAppDispatch } from '@/features/hooks';
 import { week } from '@/types';
-/**
- * 요일 목록 컴포넌트
- * @returns
- */
-export function Weeks() {
-  const dispatch = useAppDispatch();
-  const weeks = useSelector(weekList);
-  const param = useSelector(searchParam);
+import { useRecoilState } from 'recoil';
+import { updateDay as updateDayState } from '@/recoil/webtoon/atoms';
+
+const Weeks = () => {
+  const weeks = [
+    { key: 'mon', value: '월' },
+    { key: 'tue', value: '화' },
+    { key: 'wed', value: '수' },
+    { key: 'thu', value: '목' },
+    { key: 'fri', value: '금' },
+    { key: 'sat', value: '토' },
+    { key: 'sun', value: '일' },
+  ];
+  const [updateDay, setUpdateDay] = useRecoilState(updateDayState);
 
   const getWeekParam = (week: week) => {
-    dispatch(webtoonActions.setSearchParamUpdateDay(week.key));
-    dispatch(webtoonActions.setPage(1));
-    dispatch(fetchWebtoonList());
+    // dispatch(webtoonActions.setSearchParamUpdateDay(week.key));
+    // dispatch(webtoonActions.setPage(1));
+    // dispatch(fetchWebtoonList());
+
+    //fetchWebtoonList()
+    setUpdateDay(week.key);
   };
 
   return (
@@ -28,7 +29,7 @@ export function Weeks() {
       {weeks.map((item) => (
         <div
           className={`relative text-gray-400  font-medium transition-all duration-200 hover:text-white cursor-pointer ${
-            item.key === param.updateDay ? 'text-white ' : ''
+            item.key === updateDay ? 'text-white ' : ''
           }`}
           key={item.key}
           onClick={() => getWeekParam(item)}
@@ -38,4 +39,6 @@ export function Weeks() {
       ))}
     </div>
   );
-}
+};
+
+export default Weeks;
