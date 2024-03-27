@@ -42,17 +42,17 @@ export const searchService = atom({
   default: 'ALL',
 });
 
-export const naverWebtoon = atom({
+export const naverWebtoonCount = atom({
   key: 'naverWebtoon',
-  default: [],
+  default: 0,
 });
 
-export const kakaoWebtoon = atom({
+export const kakaoWebtoonCount = atom({
   key: 'kakaoWebtoon',
-  default: [],
+  default: 0,
 });
 
-export const kakaoPageWebtoon = atom({
+export const kakaoPageWebtoonCount = atom({
   key: 'kakaoPageWebtoon',
-  default: [],
+  default: 0,
 });
