@@ -1,17 +1,23 @@
 import React from 'react';
 import { webtoons } from '@/types';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { searchService } from '@/recoil/webtoon/atoms';
+import {
+  naverWebtoonCount as naverWebtoonCountState,
+  kakaoWebtoonCount as kakaoWebtoonCountState,
+  kakaoPageWebtoonCount as kakaoPageWebtoonCountState,
+} from '@/recoil/webtoon/atoms';
 
 const Sidebar = () => {
   const [service, setService] = useRecoilState(searchService);
   const setSelectedService = (service: string) => {
     setService(service);
   };
-  const allWebtoon: webtoons[] = [];
-  const naverWebtoon: webtoons[] = [];
-  const kakaoWebtoon: webtoons[] = [];
-  const kakaoPageWebtoon: webtoons[] = [];
+  const naverWebtoonCount: number = useRecoilValue(naverWebtoonCountState);
+  const kakaoWebtoonCount: number = useRecoilValue(kakaoWebtoonCountState);
+  const kakaoPageWebtoonCount: number = useRecoilValue(
+    kakaoPageWebtoonCountState,
+  );
 
   return (
     <div className="hidden lg:block w-60 h-[64rem] overflow-auto rounded-lg bg-zinc-700/50 border border-zinc-700/10">
@@ -27,7 +33,7 @@ const Sidebar = () => {
           >
             <p className="text-center">All</p>
             <p className="text-center text-sm">
-              {!!allWebtoon ? allWebtoon.length : 0}
+              {naverWebtoonCount + kakaoWebtoonCount + kakaoPageWebtoonCount}
             </p>
           </div>
           <div
@@ -39,9 +45,7 @@ const Sidebar = () => {
             }}
           >
             <p className="text-center">Naver</p>
-            <p className="text-center text-sm">
-              {!!naverWebtoon ? naverWebtoon.length : 0}
-            </p>
+            <p className="text-center text-sm">{naverWebtoonCount}</p>
           </div>
           <div
             className={`bg-zinc-700/10 justify-between button-animate p-2 px-3 text-sm flex cursor-pointer mt-2 rounded-sm hover:bg-zinc-700/20 ${
@@ -52,9 +56,7 @@ const Sidebar = () => {
             }}
           >
             <p className="text-center">KaKao</p>
-            <p className="text-center text-sm">
-              {!!kakaoWebtoon ? kakaoWebtoon.length : 0}
-            </p>
+            <p className="text-center text-sm">{kakaoWebtoonCount}</p>
           </div>
           <div
             className={`bg-zinc-700/10 justify-between button-animate p-2 px-3 text-sm flex cursor-pointer mt-2 rounded-sm hover:bg-zinc-700/20 ${
@@ -65,9 +67,7 @@ const Sidebar = () => {
             }}
           >
             <p className="text-center">KaKaoPage</p>
-            <p className="text-center text-sm">
-              {!!kakaoPageWebtoon ? kakaoPageWebtoon.length : 0}
-            </p>
+            <p className="text-center text-sm">{kakaoPageWebtoonCount}</p>
           </div>
         </div>
       </div>
