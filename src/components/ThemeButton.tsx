@@ -22,7 +22,7 @@ const ThemeButton = () => {
       onClick={(): void => {
         setDarkMode(!darkMode);
       }}
-      className="text-gray-500 bg-gray-700  dark:text-gray-400 dark:bg-gray-100
+      className="text-gray-500 bg-gray-700  dark:text-dark-secondary dark:bg-dark-primary
     focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-full text-sm p-2.5"
     >
       {darkMode ? (

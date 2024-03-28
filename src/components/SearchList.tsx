@@ -68,10 +68,10 @@ const SearchList = () => {
                     </header>
                     <div className="flex flex-col ">
                       <a href={data.url} target="_blank">
-                        <p className="font-medium text-[16px] text-slate-900 dark:text-white capitalize line-clamp-1">
+                        <p className="font-medium text-[16px] text-slate-900 dark:text-dark-white capitalize line-clamp-1">
                           {data.title}
                         </p>
-                        <p className="font-medium text-slate-500 dark:text-slate-400 text-sm">
+                        <p className="font-medium text-slate-500 dark:text-dark-third text-sm">
                           {data.author}
                         </p>
                       </a>
