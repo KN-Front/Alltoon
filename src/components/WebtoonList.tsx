@@ -5,9 +5,10 @@ import {
   service as serviceState,
   updateDay as updateDayState,
 } from '@/recoil/webtoon/atoms';
-import { useQuery } from 'react-query';
+import { useQuery, useInfiniteQuery } from 'react-query';
 import { getWebtoonInfo } from '@/common/api/webtoonAPI';
-
+import { useRef } from 'react';
+import { initialPageInfo } from '@/constants/initialValues';
 /**
  * 웹툰 목록 컴포넌트
  * @returns
@@ -15,18 +16,24 @@ import { getWebtoonInfo } from '@/common/api/webtoonAPI';
 const WebtoonList = () => {
   const updateDay = useRecoilValue(updateDayState);
   const service = useRecoilValue(serviceState);
-
-  const { isLoading, data, isError, error } = useQuery<webtoonInfo>(
-    ['getWebtoonInfo', updateDay, service],
-    () => {
-      return getWebtoonInfo({
-        page: 1,
-        perPage: 50,
-        service: service,
-        updateDay: updateDay,
-      });
-    },
-  );
+  const { data, isLoading, status, fetchNextPage } =
+    useInfiniteQuery<webtoonInfo>({
+      queryKey: ['getWebtoonInfo', updateDay, service],
+      queryFn: () => {
+        return getWebtoonInfo({
+          page: initialPageInfo.page,
+          perPage: initialPageInfo.perPage,
+          service: service,
+          updateDay: updateDay,
+        });
+      },
+      getNextPageParam: (lastPage, pages) => {
+        if (lastPage.webtoons.length < initialPageInfo.perPage) {
+          return undefined;
+        }
+        return pages.length;
+      },
+    });
 
   return (
     <div className="webtoonRow">
@@ -38,34 +45,44 @@ const WebtoonList = () => {
             id="body"
             className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
           >
-            {data?.webtoons.map((data, key) => (
-              <div className="rounded">
-                <article key={key}>
-                  <div className="webtoonBox">
-                    <header>
-                      <a href={data.url} target="_blank">
-                        <img
-                          className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
-                          src={data.img}
-                          alt={data.title}
-                        ></img>
-                      </a>
-                    </header>
+            {data?.pages.map((page, pageIndex) =>
+              page.webtoons.map((webtoon, webtoonIndex) => (
+                <div key={`${pageIndex}-${webtoonIndex}`} className="rounded">
+                  <article>
+                    <div className="webtoonBox">
+                      <header>
+                        <a
+                          href={webtoon.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <img
+                            className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
+                            src={webtoon.img}
+                            alt={webtoon.title}
+                          />
+                        </a>
+                      </header>
 
-                    <div>
-                      <a href={data.url} target="_blank">
-                        <p className="font-medium text-[16px] text-slate-900 dark:text-white capitalize line-clamp-1">
-                          {data.title}
-                        </p>
-                        <p className="font-medium text-slate-500 dark:text-slate-400 text-sm">
-                          {data.author}
-                        </p>
-                      </a>
+                      <div>
+                        <a
+                          href={webtoon.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <p className="font-medium text-[16px] text-slate-900 dark:text-white capitalize line-clamp-1">
+                            {webtoon.title}
+                          </p>
+                          <p className="font-medium text-slate-500 dark:text-slate-400 text-sm">
+                            {webtoon.author}
+                          </p>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </div>
-            ))}
+                  </article>
+                </div>
+              )),
+            )}
           </div>
         </div>
       )}
