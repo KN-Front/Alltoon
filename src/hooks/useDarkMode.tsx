@@ -1,43 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { darkMode, toggleDarkMode } from '@/common/utill/darkSlice';
 
-const useDarkMode = (): [boolean, () => void] => {
-  const windowChecker = (): boolean => {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches)
-      return true;
-    return false;
-  }
+export interface UseDark {
+  isDark: boolean;
+  onToggleDarkMode: (text: string) => void;
+}
 
-  const localStorageChecker = (): boolean => {
-    if (!localStorage.theme) return false;
-    return localStorage.theme === 'dark' ? true : false;
-  };
-
-  const [dark, setDark] = useState(localStorageChecker() || windowChecker());
-
-  const darkSetButton = () => {
-    setDark((state) => {
-      const update = !state;
-      if (update) {
-        localStorage.theme = 'dark';
-      } else {
-        localStorage.theme = 'light';
-      }
-      return update;
-    });
-  };
+const useDarkMode = (): UseDark => {
+  const isDark = useSelector(darkMode);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
+    if (isDark) {
+      localStorage.theme = 'dark';
       document.documentElement.classList.add('dark');
     } else {
+      localStorage.theme = 'light';
       document.documentElement.classList.remove('dark');
     }
-  }, [dark]);
+  }, [isDark]);
 
-  return [dark, darkSetButton];
+  const onToggleDarkMode = (text: string): void => {
+    dispatch(toggleDarkMode(text));
+  };
+
+  return { isDark, onToggleDarkMode };
 };
 
 export default useDarkMode;
