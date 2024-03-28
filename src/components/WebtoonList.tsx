@@ -9,6 +9,7 @@ import { useQuery, useInfiniteQuery } from 'react-query';
 import { getWebtoonInfo } from '@/common/api/webtoonAPI';
 import { useRef } from 'react';
 import { initialPageInfo } from '@/constants/initialValues';
+import ScrollToBottomDetector from './ScrollDetector';
 /**
  * 웹툰 목록 컴포넌트
  * @returns
@@ -19,9 +20,9 @@ const WebtoonList = () => {
   const { data, isLoading, status, fetchNextPage } =
     useInfiniteQuery<webtoonInfo>({
       queryKey: ['getWebtoonInfo', updateDay, service],
-      queryFn: () => {
+      queryFn: ({ pageParam = initialPageInfo.page }) => {
         return getWebtoonInfo({
-          page: initialPageInfo.page,
+          page: pageParam,
           perPage: initialPageInfo.perPage,
           service: service,
           updateDay: updateDay,
@@ -34,6 +35,10 @@ const WebtoonList = () => {
         return pages.length;
       },
     });
+
+  const handleScrollToBottom = () => {
+    fetchNextPage();
+  };
 
   return (
     <div className="webtoonRow">
@@ -86,6 +91,7 @@ const WebtoonList = () => {
           </div>
         </div>
       )}
+      <ScrollToBottomDetector onScrollToBottom={handleScrollToBottom} />
     </div>
   );
 };
