@@ -7,7 +7,7 @@ import {
 } from '@/recoil/webtoon/atoms';
 import { useQuery, useInfiniteQuery } from 'react-query';
 import { getWebtoonInfo } from '@/common/api/webtoonAPI';
-import { useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { initialPageInfo } from '@/constants/initialValues';
 import ScrollToBottomDetector from './ScrollDetector';
 /**
@@ -17,6 +17,8 @@ import ScrollToBottomDetector from './ScrollDetector';
 const WebtoonList = () => {
   const updateDay = useRecoilValue(updateDayState);
   const service = useRecoilValue(serviceState);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+
   const { data, isLoading, status, fetchNextPage } =
     useInfiniteQuery<webtoonInfo>({
       queryKey: ['getWebtoonInfo', updateDay, service],
@@ -37,7 +39,12 @@ const WebtoonList = () => {
     });
 
   const handleScrollToBottom = () => {
-    fetchNextPage();
+    if (!isLoadingMore) {
+      setIsLoadingMore(true);
+      fetchNextPage().then(() => {
+        setIsLoadingMore(false);
+      });
+    }
   };
 
   return (
@@ -91,6 +98,7 @@ const WebtoonList = () => {
           </div>
         </div>
       )}
+      {isLoadingMore && <Loading />}
       <ScrollToBottomDetector onScrollToBottom={handleScrollToBottom} />
     </div>
   );
