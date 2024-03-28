@@ -43,7 +43,7 @@ const WebtoonList = () => {
                 <article key={key}>
                   <div className="webtoonBox">
                     <header>
-                      <a href={data.url}>
+                      <a href={data.url} target="_blank">
                         <img
                           className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
                           src={data.img}
@@ -53,7 +53,7 @@ const WebtoonList = () => {
                     </header>
 
                     <div>
-                      <a href={data.url}>
+                      <a href={data.url} target="_blank">
                         <p className="font-medium text-[16px] text-slate-900 dark:text-white capitalize line-clamp-1">
                           {data.title}
                         </p>
