@@ -1,8 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import webtoonReducer from './webtoon/webtoonSlice';
+import darkSlice from '@/common/utill/darkSlice';
 export const store = configureStore({
   reducer: {
     webtoon: webtoonReducer,
+    dark: darkSlice.reducer,
   },
 });
 
