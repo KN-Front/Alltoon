@@ -1,40 +1,22 @@
 import React, { useState } from 'react';
-import { fetchSearchList } from '@/features/webtoon/webtoonActions';
-import { useAppDispatch } from '@/features/hooks';
-import { getSearchWebtoonInfoParam } from '@/types';
+import { useSetRecoilState } from 'recoil';
+import { searchValue as searchValueState } from '@/recoil/webtoon/atoms';
 
-/**
- * 웹툰 검색 컴포넌트
- * @returns
- */
-export function Search() {
-  /**
-   * 입력값
-   */
-  const [param, setParam] = useState<getSearchWebtoonInfoParam>({
-    keyword: '',
-  });
-  const dispatch = useAppDispatch();
-  /**
-   * set 파라미터
-   * @param e
-   */
+const Search = () => {
+  const [inputValue, setInputValue] = useState<string>('');
+  const setSearchValue = useSetRecoilState(searchValueState);
+
   const setKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setParam({
-      keyword: e.target.value,
-    });
+    setInputValue(e.target.value);
   };
 
-  /**
-   * 웹툰 검색
-   */
   const search = () => {
-    dispatch(fetchSearchList(param));
+    setSearchValue(inputValue);
   };
 
   const handleEnter = (e: any) => {
     if (e.key === 'Enter') {
-      search();
+      setSearchValue(inputValue);
     }
   };
 
@@ -70,4 +52,6 @@ export function Search() {
       </div>
     </div>
   );
-}
+};
+
+export default Search;
