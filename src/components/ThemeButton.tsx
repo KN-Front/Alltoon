@@ -1,20 +1,31 @@
-import * as React from 'react';
-import useDarkMode, { UseDark } from '../hooks/useDarkMode';
+import { useRecoilState } from 'recoil';
+import { darkMode as darkModeState } from '@/recoil/webtoon/atoms';
+import { useEffect } from 'react';
 
 const ThemeButton = () => {
-  const { isDark, onToggleDarkMode }: UseDark = useDarkMode();
+  const [darkMode, setDarkMode] = useRecoilState(darkModeState);
+
+  useEffect(() => {
+    if (darkMode) {
+      localStorage.theme = 'dark';
+      document.documentElement.classList.add('dark');
+    } else {
+      localStorage.theme = 'light';
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   return (
     <button
       id="theme-toggle"
       type="button"
       onClick={(): void => {
-        onToggleDarkMode('');
+        setDarkMode(!darkMode);
       }}
       className="text-gray-500 bg-gray-700  dark:text-gray-400 dark:bg-gray-100
     focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-full text-sm p-2.5"
     >
-      {isDark ? (
+      {darkMode ? (
         <svg
           id="theme-toggle-light-icon"
           className="w-5 h-5"
