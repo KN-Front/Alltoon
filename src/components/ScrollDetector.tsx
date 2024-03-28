@@ -11,7 +11,7 @@ const ScrollToBottomDetector: React.FC<ScrollToBottomDetectorProps> = ({
 
   useEffect(() => {
     const options = {
-      rootMargin: '0px',
+      rootMargin: '10px',
       threshold: 0.75,
     };
 
