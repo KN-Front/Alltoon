@@ -58,15 +58,15 @@ const SearchList = () => {
                 <article>
                   <div className="webtoonBox">
                     <header>
-                      <a href={data.url}>
+                      <a href={data.url} target="_blank">
                         <img
                           src={data.img}
                           alt={data.title}
-                          className="rounded bg-zinc-700/50"
+                          className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
                         ></img>
                       </a>
                     </header>
-                    <div>
+                    <div className="flex flex-col ">
                       <a href={data.url}>
                         <p className="font-medium text-[16px] text-slate-900 dark:text-white capitalize line-clamp-1">
                           {data.title}

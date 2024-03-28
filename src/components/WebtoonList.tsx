@@ -45,7 +45,7 @@ const WebtoonList = () => {
                     <header>
                       <a href={data.url}>
                         <img
-                          className="rounded bg-zinc-700/50"
+                          className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
                           src={data.img}
                           alt={data.title}
                         ></img>
