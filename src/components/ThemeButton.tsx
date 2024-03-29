@@ -1,15 +1,15 @@
 import { useRecoilState } from 'recoil';
 import { darkMode as darkModeState } from '@/recoil/webtoon/atoms';
 import { useEffect } from 'react';
-import { DARK_MODE_ON, DARK_MODE_OFF } from '@/constants/darkMode';
+import { DarkMode } from '@/constants/darkMode';
 
 const ThemeButton = () => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
 
   useEffect(() => {
-    const themeClass = darkMode ? DARK_MODE_ON : DARK_MODE_OFF;
+    const themeClass = darkMode ? DarkMode.ON : DarkMode.OFF;
     localStorage.setItem('theme', themeClass);
-    document.documentElement.classList.toggle(DARK_MODE_ON, darkMode);
+    document.documentElement.classList.toggle(DarkMode.ON, darkMode);
   }, [darkMode]);
 
   return (
