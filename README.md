@@ -1,5 +1,5 @@
-# Webtoon 
-#### 서비스(naver,kakao,kakaoPage)별 웹툰 뷰어
+# Alltoon 
+#### 각 서비스(naver,kakao,kakaoPage) 웹툰을 모아놓은 Alltoon
 #### [👉 접속](https://kwonyongjun1.github.io/webtoon/) 
 
 ## Language
