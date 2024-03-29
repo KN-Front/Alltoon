@@ -1,4 +1,4 @@
-import { DARK_MODE_ON } from '@/constants/darkMode';
+import { DarkMode } from '@/constants/darkMode';
 import { webtoonInfo } from '@/types';
 import { atom } from 'recoil';
 
@@ -61,7 +61,7 @@ export const kakaoPageWebtoonCount = atom({
 export const darkMode = atom<boolean>({
   key: 'darkMode',
   default:
-    localStorage.theme === DARK_MODE_ON ||
+    localStorage.theme === DarkMode.ON ||
     (!('theme' in localStorage) &&
       window.matchMedia('(prefers-color-scheme: dark)').matches),
 });
