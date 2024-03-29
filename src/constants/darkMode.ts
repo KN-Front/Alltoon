@@ -1,2 +1,4 @@
-export const DARK_MODE_ON: string = 'dark';
-export const DARK_MODE_OFF: string = 'light';
+export enum DarkMode {
+  ON = 'dark',
+  OFF = 'light',
+}
