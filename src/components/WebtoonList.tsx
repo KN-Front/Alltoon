@@ -1,5 +1,5 @@
 import { webtoonInfo } from '@/types';
-import Loading from './WebtoonLoading';
+import Loading from '@/components/WebtoonLoading';
 import { useRecoilValue } from 'recoil';
 import {
   service as serviceState,

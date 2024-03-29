@@ -1,6 +1,6 @@
 import React from 'react';
 import { webtoonInfo, webtoons } from '@/types';
-import WebtoonLoading from './WebtoonLoading';
+import WebtoonLoading from '@/components/WebtoonLoading';
 import { useQuery } from 'react-query';
 import { getSearchWebtoonInfo } from '@/common/api/webtoonAPI';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
