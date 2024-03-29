@@ -7,13 +7,9 @@ const ThemeButton = () => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState);
 
   useEffect(() => {
-    if (darkMode) {
-      localStorage.setItem('theme', DARK_MODE_ON);
-      document.documentElement.classList.add(DARK_MODE_ON);
-    } else {
-      localStorage.setItem('theme', DARK_MODE_OFF);
-      document.documentElement.classList.remove(DARK_MODE_ON);
-    }
+    const themeClass = darkMode ? DARK_MODE_ON : DARK_MODE_OFF;
+    localStorage.setItem('theme', themeClass);
+    document.documentElement.classList.toggle(DARK_MODE_ON, darkMode);
   }, [darkMode]);
 
   return (
