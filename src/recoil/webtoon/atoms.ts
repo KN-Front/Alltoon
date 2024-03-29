@@ -58,7 +58,7 @@ export const kakaoPageWebtoonCount = atom({
   default: 0,
 });
 
-export const darkMode = atom({
+export const darkMode = atom<boolean>({
   key: 'darkMode',
   default:
     localStorage.theme === DARK_MODE_ON ||
