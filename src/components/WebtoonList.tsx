@@ -77,12 +77,24 @@ const WebtoonList = () => {
                       </header>
 
                       <div className="w-[300px] h-[17px] mt-4">
-                        <p className="line-clamp-1 font-extralight	text-sm text-[16px] text-slate-900 dark:text-white capitalize line-clamp-1">
-                          {webtoon.title}
-                        </p>
+                        <a
+                          href={webtoon.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <p
+                            title={webtoon.title}
+                            className="line-clamp-1 font-extralight	text-sm text-[16px] text-slate-900 dark:text-white capitalize line-clamp-1"
+                          >
+                            {webtoon.title}
+                          </p>
+                        </a>
                       </div>
                       <div className="h-[12px] mt-1">
-                        <p className="line-clamp-1 mt-1 overflow-ellipsis font-extralight	text-sm text-slate-500 dark:text-slate-400 text-sm">
+                        <p
+                          title={webtoon.author}
+                          className="line-clamp-1 mt-1 overflow-ellipsis font-extralight	text-sm text-slate-500 dark:text-slate-400 text-sm"
+                        >
                           {webtoon.author}
                         </p>
                       </div>

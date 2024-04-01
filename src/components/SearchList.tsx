@@ -66,15 +66,27 @@ const SearchList = () => {
                         ></img>
                       </a>
                     </header>
-                    <div className="flex flex-col ">
-                      <a href={data.url} target="_blank">
-                        <p className="font-medium text-[16px] text-slate-900 dark:text-white capitalize line-clamp-1">
+                    <div className="w-[150px] h-[17px] mt-4">
+                      <a
+                        href={data.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <p
+                          title={data.title}
+                          className="line-clamp-1 font-extralight	text-sm text-[16px] text-slate-900 dark:text-white capitalize line-clamp-1"
+                        >
                           {data.title}
                         </p>
-                        <p className="font-medium text-slate-500 dark:text-slate-400 text-sm">
-                          {data.author}
-                        </p>
                       </a>
+                    </div>
+                    <div className="h-[12px] mt-1">
+                      <p
+                        title={data.author}
+                        className="line-clamp-1 mt-1 overflow-ellipsis font-extralight	text-sm text-slate-500 dark:text-slate-400 text-sm"
+                      >
+                        {data.author}
+                      </p>
                     </div>
                   </div>
                 </article>
