@@ -23,7 +23,7 @@ const Weeks = () => {
     <div className="col-span-8 space-x-8 lg:mt-0 mt-4 justify-left flex items-center text-center mx-auto h-24 p-14">
       {weeks.map((item) => (
         <div
-          className={`relative text-gray-200  font-medium transition-all duration-200 hover:text-slate-900 dark:hover:text-white cursor-pointer ${
+          className={`relative text-gray-400 font-medium transition-all duration-200 hover:text-slate-900 dark:hover:text-white cursor-pointer ${
             item.key === updateDay ? 'text-slate-900 dark:text-white' : ''
           }`}
           key={item.key}
