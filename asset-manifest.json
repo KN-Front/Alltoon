@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Alltoon/static/css/main.3a007c20.css",
-    "main.js": "/Alltoon/static/js/main.a7efaaf0.js",
+    "main.css": "/Alltoon/static/css/main.07a810d6.css",
+    "main.js": "/Alltoon/static/js/main.e9d0873d.js",
     "static/js/787.05d34f11.chunk.js": "/Alltoon/static/js/787.05d34f11.chunk.js",
     "index.html": "/Alltoon/index.html",
-    "main.3a007c20.css.map": "/Alltoon/static/css/main.3a007c20.css.map",
-    "main.a7efaaf0.js.map": "/Alltoon/static/js/main.a7efaaf0.js.map",
+    "main.07a810d6.css.map": "/Alltoon/static/css/main.07a810d6.css.map",
+    "main.e9d0873d.js.map": "/Alltoon/static/js/main.e9d0873d.js.map",
     "787.05d34f11.chunk.js.map": "/Alltoon/static/js/787.05d34f11.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3a007c20.css",
-    "static/js/main.a7efaaf0.js"
+    "static/css/main.07a810d6.css",
+    "static/js/main.e9d0873d.js"
   ]
 }
