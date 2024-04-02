@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
-import Main from './pages/MainPage';
-import SearchPage from './pages/SearchPage';
-import Header from './components/Heaer';
-import FloatingButtons from './components/FloatingButtons';
+import Main from '@/pages/MainPage';
+import SearchPage from '@/pages/SearchPage';
+import Header from '@/components/Header';
+import FloatingButtons from '@/components/FloatingButtons';
 
 const Layout = () => {
   return (

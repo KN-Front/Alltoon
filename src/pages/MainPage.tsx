@@ -6,7 +6,7 @@ import Service from '@/components/Service';
 const Main = () => {
   return (
     <div className="lg:px-24 mx-auto justify-center lg:mt-8 pt-10">
-      <div className="flex flex-nowrap bg-zinc-200 dark:bg-zinc-700/100">
+      <div className="flex flex-nowrap bg-zinc-700/50 dark:bg-dark-bg-secondary">
         <Weeks />
         <Service />
       </div>

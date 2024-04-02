@@ -1,5 +1,5 @@
 import { webtoonInfo } from '@/types';
-import Loading from './WebtoonLoading';
+import Loading from '@/components/WebtoonLoading';
 import { useRecoilValue } from 'recoil';
 import {
   service as serviceState,
@@ -9,7 +9,8 @@ import { useQuery, useInfiniteQuery } from 'react-query';
 import { getWebtoonInfo } from '@/common/api/webtoonAPI';
 import { useEffect, useState } from 'react';
 import { initialPageInfo } from '@/constants/initialValues';
-import ScrollToBottomDetector from './ScrollDetector';
+import ScrollToBottomDetector from '@/components/ScrollDetector';
+
 /**
  * 웹툰 목록 컴포넌트
  * @returns
