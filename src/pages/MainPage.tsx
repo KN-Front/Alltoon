@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Weeks } from '@/components/Weeks';
-import { WebtoonList } from '@/components/WebtoonList';
-import { useAppDispatch } from '@/features/hooks';
-import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
+import Weeks from '@/components/Weeks';
+import WebtoonList from '@/components/WebtoonList';
 import Service from '@/components/Service';
 
 const Main = () => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchWebtoonList());
-  }, []);
-
   return (
     <div className="lg:px-24 mx-auto justify-center lg:mt-8 pt-10">
-      <div className="flex flex-nowrap bg-zinc-700/50">
+      <div className="flex flex-nowrap bg-zinc-200 dark:bg-dark-bg-secondary">
         <Weeks />
         <Service />
       </div>
-
       <WebtoonList />
     </div>
   );

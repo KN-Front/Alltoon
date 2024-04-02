@@ -1,40 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { webtoonInfo, webtoons } from '@/types';
+import WebtoonLoading from '@/components/WebtoonLoading';
+import { useQuery } from 'react-query';
+import { getSearchWebtoonInfo } from '@/common/api/webtoonAPI';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import {
-  allWebtoons,
-  naverWebtoons,
-  kakaoWebtoons,
-  kakaoPageWebtoons,
-  searchService,
-} from '@/features/webtoon/webtoonSlice';
-import { webtoons } from '@/types';
-import { loading } from '@/features/webtoon/webtoonSlice';
-import WebtoonLoading from './WebtoonLoading';
+  searchValue as searchValueState,
+  searchService as searchServiceState,
+} from '@/recoil/webtoon/atoms';
+import {
+  naverWebtoonCount,
+  kakaoWebtoonCount,
+  kakaoPageWebtoonCount,
+} from '@/recoil/webtoon/atoms';
+import {
+  countWebtoonsByService,
+  filterByService,
+} from '@/common/utill/webtoon';
 
 const SearchList = () => {
-  const allWebtoon: webtoons[] = useSelector(allWebtoons);
-  const naverwebtoon: webtoons[] = useSelector(naverWebtoons);
-  const kakaowebtoon: webtoons[] = useSelector(kakaoWebtoons);
-  const kakaoPagewebtoon: webtoons[] = useSelector(kakaoPageWebtoons);
-  const [webtoons, setWebtoons] = useState<webtoons[]>([]);
-  const isLoading: boolean = useSelector(loading);
-  const service = useSelector(searchService);
+  const searchValue = useRecoilValue(searchValueState);
+  const searchService = useRecoilValue(searchServiceState);
+  const setNaverWebtoonCount = useSetRecoilState(naverWebtoonCount);
+  const setKakaoWebtoonCount = useSetRecoilState(kakaoWebtoonCount);
+  const setKakaoPageWebtoonCount = useSetRecoilState(kakaoPageWebtoonCount);
 
-  const filterByService = () => {
-    if (service === 'ALL') {
-      setWebtoons(allWebtoon);
-    } else if (service === 'NAVER') {
-      setWebtoons(naverwebtoon);
-    } else if (service === 'KAKAO') {
-      setWebtoons(kakaowebtoon);
-    } else if (service === 'KAKAOPAGE') {
-      setWebtoons(kakaoPagewebtoon);
-    }
-  };
+  const { isLoading, data, isError, error } = useQuery<webtoonInfo>(
+    ['getSearchWebtoonInfo', searchValue, searchService],
+    () => {
+      return getSearchWebtoonInfo({
+        keyword: searchValue,
+      });
+    },
+    {
+      select: (data) => {
+        setNaverWebtoonCount(countWebtoonsByService(data, 'naver'));
+        setKakaoWebtoonCount(countWebtoonsByService(data, 'kakao'));
+        setKakaoPageWebtoonCount(countWebtoonsByService(data, 'kakaoPage'));
 
-  useEffect(() => {
-    filterByService();
-  }, [service, allWebtoon]);
+        return filterByService(searchService, data);
+      },
+    },
+  );
 
   return (
     <div className="w-full">
@@ -46,28 +53,40 @@ const SearchList = () => {
             id="body"
             className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
           >
-            {webtoons.map((data, key) => (
+            {data?.webtoons.map((data, key) => (
               <div key={key} className="rounded">
                 <article>
                   <div className="webtoonBox">
                     <header>
-                      <a href={data.url}>
+                      <a href={data.url} target="_blank">
                         <img
                           src={data.img}
                           alt={data.title}
-                          className="rounded bg-zinc-700/50"
+                          className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
                         ></img>
                       </a>
                     </header>
-                    <div>
-                      <a href={data.url}>
-                        <p className="font-medium text-[16px] text-white capitalize line-clamp-1">
+                    <div className="w-[150px] h-[17px] mt-4">
+                      <a
+                        href={data.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <p
+                          title={data.title}
+                          className="line-clamp-1 font-extralight	text-sm text-[16px] text-slate-900 dark:text-white capitalize"
+                        >
                           {data.title}
                         </p>
-                        <p className="font-medium text-zinc-300 text-sm">
-                          {data.author}
-                        </p>
                       </a>
+                    </div>
+                    <div className="h-[12px] mt-1">
+                      <p
+                        title={data.author}
+                        className="line-clamp-1 mt-1 overflow-ellipsis font-extralight text-sm text-slate-500 dark:text-slate-400"
+                      >
+                        {data.author}
+                      </p>
                     </div>
                   </div>
                 </article>

@@ -1,23 +1,27 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './features/store';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './global.css';
+import App from '@/App';
+import reportWebVitals from '@/reportWebVitals';
+import '@/global.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
+const queryClient = new QueryClient();
 
+// TODO provider remove
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <App />
+        </BrowserRouter>
+      </RecoilRoot>
+    </QueryClientProvider>
   </React.StrictMode>,
 );
 

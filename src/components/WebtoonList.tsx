@@ -1,91 +1,116 @@
-import React, { useRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { weekWebtoon, webtoonActions } from '@/features/webtoon/webtoonSlice';
-import { useAppDispatch } from '@/features/hooks';
-import { fetchWebtoonList } from '@/features/webtoon/webtoonActions';
 import { webtoonInfo } from '@/types';
-import { loading } from '@/features/webtoon/webtoonSlice';
-import Webtoon from './WebtoonLoading';
+import Loading from '@/components/WebtoonLoading';
+import { useRecoilValue } from 'recoil';
+import {
+  service as serviceState,
+  updateDay as updateDayState,
+} from '@/recoil/webtoon/atoms';
+import { useQuery, useInfiniteQuery } from 'react-query';
+import { getWebtoonInfo } from '@/common/api/webtoonAPI';
+import { useEffect, useState } from 'react';
+import { initialPageInfo } from '@/constants/initialValues';
+import ScrollToBottomDetector from '@/components/ScrollDetector';
 
 /**
  * 웹툰 목록 컴포넌트
  * @returns
  */
-export function WebtoonList() {
-  const webtoon: webtoonInfo = useSelector(weekWebtoon);
-  const scrollRef = useRef<any>(null);
-  const dispatch = useAppDispatch();
-  const isLoading: boolean = useSelector(loading);
+const WebtoonList = () => {
+  const updateDay = useRecoilValue(updateDayState);
+  const service = useRecoilValue(serviceState);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    const handleScroll = () => {
-      const isScrolledToBottom =
-        scrollContainer.scrollHeight - scrollContainer.scrollTop ===
-        scrollContainer.clientHeight;
+  const { data, isLoading, status, fetchNextPage } =
+    useInfiniteQuery<webtoonInfo>({
+      queryKey: ['getWebtoonInfo', updateDay, service],
+      queryFn: ({ pageParam = initialPageInfo.page }) => {
+        return getWebtoonInfo({
+          page: pageParam,
+          perPage: initialPageInfo.perPage,
+          service: service,
+          updateDay: updateDay,
+        });
+      },
+      getNextPageParam: (lastPage, pages) => {
+        if (lastPage.webtoons.length < initialPageInfo.perPage) {
+          return undefined;
+        }
+        return pages.length;
+      },
+    });
 
-      if (isScrolledToBottom) {
-        getNextWebtoonList();
-      }
-    };
-
-    scrollContainer.addEventListener('scroll', handleScroll);
-
-    return () => {
-      scrollContainer.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  /**
-   * 웹툰 검색
-   * @returns
-   */
-  const getNextWebtoonList = () => {
-    dispatch(webtoonActions.setNextPage());
-    dispatch(fetchWebtoonList());
+  const handleScrollToBottom = () => {
+    if (!isLoadingMore) {
+      setIsLoadingMore(true);
+      fetchNextPage().then(() => {
+        setIsLoadingMore(false);
+      });
+    }
   };
 
   return (
-    <div className="webtoonRow" ref={scrollRef}>
+    <div className="webtoonRow">
       {isLoading ? (
-        <Webtoon />
+        <Loading />
       ) : (
         <div className="w-full">
           <div
             id="body"
             className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
           >
-            {webtoon.webtoons.map((data, key) => (
-              <div className="rounded">
-                <article key={key}>
-                  <div className="webtoonBox">
-                    <header>
-                      <a href={data.url}>
-                        <img
-                          className="rounded bg-zinc-700/50"
-                          src={data.img}
-                          alt={data.title}
-                        ></img>
-                      </a>
-                    </header>
+            {data?.pages.map((page, pageIndex) =>
+              page.webtoons.map((webtoon, webtoonIndex) => (
+                <div key={`${pageIndex}-${webtoonIndex}`} className="rounded">
+                  <article>
+                    <div className="webtoonBox">
+                      <header>
+                        <a
+                          href={webtoon.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <img
+                            className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
+                            src={webtoon.img}
+                            alt={webtoon.title}
+                          />
+                        </a>
+                      </header>
 
-                    <div>
-                      <a href={data.url}>
-                        <p className="font-medium text-[16px] text-white capitalize line-clamp-1">
-                          {data.title}
+                      <div className="w-[300px] h-[17px] mt-4">
+                        <a
+                          href={webtoon.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <p
+                            title={webtoon.title}
+                            className="line-clamp-1 font-extralight	text-sm text-[16px] text-slate-900 dark:text-white capitalize"
+                          >
+                            {webtoon.title}
+                          </p>
+                        </a>
+                      </div>
+                      <div className="h-[12px] mt-1">
+                        <p
+                          title={webtoon.author}
+                          className="line-clamp-1 mt-1 overflow-ellipsis font-extralight text-slate-500 dark:text-slate-400 text-sm"
+                        >
+                          {webtoon.author}
                         </p>
-                        <p className="font-medium text-zinc-300 text-sm">
-                          {data.author}
-                        </p>
-                      </a>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </div>
-            ))}
+                  </article>
+                </div>
+              )),
+            )}
           </div>
         </div>
       )}
+      {isLoadingMore && <Loading />}
+      <ScrollToBottomDetector onScrollToBottom={handleScrollToBottom} />
     </div>
   );
-}
+};
+
+export default WebtoonList;

@@ -11,7 +11,7 @@ const Loading = () => {
         {Array.from(Array(12).keys()).map((d) => {
           return (
             <SkeletonTheme key={d} baseColor="#202020" highlightColor="#232323">
-              <div className="flex flex-col">
+              <div className="flex flex-col ">
                 <Skeleton className="w-[500px] h-[260px]" />
                 <Skeleton className="w-[300px] h-[17px] mt-4" />
                 <Skeleton width={'120px'} className="h-[12px] mt-1" />
