@@ -20,7 +20,7 @@ const Sidebar = () => {
   );
 
   return (
-    <div className="hidden lg:block w-60 h-[64rem] overflow-auto rounded-lg bg-zinc-700/50 border border-zinc-700/10">
+    <div className="hidden lg:block w-60 h-[64rem] overflow-auto rounded-lg bg-zinc-200 border border-zinc-700/10">
       <div className="p-4">
         <div className="flex flex-col mt-1 overflow-auto">
           <div
