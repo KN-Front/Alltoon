@@ -21,7 +21,7 @@ const Search = () => {
   };
 
   return (
-    <div className="browse-banner bg-zinc-200 rounded-lg">
+    <div className="browse-banner bg-zinc-200 rounded-lg dark:bg-zinc-700/50 ">
       <div
         id="body"
         className="relative items-center text-center flex mx-auto justify-center"
