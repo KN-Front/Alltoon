@@ -10,7 +10,7 @@ import { getWebtoonInfo } from '@/common/api/webtoonAPI';
 import { useEffect, useState } from 'react';
 import { initialPageInfo } from '@/constants/initialValues';
 import ScrollToBottomDetector from '@/components/ScrollDetector';
-import WebtoonBox from './WebtoonBox';
+import WebtoonBox from '../../components/WebtoonBox';
 
 /**
  * 웹툰 목록 컴포넌트
@@ -61,7 +61,10 @@ const WebtoonList = () => {
           >
             {data?.pages.map((page, pageIndex) =>
               page.webtoons.map((webtoon, webtoonIndex) => (
-                <WebtoonBox webtoon={webtoon} webtoonIndex={webtoonIndex} />
+                <WebtoonBox
+                  webtoon={webtoon}
+                  webtoonIndex={pageIndex - webtoonIndex}
+                />
               )),
             )}
           </div>

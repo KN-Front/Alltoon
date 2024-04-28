@@ -17,7 +17,7 @@ import {
   countWebtoonsByService,
   filterByService,
 } from '@/common/utill/webtoon';
-import WebtoonBox from './WebtoonBox';
+import WebtoonBox from '../../components/WebtoonBox';
 
 const SearchList = () => {
   const searchValue = useRecoilValue(searchValueState);
