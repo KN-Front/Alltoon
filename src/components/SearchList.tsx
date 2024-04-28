@@ -17,6 +17,7 @@ import {
   countWebtoonsByService,
   filterByService,
 } from '@/common/utill/webtoon';
+import WebtoonBox from './WebtoonBox';
 
 const SearchList = () => {
   const searchValue = useRecoilValue(searchValueState);
@@ -53,44 +54,8 @@ const SearchList = () => {
             id="body"
             className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
           >
-            {data?.webtoons.map((data, key) => (
-              <div key={key} className="rounded">
-                <article>
-                  <div className="webtoonBox">
-                    <header>
-                      <a href={data.url} target="_blank">
-                        <img
-                          src={data.img}
-                          alt={data.title}
-                          className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
-                        ></img>
-                      </a>
-                    </header>
-                    <div className="w-[150px] h-[17px] mt-4">
-                      <a
-                        href={data.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <p
-                          title={data.title}
-                          className="line-clamp-1 font-extralight	text-sm text-[16px] text-slate-900 dark:text-white capitalize"
-                        >
-                          {data.title}
-                        </p>
-                      </a>
-                    </div>
-                    <div className="h-[12px] mt-1">
-                      <p
-                        title={data.author}
-                        className="line-clamp-1 mt-1 overflow-ellipsis font-extralight text-sm text-slate-500 dark:text-slate-400"
-                      >
-                        {data.author}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              </div>
+            {data?.webtoons.map((webtoon, webtoonIndex) => (
+              <WebtoonBox webtoon={webtoon} webtoonIndex={webtoonIndex} />
             ))}
           </div>
         </div>

@@ -10,6 +10,7 @@ import { getWebtoonInfo } from '@/common/api/webtoonAPI';
 import { useEffect, useState } from 'react';
 import { initialPageInfo } from '@/constants/initialValues';
 import ScrollToBottomDetector from '@/components/ScrollDetector';
+import WebtoonBox from './WebtoonBox';
 
 /**
  * 웹툰 목록 컴포넌트
@@ -60,48 +61,7 @@ const WebtoonList = () => {
           >
             {data?.pages.map((page, pageIndex) =>
               page.webtoons.map((webtoon, webtoonIndex) => (
-                <div key={`${pageIndex}-${webtoonIndex}`} className="rounded">
-                  <article>
-                    <div className="webtoonBox">
-                      <header>
-                        <a
-                          href={webtoon.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <img
-                            className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
-                            src={webtoon.img}
-                            alt={webtoon.title}
-                          />
-                        </a>
-                      </header>
-
-                      <div className="w-[300px] h-[17px] mt-4">
-                        <a
-                          href={webtoon.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <p
-                            title={webtoon.title}
-                            className="line-clamp-1 font-extralight	text-sm text-[16px] text-slate-900 dark:text-white capitalize"
-                          >
-                            {webtoon.title}
-                          </p>
-                        </a>
-                      </div>
-                      <div className="h-[12px] mt-1">
-                        <p
-                          title={webtoon.author}
-                          className="line-clamp-1 mt-1 overflow-ellipsis font-extralight text-slate-500 dark:text-slate-400 text-sm"
-                        >
-                          {webtoon.author}
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                </div>
+                <WebtoonBox webtoon={webtoon} webtoonIndex={webtoonIndex} />
               )),
             )}
           </div>
