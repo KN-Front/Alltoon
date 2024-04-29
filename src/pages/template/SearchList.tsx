@@ -1,47 +1,19 @@
-import React from 'react';
-import { webtoonInfo, webtoons } from '@/types';
 import WebtoonLoading from '@/components/WebtoonLoading';
-import { useQuery } from 'react-query';
-import { getSearchWebtoonInfo } from '@/common/api/webtoonAPI';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import {
   searchValue as searchValueState,
   searchService as searchServiceState,
 } from '@/recoil/webtoon/atoms';
-import {
-  naverWebtoonCount,
-  kakaoWebtoonCount,
-  kakaoPageWebtoonCount,
-} from '@/recoil/webtoon/atoms';
-import {
-  countWebtoonsByService,
-  filterByService,
-} from '@/common/utill/webtoon';
 import WebtoonBox from '../../components/WebtoonBox';
+import { useKeywordServiceWebtoonQuery } from '@/hooks/useKeywordServiceWebtoonQuery';
 
 const SearchList = () => {
   const searchValue = useRecoilValue(searchValueState);
   const searchService = useRecoilValue(searchServiceState);
-  const setNaverWebtoonCount = useSetRecoilState(naverWebtoonCount);
-  const setKakaoWebtoonCount = useSetRecoilState(kakaoWebtoonCount);
-  const setKakaoPageWebtoonCount = useSetRecoilState(kakaoPageWebtoonCount);
 
-  const { isLoading, data, isError, error } = useQuery<webtoonInfo>(
-    ['getSearchWebtoonInfo', searchValue, searchService],
-    () => {
-      return getSearchWebtoonInfo({
-        keyword: searchValue,
-      });
-    },
-    {
-      select: (data) => {
-        setNaverWebtoonCount(countWebtoonsByService(data, 'naver'));
-        setKakaoWebtoonCount(countWebtoonsByService(data, 'kakao'));
-        setKakaoPageWebtoonCount(countWebtoonsByService(data, 'kakaoPage'));
-
-        return filterByService(searchService, data);
-      },
-    },
+  const { isLoading, data } = useKeywordServiceWebtoonQuery(
+    searchValue,
+    searchService,
   );
 
   return (
