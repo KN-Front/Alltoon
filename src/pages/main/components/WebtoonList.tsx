@@ -30,7 +30,6 @@ const WebtoonList = () => {
         await fetchNextPage();
       } catch (error) {
         console.error('Error fetching next page', error);
-        // TODO error 알림
       } finally {
         setIsLoadingMore(false);
       }
