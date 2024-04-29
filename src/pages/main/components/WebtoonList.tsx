@@ -6,7 +6,7 @@ import {
 } from '@/recoil/webtoon/atoms';
 import { useState } from 'react';
 import ScrollToBottomDetector from '@/components/ScrollDetector';
-import WebtoonBox from '../../components/WebtoonBox';
+import WebtoonBox from '../../../components/WebtoonBox';
 import { useDayServiceWebtoonQuery } from '@/hooks/useDayServiceWebtoonQuery';
 
 /**
@@ -23,12 +23,17 @@ const WebtoonList = () => {
     service,
   );
 
-  const handleScrollToBottom = () => {
+  const handleScrollToBottom = async () => {
     if (!isLoadingMore) {
       setIsLoadingMore(true);
-      fetchNextPage().then(() => {
+      try {
+        await fetchNextPage();
+      } catch (error) {
+        console.error('Error fetching next page', error);
+        // TODO error 알림
+      } finally {
         setIsLoadingMore(false);
-      });
+      }
     }
   };
 
@@ -54,7 +59,7 @@ const WebtoonList = () => {
         </div>
       )}
       {isLoadingMore && <Loading />}
-      <ScrollToBottomDetector onScrollToBottom={handleScrollToBottom} />
+      <ScrollToBottomDetector onScrollEvent={handleScrollToBottom} />
     </div>
   );
 };
