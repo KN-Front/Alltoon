@@ -1,16 +1,13 @@
-import { webtoonInfo } from '@/types';
 import Loading from '@/components/WebtoonLoading';
 import { useRecoilValue } from 'recoil';
 import {
   service as serviceState,
   updateDay as updateDayState,
 } from '@/recoil/webtoon/atoms';
-import { useQuery, useInfiniteQuery } from 'react-query';
-import { getWebtoonInfo } from '@/common/api/webtoonAPI';
-import { useEffect, useState } from 'react';
-import { initialPageInfo } from '@/constants/initialValues';
+import { useState } from 'react';
 import ScrollToBottomDetector from '@/components/ScrollDetector';
 import WebtoonBox from '../../components/WebtoonBox';
+import { useDayServiceWebtoonQuery } from '@/hooks/useDayServiceWebtoonQuery';
 
 /**
  * 웹툰 목록 컴포넌트
@@ -21,24 +18,10 @@ const WebtoonList = () => {
   const service = useRecoilValue(serviceState);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  const { data, isLoading, status, fetchNextPage } =
-    useInfiniteQuery<webtoonInfo>({
-      queryKey: ['getWebtoonInfo', updateDay, service],
-      queryFn: ({ pageParam = initialPageInfo.page }) => {
-        return getWebtoonInfo({
-          page: pageParam,
-          perPage: initialPageInfo.perPage,
-          service: service,
-          updateDay: updateDay,
-        });
-      },
-      getNextPageParam: (lastPage, pages) => {
-        if (lastPage.webtoons.length < initialPageInfo.perPage) {
-          return undefined;
-        }
-        return pages.length;
-      },
-    });
+  const { data, isLoading, fetchNextPage } = useDayServiceWebtoonQuery(
+    updateDay,
+    service,
+  );
 
   const handleScrollToBottom = () => {
     if (!isLoadingMore) {
