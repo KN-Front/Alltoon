@@ -6,10 +6,7 @@ interface WebtoonBoxProps {
   webtoonIndex: number;
 }
 
-export const WebtoonBox: React.FC<WebtoonBoxProps> = ({
-  webtoon,
-  webtoonIndex,
-}) => {
+const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon, webtoonIndex }) => {
   return (
     <div key={webtoonIndex} className="rounded">
       <article>

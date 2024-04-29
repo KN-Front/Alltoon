@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom';
-/**
- * Nav 컴포넌트
- * @returns
- */
+
 const Header = () => {
   return (
     <header className="mx-auto justify-center lg:px-24 px-6 relative w-full h-24 lg:mb-0 mb-8 lg:grid grid-cols-1 lg:grid-cols-12">
