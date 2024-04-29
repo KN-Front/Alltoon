@@ -3,12 +3,11 @@ import { webtoons } from '@/types';
 
 interface WebtoonBoxProps {
   webtoon: webtoons;
-  webtoonIndex: number;
 }
 
-const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon, webtoonIndex }) => {
+const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon }) => {
   return (
-    <div key={webtoonIndex} className="rounded">
+    <div key={webtoon._id} className="rounded">
       <article>
         <div className="webtoonBox">
           <header>

@@ -5,8 +5,8 @@ import {
   updateDay as updateDayState,
 } from '@/recoil/webtoon/atoms';
 import { useState } from 'react';
-import ScrollToBottomDetector from '@/components/ScrollDetector';
-import WebtoonBox from '../../../components/WebtoonBox';
+import ScrollDetector from '@/components/ScrollDetector';
+import WebtoonBox from '@/components/WebtoonBox';
 import { useDayServiceWebtoonQuery } from '@/hooks/useDayServiceWebtoonQuery';
 
 /**
@@ -46,19 +46,14 @@ const WebtoonList = () => {
             id="body"
             className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
           >
-            {data?.pages.map((page, pageIndex) =>
-              page.webtoons.map((webtoon, webtoonIndex) => (
-                <WebtoonBox
-                  webtoon={webtoon}
-                  webtoonIndex={pageIndex - webtoonIndex}
-                />
-              )),
+            {data?.pages.map((page) =>
+              page.webtoons.map((webtoon) => <WebtoonBox webtoon={webtoon} />),
             )}
           </div>
         </div>
       )}
       {isLoadingMore && <Loading />}
-      <ScrollToBottomDetector onScrollEvent={handleScrollToBottom} />
+      <ScrollDetector onScrollEvent={handleScrollToBottom} />
     </div>
   );
 };

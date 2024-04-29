@@ -1,14 +1,21 @@
+import { initialPageInfo } from '@/constants/initialValues';
 import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
-const Loading = () => {
+interface LoadingProps {
+  count?: number;
+}
+
+const Loading: React.FC<LoadingProps> = ({
+  count = initialPageInfo.perPage,
+}) => {
   return (
     <div className="w-full">
       <div
         id="body"
         className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
       >
-        {Array.from(Array(12).keys()).map((d) => {
+        {Array.from(Array(count).keys()).map((d) => {
           return (
             <SkeletonTheme key={d} baseColor="#202020" highlightColor="#232323">
               <div className="flex flex-col ">

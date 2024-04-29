@@ -6,19 +6,20 @@ import { webtoonInfo } from '@/types';
 export const useDayServiceWebtoonQuery = (
   updateDay: string,
   service: string,
+  perPage: number = initialPageInfo.perPage,
 ) => {
   return useInfiniteQuery<webtoonInfo>({
     queryKey: ['getWebtoonInfo', updateDay, service],
-    queryFn: ({ pageParam = initialPageInfo.page }) => {
+    queryFn: ({ pageParam = perPage }) => {
       return getWebtoonInfo({
         page: pageParam,
-        perPage: initialPageInfo.perPage,
+        perPage: perPage,
         service: service,
         updateDay: updateDay,
       });
     },
     getNextPageParam: (lastPage, pages) => {
-      if (lastPage.webtoons.length < initialPageInfo.perPage) {
+      if (lastPage.webtoons.length < perPage) {
         return undefined;
       }
       return pages.length;
