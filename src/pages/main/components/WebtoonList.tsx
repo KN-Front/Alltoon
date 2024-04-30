@@ -16,23 +16,14 @@ import { useDayServiceWebtoonQuery } from '@/hooks/useDayServiceWebtoonQuery';
 const WebtoonList = () => {
   const updateDay = useRecoilValue(updateDayState);
   const service = useRecoilValue(serviceState);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } =
+    useDayServiceWebtoonQuery(updateDay, service);
 
-  const { data, isLoading, fetchNextPage } = useDayServiceWebtoonQuery(
-    updateDay,
-    service,
-  );
-
-  const handleScrollToBottom = async () => {
-    if (!isLoadingMore) {
-      setIsLoadingMore(true);
-      try {
-        await fetchNextPage();
-      } catch (error) {
-        console.error('Error fetching next page', error);
-      } finally {
-        setIsLoadingMore(false);
-      }
+  const handleScrollToBottom = () => {
+    try {
+      fetchNextPage();
+    } catch (error) {
+      console.error('Error fetching next page', error);
     }
   };
 
@@ -52,7 +43,7 @@ const WebtoonList = () => {
           </div>
         </div>
       )}
-      {isLoadingMore && <Loading />}
+      {isFetchingNextPage && <Loading />}
       <ScrollDetector onScrollEvent={handleScrollToBottom} />
     </div>
   );
