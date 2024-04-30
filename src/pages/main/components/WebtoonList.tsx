@@ -4,7 +4,6 @@ import {
   service as serviceState,
   updateDay as updateDayState,
 } from '@/recoil/webtoon/atoms';
-import { useState } from 'react';
 import ScrollDetector from '@/components/ScrollDetector';
 import WebtoonBox from '@/components/WebtoonBox';
 import { useDayServiceWebtoonQuery } from '@/hooks/useDayServiceWebtoonQuery';
