@@ -8,10 +8,6 @@ import ScrollDetector from '@/components/ScrollDetector';
 import WebtoonBox from '@/components/WebtoonBox';
 import { useDayServiceWebtoonQuery } from '@/hooks/useDayServiceWebtoonQuery';
 
-/**
- * 웹툰 목록 컴포넌트
- * @returns
- */
 const WebtoonList = () => {
   const updateDay = useRecoilValue(updateDayState);
   const service = useRecoilValue(serviceState);
