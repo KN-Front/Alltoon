@@ -10,8 +10,9 @@ export const useDayServiceWebtoonQuery = (
   page: number = initialPageInfo.page,
 ) => {
   return useInfiniteQuery<webtoonInfo>({
-    queryKey: ['getWebtoonInfo', updateDay, service],
+    queryKey: ['getWebtoonInfo', updateDay, service], // 요일별, 웹툰을 제공하는 서비스
     queryFn: ({ pageParam = page }) => {
+      // 웹툰 정보 api
       return getWebtoonInfo({
         page: pageParam,
         perPage: perPage,
@@ -20,10 +21,11 @@ export const useDayServiceWebtoonQuery = (
       });
     },
     getNextPageParam: (lastPage, pages) => {
+      // 마지막으로 호출한 웹툰 갯수 < 페이지당 호출할 웹툰 갯수
       if (lastPage.webtoons.length < perPage) {
         return undefined;
       }
-      return pages.length;
+      return pages.length; // 호출된 페이지 수
     },
   });
 };

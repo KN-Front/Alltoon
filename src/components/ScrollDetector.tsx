@@ -16,7 +16,7 @@ const ScrollDetector: React.FC<ScrollDetectorProps> = ({
   rootMargin = '10px',
   threshold = 0.75,
 }) => {
-  const sentinelRef = useRef<HTMLDivElement>(null);
+  const sentinelRef = useRef<HTMLDivElement>(null); // 교차 지점 DOM 저장
 
   const options = {
     rootMargin: rootMargin,
@@ -25,6 +25,7 @@ const ScrollDetector: React.FC<ScrollDetectorProps> = ({
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
+      // 교차할 경우 함수 실행
       if (entry.isIntersecting) {
         onScrollEvent();
       }
@@ -36,9 +37,9 @@ const ScrollDetector: React.FC<ScrollDetectorProps> = ({
 
     return () => {
       if (sentinelRef.current) {
-        observer.unobserve(sentinelRef.current);
+        observer.unobserve(sentinelRef.current); // 관찰 중지
       }
-      observer.disconnect();
+      observer.disconnect(); // obsever 관련 모든 기능 중지
     };
   }, [onScrollEvent, options]);
 
