@@ -1,7 +1,6 @@
-import React from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
-import Main from '@/pages/MainPage';
-import SearchPage from '@/pages/SearchPage';
+import Main from '@/pages/main/MainPage';
+import SearchPage from '@/pages/search/SearchPage';
 import Header from '@/components/Header';
 import FloatingButtons from '@/components/FloatingButtons';
 
@@ -15,7 +14,7 @@ const Layout = () => {
   );
 };
 
-function App() {
+const App = () => {
   return (
     <div className="justify-center lg:w-[90rem] w-[30rem] overflow-y-hidden mx-auto transition-all duration-300">
       <Routes>
@@ -24,9 +23,8 @@ function App() {
           <Route path="search" element={<SearchPage />} />
         </Route>
       </Routes>
-      {/* <Test /> */}
     </div>
   );
-}
+};
 
 export default App;

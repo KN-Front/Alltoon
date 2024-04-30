@@ -1,23 +1,32 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
-interface ScrollToBottomDetectorProps {
-  onScrollToBottom: () => void;
+interface ScrollDetectorProps {
+  onScrollEvent: () => void;
+  rootMargin?: string;
+  threshold?: number;
 }
+/**
+ * @param param.onScrollEvent 스크롤 감지 시 실행되는 함수
+ * @param param.rootMargin IntersectionObserver option
+ * @param param.threshold IntersectionObserver option
+ */
 
-const ScrollToBottomDetector: React.FC<ScrollToBottomDetectorProps> = ({
-  onScrollToBottom,
+const ScrollDetector: React.FC<ScrollDetectorProps> = ({
+  onScrollEvent,
+  rootMargin = '10px',
+  threshold = 0.75,
 }) => {
   const sentinelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const options = {
-      rootMargin: '10px',
-      threshold: 0.75,
-    };
+  const options = {
+    rootMargin: rootMargin,
+    threshold: threshold,
+  };
 
+  useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        onScrollToBottom();
+        onScrollEvent();
       }
     }, options);
 
@@ -29,10 +38,11 @@ const ScrollToBottomDetector: React.FC<ScrollToBottomDetectorProps> = ({
       if (sentinelRef.current) {
         observer.unobserve(sentinelRef.current);
       }
+      observer.disconnect();
     };
-  }, [onScrollToBottom]);
+  }, [onScrollEvent, options]);
 
-  return <div ref={sentinelRef} />;
+  return <div ref={sentinelRef} className="h-0" aria-hidden="true" />;
 };
 
-export default ScrollToBottomDetector;
+export default ScrollDetector;

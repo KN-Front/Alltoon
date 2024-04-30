@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchList from '@/components/SearchList';
-import Search from '@/components/Search';
-import Sidebar from '@/components/Sidebar';
+import SearchList from '@/pages/search/components/SearchList';
+import Search from '@/pages/search/components/Search';
+import Sidebar from '@/pages/search/components/Sidebar';
 
 const SearchPage = () => {
   return (
