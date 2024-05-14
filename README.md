@@ -1,5 +1,5 @@
 # Alltoon 
-#### 각 서비스(naver,kakao,kakaoPage) 웹툰을 모아놓은 Alltoon
+#### 각 서비스(naver,kakao,kakaoPage) 웹툰을 모아놓은 Alltoon 입니다.
 
 
 ## Language
