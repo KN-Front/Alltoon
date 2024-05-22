@@ -13,6 +13,10 @@
   <img src = "https://img.shields.io/badge/tailwindcss-06B6D4?style=flat&logo=tailwindcss&logoColor=white"/>
 </div>
 
+### ~ing
+  <img src = "https://img.shields.io/badge/next.js-06B6D4?style=flat&logo=next.js&logoColor=white"/> 
+
+
 ## Main
 ![image](https://github.com/KN-Front/Alltoon/assets/70560755/697d0227-a390-47d2-8b2d-c176c871a2be)
 
