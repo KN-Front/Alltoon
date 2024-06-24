@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import { service as serviceState } from '@/recoil/webtoon/atoms';
 
 const Service = () => {
-  const serviceList = ['naver', 'kakao', 'kakaoPage'];
+  const serviceList = ['NAVER', 'KAKAO', 'KAKAO_PAGE'];
   const [service, setService] = useRecoilState(serviceState);
   const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setService(e.target.value);

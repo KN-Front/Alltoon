@@ -6,7 +6,8 @@ import {
   webtoonInfo,
 } from '@/types/webtoon';
 
-const BASE_URL = 'https://korea-webtoon-api.herokuapp.com';
+const BASE_URL =
+  'https://korea-webtoon-api-cc7dda2f0d77.herokuapp.com/webtoons';
 
 async function fetchAPI<T>(apiUrl: string, params: object): Promise<T> {
   try {
@@ -39,5 +40,5 @@ export const getWebtoonInfo = (params: getWebtoonInfoParam) => {
  * @returns
  */
 export const getSearchWebtoonInfo = (params: getSearchWebtoonInfoParam) => {
-  return fetchAPI<webtoonInfo>(`${BASE_URL}/search`, params);
+  return fetchAPI<webtoonInfo>(BASE_URL, params);
 };

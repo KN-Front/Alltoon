@@ -10,9 +10,9 @@ import { useDayServiceWebtoonQuery } from '@/hooks/useDayServiceWebtoonQuery';
 
 const WebtoonList = () => {
   const updateDay = useRecoilValue(updateDayState);
-  const service = useRecoilValue(serviceState);
+  const provider = useRecoilValue(serviceState);
   const { data, isLoading, fetchNextPage, isFetchingNextPage } =
-    useDayServiceWebtoonQuery(updateDay, service);
+    useDayServiceWebtoonQuery(updateDay, provider);
 
   const handleScrollToBottom = () => {
     try {
@@ -33,7 +33,9 @@ const WebtoonList = () => {
             className="grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
           >
             {data?.pages.map((page) =>
-              page.webtoons.map((webtoon) => <WebtoonBox webtoon={webtoon} />),
+              page.webtoons.map((webtoon) => (
+                <WebtoonBox webtoon={webtoon} key={webtoon.id} />
+              )),
             )}
           </div>
         </div>

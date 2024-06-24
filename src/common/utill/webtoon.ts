@@ -7,7 +7,7 @@ export const countWebtoonsByService = (
   let count = 0;
 
   for (const webtoon of data.webtoons) {
-    if (webtoon.service === service) {
+    if (webtoon.provider === service) {
       count++;
     }
   }
@@ -20,21 +20,21 @@ export const filterByService = (searchService: string, data: webtoonInfo) => {
       return {
         ...data,
         webtoons: data.webtoons.filter(
-          (webtoon) => webtoon.service === 'naver',
+          (webtoon) => webtoon.provider === 'NAVER',
         ),
       };
     case 'KAKAO':
       return {
         ...data,
         webtoons: data.webtoons.filter(
-          (webtoon) => webtoon.service === 'kakao',
+          (webtoon) => webtoon.provider === 'KAKAO',
         ),
       };
     case 'KAKAOPAGE':
       return {
         ...data,
         webtoons: data.webtoons.filter(
-          (webtoon) => webtoon.service === 'kakaoPage',
+          (webtoon) => webtoon.provider === 'KAKAO_PAGE',
         ),
       };
     default:

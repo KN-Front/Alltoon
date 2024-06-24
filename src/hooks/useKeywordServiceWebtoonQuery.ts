@@ -29,9 +29,9 @@ export const useKeywordServiceWebtoonQuery = (
     },
     {
       select: (data) => {
-        setNaverWebtoonCount(countWebtoonsByService(data, 'naver'));
-        setKakaoWebtoonCount(countWebtoonsByService(data, 'kakao'));
-        setKakaoPageWebtoonCount(countWebtoonsByService(data, 'kakaoPage'));
+        setNaverWebtoonCount(countWebtoonsByService(data, 'NAVER'));
+        setKakaoWebtoonCount(countWebtoonsByService(data, 'KAKAO'));
+        setKakaoPageWebtoonCount(countWebtoonsByService(data, 'KAKAO_PAGE'));
         return filterByService(searchService, data);
       },
     },

@@ -1,5 +1,6 @@
 import React from 'react';
 import { webtoons } from '@/types';
+import { truncateString } from '@/common/utill/text';
 
 interface WebtoonBoxProps {
   webtoon: webtoons;
@@ -7,14 +8,14 @@ interface WebtoonBoxProps {
 
 const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon }) => {
   return (
-    <div key={webtoon._id} className="rounded">
+    <div className="rounded">
       <article>
         <div className="webtoonBox">
           <header>
             <a href={webtoon.url} target="_blank" rel="noopener noreferrer">
               <img
                 className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
-                src={webtoon.img}
+                src={webtoon.thumbnail[0]}
                 alt={webtoon.title}
               />
             </a>
@@ -26,7 +27,7 @@ const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon }) => {
                 title={webtoon.title}
                 className="line-clamp-1 font-extralight	text-sm text-[16px] text-slate-900 dark:text-white capitalize"
               >
-                {webtoon.title}
+                {truncateString(webtoon.title, 14)}
               </p>
             </a>
           </div>
@@ -35,7 +36,7 @@ const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon }) => {
               title={webtoon.author}
               className="line-clamp-1 mt-1 overflow-ellipsis font-extralight text-slate-500 dark:text-slate-400 text-sm"
             >
-              {webtoon.author}
+              {/* {truncateString(webtoon.author, 15)} */}
             </p>
           </div>
         </div>

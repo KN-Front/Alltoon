@@ -5,18 +5,18 @@ import { webtoonInfo } from '@/types';
 
 export const useDayServiceWebtoonQuery = (
   updateDay: string,
-  service: string,
+  provider: string,
   perPage: number = initialPageInfo.perPage,
   page: number = initialPageInfo.page,
 ) => {
   return useInfiniteQuery<webtoonInfo>({
-    queryKey: ['getWebtoonInfo', updateDay, service], // 요일별, 웹툰을 제공하는 서비스
+    queryKey: ['getWebtoonInfo', updateDay, provider], // 요일별, 웹툰을 제공하는 서비스
     queryFn: ({ pageParam = page }) => {
       // 웹툰 정보 api
       return getWebtoonInfo({
         page: pageParam,
         perPage: perPage,
-        service: service,
+        provider: provider,
         updateDay: updateDay,
       });
     },

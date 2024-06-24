@@ -36,6 +36,7 @@ const Sidebar = () => {
 
   const renderServiceOption = (serviceOption: ServiceOption) => (
     <div
+      key={serviceOption.id}
       className={`bg-zinc-700/10 justify-between button-animate p-2 px-3 text-sm flex cursor-pointer mt-2 rounded-sm hover:bg-zinc-700/20 ${
         service === serviceOption.id ? 'bg-zinc-700/50' : ''
       }`}
@@ -47,7 +48,7 @@ const Sidebar = () => {
   );
 
   return (
-    <div className="hidden lg:block w-60 h-[64rem] overflow-auto rounded-lg bg-zinc-200 border border-zinc-700/10 dark:bg-zinc-700/50">
+    <div className="hidden lg:block w-60 min-h-[64rem] overflow-auto rounded-lg bg-zinc-200 border border-zinc-700/10 dark:bg-zinc-700/50">
       <div className="p-4">
         <div className="flex flex-col mt-1 overflow-auto">
           {services.map(renderServiceOption)}

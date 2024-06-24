@@ -25,7 +25,9 @@ const SearchList = () => {
       id="body"
       className="w-full grid grid-cols-2 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-6 gap-4 p-4"
     >
-      {data?.webtoons.map((webtoon) => <WebtoonBox webtoon={webtoon} />)}
+      {data?.webtoons.map((webtoon) => (
+        <WebtoonBox key={webtoon.id} webtoon={webtoon} />
+      ))}
     </div>
   );
 };

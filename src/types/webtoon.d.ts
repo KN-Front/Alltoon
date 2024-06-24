@@ -1,7 +1,7 @@
 export interface getWebtoonInfoParam {
   page: number;
   perPage: number;
-  service: string;
+  provider: string;
   updateDay: string;
 }
 
@@ -16,6 +16,7 @@ export interface week {
 
 export interface webtoons {
   _id: string;
+  id: string;
   webtoonId: number;
   title: string;
   author: string;
@@ -25,6 +26,8 @@ export interface webtoons {
   updateDays: Array;
   fanCount: number | null;
   searchKeyword: string;
+  provider: string;
+  thumbnail: Array;
   additional: {
     new: boolean;
     rest: boolean;

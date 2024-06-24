@@ -20,7 +20,7 @@ export const weekWebtoon = atom({
 
 export const service = atom({
   key: 'service',
-  default: 'naver',
+  default: 'NAVER',
 });
 
 export const updateDay = atom({
