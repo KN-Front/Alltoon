@@ -49,7 +49,7 @@ export interface webtoonInfo {
 }
 
 export interface webtoonState {
-  service: Array<String>;
+  service: Array<string>;
   weeks: week[];
   weekWebtoon: webtoonInfo;
   allWebtoons: webtoons[];

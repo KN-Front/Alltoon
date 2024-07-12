@@ -1,7 +1,7 @@
 import React from 'react';
-import { week } from '@/types';
+import { week } from '@/types/webtoon';
 import { useRecoilState } from 'recoil';
-import { updateDay as updateDayState } from '@/recoil/webtoon/atoms';
+import { updateDay as updateDayState } from '@/store/atoms';
 
 const Weeks = () => {
   const weeks = [

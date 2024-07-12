@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from 'react-query';
-import { getWebtoonInfo } from '@/common/api/webtoonAPI';
+import { getWebtoonInfo } from '@/api/webtoonAPI';
 import { initialPageInfo } from '@/constants/initialValues';
-import { webtoonInfo } from '@/types';
+import { webtoonInfo } from '@/types/webtoon';
 
 export const useDayServiceWebtoonQuery = (
   updateDay: string,

@@ -1,5 +1,5 @@
 import { DarkMode } from '@/constants/darkMode';
-import { webtoonInfo } from '@/types';
+import { webtoonInfo } from '@/types/webtoon';
 import { atom } from 'recoil';
 
 const initialWebtoonInfo: webtoonInfo = {
@@ -58,10 +58,14 @@ export const kakaoPageWebtoonCount = atom({
   default: 0,
 });
 
+// export const darkMode = atom({
+//   key: 'darkMode',
+//   default:
+//     localStorage.getItem('theme') === DarkMode.ON ||
+//     (!('theme' in localStorage) &&
+//       window.matchMedia('(prefers-color-scheme: dark)').matches),
+// });
 export const darkMode = atom({
   key: 'darkMode',
-  default:
-    localStorage.getItem('theme') === DarkMode.ON ||
-    (!('theme' in localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches),
+  default: true,
 });

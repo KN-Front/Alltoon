@@ -1,11 +1,12 @@
+'use client';
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { searchService } from '@/recoil/webtoon/atoms';
+import { searchService } from '@/store/atoms';
 import {
   naverWebtoonCount as naverWebtoonCountState,
   kakaoWebtoonCount as kakaoWebtoonCountState,
   kakaoPageWebtoonCount as kakaoPageWebtoonCountState,
-} from '@/recoil/webtoon/atoms';
+} from '@/store/atoms';
 
 const Sidebar = () => {
   const [service, setService] = useRecoilState(searchService);

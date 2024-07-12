@@ -1,6 +1,6 @@
 import React from 'react';
-import { webtoons } from '@/types';
-import { truncateString } from '@/common/utill/text';
+import { webtoons } from '@/types/webtoon';
+import { truncateString } from '@/utils/text';
 
 interface WebtoonBoxProps {
   webtoon: webtoons;

@@ -1,6 +1,7 @@
+'use client';
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { service as serviceState } from '@/recoil/webtoon/atoms';
+import { service as serviceState } from '@/store/atoms';
 
 const Service = () => {
   const serviceList = ['NAVER', 'KAKAO', 'KAKAO_PAGE'];

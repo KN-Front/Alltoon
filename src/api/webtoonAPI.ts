@@ -1,4 +1,4 @@
-import { buildUrl } from '@/common/utill/api';
+import { buildUrl } from '@/utils/api';
 import axios from 'axios';
 import {
   getWebtoonInfoParam,

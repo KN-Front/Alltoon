@@ -1,14 +1,11 @@
-import { getSearchWebtoonInfo } from '@/common/api/webtoonAPI';
-import {
-  countWebtoonsByService,
-  filterByService,
-} from '@/common/utill/webtoon';
+import { getSearchWebtoonInfo } from '@/api/webtoonAPI';
+import { countWebtoonsByService, filterByService } from '@/utils/webtoon';
 import {
   kakaoPageWebtoonCount,
   kakaoWebtoonCount,
   naverWebtoonCount,
-} from '@/recoil/webtoon/atoms';
-import { webtoonInfo } from '@/types';
+} from '@/store/atoms';
+import { webtoonInfo } from '@/types/webtoon';
 import { useQuery } from 'react-query';
 import { useSetRecoilState } from 'recoil';
 

@@ -1,4 +1,4 @@
-import ThemeButton from '@/components/ThemeButton';
+import ThemeButton from './ThemeButton';
 
 const FloatingButtons: React.FC = () => {
   return (

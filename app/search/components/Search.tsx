@@ -1,6 +1,7 @@
+'use client';
 import React, { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { searchValue as searchValueState } from '@/recoil/webtoon/atoms';
+import { searchValue as searchValueState } from '@/store/atoms';
 
 const Search = () => {
   const [inputValue, setInputValue] = useState<string>('');

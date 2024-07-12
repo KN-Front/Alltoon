@@ -1,9 +1,11 @@
+'use client';
+
 import Loading from '@/components/WebtoonLoading';
 import { useRecoilValue } from 'recoil';
 import {
   service as serviceState,
   updateDay as updateDayState,
-} from '@/recoil/webtoon/atoms';
+} from '@/store/atoms';
 import ScrollDetector from '@/components/ScrollDetector';
 import WebtoonBox from '@/components/WebtoonBox';
 import { useDayServiceWebtoonQuery } from '@/hooks/useDayServiceWebtoonQuery';

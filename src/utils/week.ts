@@ -11,7 +11,7 @@ const week = [
 ];
 
 export const findWeekValueByKey = (key: string) => {
-  let findKey = week.find((day) => day.key === key);
+  const findKey = week.find((day) => day.key === key);
 
   return findKey === undefined ? '' : findKey;
 };

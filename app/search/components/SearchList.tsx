@@ -1,9 +1,10 @@
+'use client';
 import WebtoonLoading from '@/components/WebtoonLoading';
 import { useRecoilValue } from 'recoil';
 import {
   searchValue as searchValueState,
   searchService as searchServiceState,
-} from '@/recoil/webtoon/atoms';
+} from '@/store/atoms';
 import WebtoonBox from '@/components/WebtoonBox';
 import { useKeywordServiceWebtoonQuery } from '@/hooks/useKeywordServiceWebtoonQuery';
 
