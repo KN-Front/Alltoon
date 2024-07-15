@@ -32,12 +32,7 @@ const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon }) => {
             </a>
           </div>
           <div className="h-[12px] mt-1">
-            <p
-              title={webtoon.author}
-              className="line-clamp-1 mt-1 overflow-ellipsis font-extralight text-slate-500 dark:text-slate-400 text-sm"
-            >
-              {/* {truncateString(webtoon.author, 15)} */}
-            </p>
+            <p className="line-clamp-1 mt-1 overflow-ellipsis font-extralight text-slate-500 dark:text-slate-400 text-sm"></p>
           </div>
         </div>
       </article>
