@@ -20,25 +20,10 @@ async function fetchAPI<T>(apiUrl: string, params: object): Promise<T> {
   }
 }
 
-/**
- * 웹툰 정보 API
- * @param param {Object}
- * @param param.page {number} 페이지 번호
- * @param param.perPage {number} 한 페이지 결과 수
- * @param param.service {number} 웹툰 공급자
- * @param param.updateDay {string} 웹툰 업데이트 구분
- * @returns
- */
 export const getWebtoonInfo = (params: getWebtoonInfoParam) => {
   return fetchAPI<webtoonInfo>(BASE_URL, params);
 };
 
-/**
- * 웹툰 정보 검색 API
- * @param param {Object}
- * @param param.keyword {string} 	검색 키워드
- * @returns
- */
 export const getSearchWebtoonInfo = (params: getSearchWebtoonInfoParam) => {
   return fetchAPI<webtoonInfo>(BASE_URL, params);
 };
