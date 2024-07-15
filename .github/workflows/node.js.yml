@@ -45,4 +45,18 @@ jobs:
         with:
           name: build-artifacts
           path: build/
-      - run: npm run deploy
+      - name: Set deploy token
+        id: set-token
+        run: |
+          if [ "${{ github.actor }}" == "changonna" ]; then
+            echo "GH_TOKEN=${{ secrets.GH_TOKEN_CHANGONNA }}" >> $GITHUB_ENV;
+          elif [ "${{ github.actor }}" == "kwonyongjun1" ]; then
+            echo "GH_TOKEN=${{ secrets.GH_TOKEN_KWONYOUNGJUN1 }}" >> $GITHUB_ENV;
+          else
+            echo "Unknown user";
+            exit 1;
+          fi
+      - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ env.GH_TOKEN }}
+        run: gh-pages -d build
