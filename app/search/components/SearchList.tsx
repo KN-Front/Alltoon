@@ -1,20 +1,15 @@
 'use client';
 import WebtoonLoading from '@/components/WebtoonLoading';
-import { useRecoilValue } from 'recoil';
-import {
-  searchValue as searchValueState,
-  searchService as searchServiceState,
-} from '@/store/atoms';
+
 import WebtoonBox from '@/components/WebtoonBox';
 import { useKeywordServiceWebtoonQuery } from '@/hooks/useKeywordServiceWebtoonQuery';
+import { useAppState } from '@/hooks/useAppState';
 
 const SearchList = () => {
-  const searchValue = useRecoilValue(searchValueState);
-  const searchService = useRecoilValue(searchServiceState);
-
+  const { searchValue, searchProvider } = useAppState();
   const { isLoading, data } = useKeywordServiceWebtoonQuery(
     searchValue,
-    searchService,
+    searchProvider,
   );
 
   if (isLoading) {

@@ -1,11 +1,9 @@
-import { useRecoilState } from 'recoil';
-import { darkMode as darkModeState } from '@/store/atoms';
 import { useEffect } from 'react';
 import { DarkMode } from '@/constants/darkMode';
+import { useAppState } from '@/hooks/useAppState';
 
 const ThemeButton = () => {
-  const [darkMode, setDarkMode] = useRecoilState(darkModeState);
-
+  const { darkMode, setDarkMode } = useAppState();
   useEffect(() => {
     const themeClass = darkMode ? DarkMode.ON : DarkMode.OFF;
     if (typeof window !== 'undefined') {

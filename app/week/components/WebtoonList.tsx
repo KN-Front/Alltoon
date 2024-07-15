@@ -1,20 +1,15 @@
 'use client';
 
 import Loading from '@/components/WebtoonLoading';
-import { useRecoilValue } from 'recoil';
-import {
-  service as serviceState,
-  updateDay as updateDayState,
-} from '@/store/atoms';
 import ScrollDetector from '@/components/ScrollDetector';
 import WebtoonBox from '@/components/WebtoonBox';
 import { useDayServiceWebtoonQuery } from '@/hooks/useDayServiceWebtoonQuery';
+import { useAppState } from '@/hooks/useAppState';
 
 const WebtoonList = () => {
-  const updateDay = useRecoilValue(updateDayState);
-  const provider = useRecoilValue(serviceState);
+  const { updateDay, weekProvider } = useAppState();
   const { data, isLoading, fetchNextPage, isFetchingNextPage } =
-    useDayServiceWebtoonQuery(updateDay, provider);
+    useDayServiceWebtoonQuery(updateDay, weekProvider);
 
   const handleScrollToBottom = () => {
     try {

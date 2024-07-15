@@ -1,18 +1,15 @@
 'use client';
 import React from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { searchService } from '@/store/atoms';
-import {
-  naverWebtoonCount as naverWebtoonCountState,
-  kakaoWebtoonCount as kakaoWebtoonCountState,
-  kakaoPageWebtoonCount as kakaoPageWebtoonCountState,
-} from '@/store/atoms';
+import { useAppState } from '@/hooks/useAppState';
 
 const Sidebar = () => {
-  const [service, setService] = useRecoilState(searchService);
-  const naverWebtoonCount = useRecoilValue(naverWebtoonCountState);
-  const kakaoWebtoonCount = useRecoilValue(kakaoWebtoonCountState);
-  const kakaoPageWebtoonCount = useRecoilValue(kakaoPageWebtoonCountState);
+  const {
+    searchProvider,
+    setSearchProvider,
+    naverWebtoonCount,
+    kakaoWebtoonCount,
+    kakaoPageWebtoonCount,
+  } = useAppState();
 
   interface ServiceOption {
     id: string;
@@ -22,7 +19,7 @@ const Sidebar = () => {
 
   const services: ServiceOption[] = [
     {
-      id: 'ALL',
+      id: '',
       label: 'All',
       count: naverWebtoonCount + kakaoWebtoonCount + kakaoPageWebtoonCount,
     },
@@ -32,14 +29,14 @@ const Sidebar = () => {
   ];
 
   const handleServiceSelect = (serviceId: string) => {
-    setService(serviceId);
+    setSearchProvider(serviceId);
   };
 
   const renderServiceOption = (serviceOption: ServiceOption) => (
     <div
       key={serviceOption.id}
       className={`bg-zinc-700/10 justify-between button-animate p-2 px-3 text-sm flex cursor-pointer mt-2 rounded-sm hover:bg-zinc-700/20 ${
-        service === serviceOption.id ? 'bg-zinc-700/50' : ''
+        searchProvider === serviceOption.id ? 'bg-zinc-700/50' : ''
       }`}
       onClick={() => handleServiceSelect(serviceOption.id)}
     >

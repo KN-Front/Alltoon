@@ -3,8 +3,8 @@ import React from 'react';
 import Header from './layout/Header';
 import './global.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { RecoilRoot } from 'recoil';
 import FloatingButtons from './layout/FloatingButtons';
+import { GlobalProvider } from '@/store/GlobalContext';
 
 const queryClient = new QueryClient();
 
@@ -13,11 +13,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <html lang="kor">
       <body>
         <QueryClientProvider client={queryClient}>
-          <RecoilRoot>
+          <GlobalProvider>
             <Header />
             <FloatingButtons />
             {children}
-          </RecoilRoot>
+          </GlobalProvider>
         </QueryClientProvider>
       </body>
     </html>
