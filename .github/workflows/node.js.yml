@@ -59,4 +59,4 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           GH_TOKEN: ${{ env.GH_TOKEN }}
-        run: gh-pages -d build
+        run: npm run deploy
