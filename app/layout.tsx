@@ -11,14 +11,16 @@ const queryClient = new QueryClient();
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="kor">
-      <body>
-        <QueryClientProvider client={queryClient}>
-          <GlobalProvider>
-            <Header />
-            <FloatingButtons />
-            {children}
-          </GlobalProvider>
-        </QueryClientProvider>
+      <body className="flex justify-center items-center min-h-screen">
+        <div className="w-full max-w-[1430px] mx-auto p-4">
+          <QueryClientProvider client={queryClient}>
+            <GlobalProvider>
+              <Header />
+              <FloatingButtons />
+              {children}
+            </GlobalProvider>
+          </QueryClientProvider>
+        </div>
       </body>
     </html>
   );
