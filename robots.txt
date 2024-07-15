@@ -1,5 +1,3 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
-
-Sitemap: https://kn-front.github.io/Alltoon/sitemap.xml
