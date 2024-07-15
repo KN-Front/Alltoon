@@ -1,1 +1,1 @@
-export * from '@/types/webtoon';
+export * from '@types/webtoon';

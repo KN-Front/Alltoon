@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+'use client';
+import React, { useEffect, useRef } from 'react';
 
 interface ScrollDetectorProps {
   onScrollEvent: () => void;

@@ -1,7 +1,7 @@
 export interface getWebtoonInfoParam {
   page: number;
   perPage: number;
-  service: string;
+  provider: string;
   updateDay: string;
 }
 
@@ -15,46 +15,22 @@ export interface week {
 }
 
 export interface webtoons {
-  _id: string;
-  webtoonId: number;
+  id: string;
   title: string;
-  author: string;
-  url: string;
-  img: string;
-  service: string;
+  provider: string;
   updateDays: Array;
-  fanCount: number | null;
-  searchKeyword: string;
-  additional: {
-    new: boolean;
-    rest: boolean;
-    up: boolean;
-    adult: boolean;
-    singularityList: Array;
-  };
+  url: string;
+  thumbnail: Array;
+  isEnd: booleanl;
+  isFree: boolean;
+  isUpdated: boolean;
+  ageGrade: number;
+  freeWaitHour: number;
+  authors: Array;
 }
 
 export interface webtoonInfo {
-  totalWebtoonCount: number;
-  naverWebtoonCount: number;
-  kakaoWebtoonCount: number;
-  kakaoPageWebtoonCount: number;
-  updatedWebtoonCount: number;
-  createdWebtoonCount: number;
-  lastUpdate: string | null;
   webtoons: webtoons[];
-}
-
-export interface webtoonState {
-  service: Array<String>;
-  weeks: week[];
-  weekWebtoon: webtoonInfo;
-  allWebtoons: webtoons[];
-  naverWebtoons: webtoons[];
-  kakaoWebtoons: webtoons[];
-  kakaoPageWebtoons: webtoons[];
-  error: any | undefined;
-  searchParam: getWebtoonInfoParam;
-  loading: boolean;
-  searchService: string;
+  total: number;
+  isLastPage: boolean;
 }

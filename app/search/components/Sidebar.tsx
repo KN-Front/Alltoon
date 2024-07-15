@@ -1,17 +1,15 @@
+'use client';
 import React from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { searchService } from '@/recoil/webtoon/atoms';
-import {
-  naverWebtoonCount as naverWebtoonCountState,
-  kakaoWebtoonCount as kakaoWebtoonCountState,
-  kakaoPageWebtoonCount as kakaoPageWebtoonCountState,
-} from '@/recoil/webtoon/atoms';
+import { useAppState } from '@/hooks/useAppState';
 
 const Sidebar = () => {
-  const [service, setService] = useRecoilState(searchService);
-  const naverWebtoonCount = useRecoilValue(naverWebtoonCountState);
-  const kakaoWebtoonCount = useRecoilValue(kakaoWebtoonCountState);
-  const kakaoPageWebtoonCount = useRecoilValue(kakaoPageWebtoonCountState);
+  const {
+    searchProvider,
+    setSearchProvider,
+    naverWebtoonCount,
+    kakaoWebtoonCount,
+    kakaoPageWebtoonCount,
+  } = useAppState();
 
   interface ServiceOption {
     id: string;
@@ -21,7 +19,7 @@ const Sidebar = () => {
 
   const services: ServiceOption[] = [
     {
-      id: 'ALL',
+      id: '',
       label: 'All',
       count: naverWebtoonCount + kakaoWebtoonCount + kakaoPageWebtoonCount,
     },
@@ -31,13 +29,14 @@ const Sidebar = () => {
   ];
 
   const handleServiceSelect = (serviceId: string) => {
-    setService(serviceId);
+    setSearchProvider(serviceId);
   };
 
   const renderServiceOption = (serviceOption: ServiceOption) => (
     <div
+      key={serviceOption.id}
       className={`bg-zinc-700/10 justify-between button-animate p-2 px-3 text-sm flex cursor-pointer mt-2 rounded-sm hover:bg-zinc-700/20 ${
-        service === serviceOption.id ? 'bg-zinc-700/50' : ''
+        searchProvider === serviceOption.id ? 'bg-zinc-700/50' : ''
       }`}
       onClick={() => handleServiceSelect(serviceOption.id)}
     >
@@ -47,7 +46,7 @@ const Sidebar = () => {
   );
 
   return (
-    <div className="hidden lg:block w-60 h-[64rem] overflow-auto rounded-lg bg-zinc-200 border border-zinc-700/10 dark:bg-zinc-700/50">
+    <div className="hidden lg:block w-60 min-h-[64rem] overflow-auto rounded-lg bg-zinc-200 border border-zinc-700/10 dark:bg-zinc-700/50">
       <div className="p-4">
         <div className="flex flex-col mt-1 overflow-auto">
           {services.map(renderServiceOption)}

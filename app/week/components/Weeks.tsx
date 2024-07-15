@@ -1,7 +1,6 @@
 import React from 'react';
-import { week } from '@/types';
-import { useRecoilState } from 'recoil';
-import { updateDay as updateDayState } from '@/recoil/webtoon/atoms';
+import { week } from '@/types/webtoon';
+import { useAppState } from '@/hooks/useAppState';
 
 const Weeks = () => {
   const weeks = [
@@ -13,7 +12,7 @@ const Weeks = () => {
     { key: 'sat', value: '토' },
     { key: 'sun', value: '일' },
   ];
-  const [updateDay, setUpdateDay] = useRecoilState(updateDayState);
+  const { updateDay, setUpdateDay } = useAppState();
 
   const handleWeekClick = (week: week) => {
     setUpdateDay(week.key);

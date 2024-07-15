@@ -1,10 +1,10 @@
+'use client';
 import React, { useState } from 'react';
-import { useSetRecoilState } from 'recoil';
-import { searchValue as searchValueState } from '@/recoil/webtoon/atoms';
+import { useAppState } from '@/hooks/useAppState';
 
 const Search = () => {
   const [inputValue, setInputValue] = useState<string>('');
-  const setSearchValue = useSetRecoilState(searchValueState);
+  const { setSearchValue } = useAppState();
 
   const setKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);

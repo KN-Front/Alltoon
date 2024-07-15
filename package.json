@@ -1,6 +1,6 @@
 {
   "homepage": "https://kn-front.github.io/Alltoon/",
-  "name": "Alltoon",
+  "name": "alltoon",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,15 +16,15 @@
     "@types/react-dom": "^18.2.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.3",
+    "next": "^14.2.5",
     "query-string": "^8.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-loading-skeleton": "^3.4.0",
     "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
-    "recoil": "^0.7.7",
     "tailwindcss": "3.3.2",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -32,8 +32,11 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "craco start",
-    "build": "craco build",
+    "start": "next start",
+    "build": "next build",
+    "dev": "next dev",
+    "export": "next export",
+    "lint": "next lint",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -57,6 +60,7 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
+    "@next/eslint-plugin-next": "^14.2.5",
     "autoprefixer": "^10.4.18",
     "eslint-config-prettier": "^9.1.0",
     "gh-pages": "^6.1.1",
