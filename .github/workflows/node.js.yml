@@ -1,19 +1,15 @@
 name: Node.js CI
-
 on:
   push:
     branches: ['master']
   pull_request:
     branches: ['master']
-
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [20.x]
-
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
@@ -22,6 +18,37 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
+      - run: npm run build --if-present
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: build/
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: git config
+        env:
+          USER_NAME: ${{ github.event.pusher.name }}
+          USER_EMAIL: ${{ github.event.pusher.email }}
+        run: |
+          git config --global user.email "$USER_EMAIL"
+          git config --global user.name "$USER_NAME"
+          echo "Configured Git user.name: $(git config --global --get user.name)"
+          echo "Configured Git user.email: $(git config --global --get user.email)"
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+          cache: 'npm'
+      - run: npm ci
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: build/
       - name: Set deploy token
         id: set-token
         run: |
@@ -33,13 +60,6 @@ jobs:
             echo "Unknown user";
             exit 1;
           fi
-      - name: Configure Git
-        env:
-          USER_NAME: ${{ github.event.pusher.name }}
-          USER_EMAIL: ${{ github.event.pusher.email }}
-        run: |
-          git config --global user.email "$USER_EMAIL"
-          git config --global user.name "$USER_NAME"
       - name: Deploy to GitHub Pages
         env:
           GH_TOKEN: ${{ env.GH_TOKEN }}
