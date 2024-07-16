@@ -1,9 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css);
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 400;
+  src: url('/fonts/SpoqaHanSansNeo-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  src: url('/fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 700;
+  src: url('/fonts/SpoqaHanSansNeo-Bold.woff2') format('woff2');
+}
+
+body {
+  @apply font-sans;
+}
 
 body {
   @apply text-black dark:text-white dark:bg-black;
@@ -114,16 +135,7 @@ button .ripple {
 }
 
 * {
-  font-family: 'Poppins', sans-serif;
-  font-feature-settings:
-    'liga' 0,
-    'ordn' 0,
-    'pnum' 0,
-    'salt' 0,
-    'ss01' 0,
-    'ss02' 0,
-    'tnum' 0,
-    'ss03' 1;
+  @apply font-sans;
 }
 
 .card-bg {

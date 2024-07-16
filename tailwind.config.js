@@ -4,6 +4,9 @@ module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Spoqa Han Sans Neo', 'sans-serif'],
+      },
       colors: {
         dark: {
           bg: '#000000',
