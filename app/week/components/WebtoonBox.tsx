@@ -17,6 +17,7 @@ const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon }) => {
                 className="absolute w-full h-full inset-0 transform translate-z-0 backface-hidden object-cover image-optimize-contrast text-transparent"
                 src={webtoon.thumbnail[0]}
                 alt={webtoon.title}
+                title={webtoon.title}
               />
             </a>
           </div>
