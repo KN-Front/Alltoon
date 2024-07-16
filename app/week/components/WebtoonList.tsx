@@ -20,7 +20,7 @@ const WebtoonList = () => {
   };
 
   return (
-    <section className="relative bg-white mb-20 mx-auto ">
+    <section className="relative bg-white mb-20 mx-auto dark:bg-black">
       <div>
         {isLoading ? (
           <Loading />

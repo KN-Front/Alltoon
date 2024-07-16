@@ -24,7 +24,7 @@ const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon }) => {
       </div>
       <div className="flex flex-col mt-2">
         <div className="flex">
-          <div className="overflow-hidden text-ellipsis text-base leading-tight text-[#1b1b1b] text-left tracking-tightest whitespace-nowrap max-h-[33px]">
+          <div className="overflow-hidden text-ellipsis text-base leading-tight text-[#1b1b1b] text-left tracking-tightest whitespace-nowrap max-h-[33px] dark:text-white">
             <a title={webtoon.title} href={webtoon.url}>
               {webtoon.title}
             </a>
