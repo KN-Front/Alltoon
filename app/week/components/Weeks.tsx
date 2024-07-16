@@ -19,7 +19,7 @@ const Weeks = () => {
   };
 
   return (
-    <section className="relative flex mb-5 h-10 border-b border-gray-300">
+    <section className="relative flex mb-5 mt-5 h-10 border-b border-gray-300">
       <ul className="p-0 flex flex-row w-full items-center justify-between m-0 h-10 font-medium">
         {weeks.map((item) => (
           <li

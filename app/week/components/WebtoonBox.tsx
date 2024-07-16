@@ -23,35 +23,10 @@ const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon }) => {
       <div className="flex flex-col mt-2">
         <div className="flex">
           <div className="overflow-hidden text-ellipsis text-base leading-tight text-[#1b1b1b] text-left tracking-tightest whitespace-nowrap max-h-[33px]">
-            {webtoon.title}
+            <a title={webtoon.title}>{webtoon.title}</a>
           </div>
         </div>
       </div>
-
-      {/* 
-      <article>
-          <div className="webtoonBox">
-            <header>
-              <a href={webtoon.url} target="_blank" rel="noopener noreferrer">
-                <img
-                  className="rounded bg-zinc-700/50 w-[500px] h-[260px]"
-                  src={webtoon.thumbnail[0]}
-                  alt={webtoon.title}
-                />
-              </a>
-            </header>
-          </div>
-        </article> */}
-      {/* <div className="w-[300px] h-[17px] mt-4">
-        <a href={webtoon.url} target="_blank" rel="noopener noreferrer">
-          <p
-            title={webtoon.title}
-            className="line-clamp-1 font-extralight	text-sm text-[16px] text-slate-900 dark:text-white capitalize"
-          >
-            {truncateString(webtoon.title, 14)}
-          </p>
-        </a>
-      </div> */}
     </li>
   );
 };
