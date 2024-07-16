@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <header className="mx-auto justify-center lg:px-24 px-6 relative w-full h-24 lg:mb-0 mb-8 lg:grid grid-cols-1 lg:grid-cols-12">
+    <header className="mx-auto justify-center px-6 md:px-24  relative w-full h-24 md:mb-0 mb-8 md:grid grid-cols-1 md:grid-cols-12">
       <div className="text-black font-medium flex col-span-2 lg:justify-start justify-center items-center mx-auto mt-6  dark:text-dark-white">
         <a> Alltoon </a>
       </div>
