@@ -21,17 +21,17 @@ const Search = () => {
   };
 
   return (
-    <div className="browse-banner bg-zinc-200 rounded-lg dark:bg-zinc-700/50 ">
+    <div className="rounded-lg browse-banner bg-zinc-200 dark:bg-zinc-700/50 ">
       <div
         id="body"
-        className="relative items-center text-center flex mx-auto justify-center"
+        className="relative flex items-center justify-center mx-auto text-center"
       >
         <div className="flex flex-col mt-16">
-          <h1 className="text-slate-900 dark:text-dark-white text-2xl font-semibold">
+          <h1 className="font-semibold text-slate-900 dark:text-dark-white md:text-xl lg:text-2xl">
             Find the webtoons you're looking for!
           </h1>
           <div className=" flex space-x-2 mt-3.5  text-center items-center mx-auto bg-white dark:bg-dark-bg-third border border-zinc-700/20 px-4 rounded-lg">
-            <div className="absolute justify-center space-x-4 mr-4">
+            <div className="absolute justify-center mr-4 space-x-4">
               <button
                 onClick={() => {
                   search();
