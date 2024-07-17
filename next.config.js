@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export', // 정적 사이트로 내보내기 설정
-  cleanDistDir: true, // 빌드 전에 기존 디렉토리 삭제
+  output: 'export',
+  assetPrefix: isProd ? 'https://kn-front.github.io/Alltoon/' : '',
 };
 
 module.exports = nextConfig;
