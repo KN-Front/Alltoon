@@ -1,5 +1,5 @@
 {
-  "homepage": "https://kn-front.github.io/Alltoon/",
+  "homepage": "https://kn-front.github.io/Alltoon",
   "name": "alltoon",
   "version": "0.1.0",
   "private": true,
@@ -30,13 +30,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "clean": "rimraf out",
-    "predeploy": "npm run clean && npm run build",
-    "deploy": "gh-pages -d out",
+    "predeploy": "npm run build",
+    "deploy": "type nul > out/.nojekyll && gh-pages -d out",
     "start": "npx serve@latest out",
     "build": "next build",
     "dev": "next dev",
-    "export": "next export",
     "lint": "next lint",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
