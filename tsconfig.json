@@ -18,13 +18,31 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
-    "src"
+    "src",
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "app",
+    "app",
+    "out/types/**/*.ts"
   ],
   "ts-node": {
-    "require": ["tsconfig-paths/register"]
+    "require": [
+      "tsconfig-paths/register"
+    ]
   },
-  "extends": "./tsconfig.paths.json"
+  "extends": "./tsconfig.paths.json",
+  "exclude": [
+    "node_modules"
+  ]
 }
