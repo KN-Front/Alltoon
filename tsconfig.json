@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -29,11 +33,16 @@
     "**/*.ts",
     "**/*.tsx",
     "app",
-    "app"
+    "app",
+    "out/types/**/*.ts"
   ],
   "ts-node": {
-    "require": ["tsconfig-paths/register"]
+    "require": [
+      "tsconfig-paths/register"
+    ]
   },
   "extends": "./tsconfig.paths.json",
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
