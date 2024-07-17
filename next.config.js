@@ -11,6 +11,9 @@ const nextConfig = {
     unoptimized: true,
   },
   distDir: 'out',
+  env: {
+    BASE_URL: isProd ? '/Alltoon' : '',
+  },
 };
 
 module.exports = nextConfig;

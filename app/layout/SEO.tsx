@@ -1,6 +1,8 @@
 import Head from 'next/head';
 
 const SEO = () => {
+  const baseURL = process.env.BASE_URL || '';
+
   return (
     <Head>
       <meta charSet="UTF-8" />
@@ -12,7 +14,12 @@ const SEO = () => {
         name="description"
         content="올툰에서는 네이버 웹툰, 카카오 웹툰, 카카오페이지 웹툰을 모두 즐길 수 있습니다. 다양한 웹툰을 한 곳에서 만나보세요!"
       />
-      <link rel="icon" href="/favicon.ico" sizes="16x16" type="image/x-icon" />
+      <link
+        rel="icon"
+        href={`${baseURL}/favicon.ico`}
+        sizes="16x16"
+        type="image/x-icon"
+      />
       <meta property="og:type" content="website" />
       <meta
         property="og:title"

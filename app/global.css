@@ -7,19 +7,19 @@
 @font-face {
   font-family: 'Spoqa Han Sans Neo';
   font-weight: 400;
-  src: url('/fonts/SpoqaHanSansNeo-Regular.woff2') format('woff2');
+  src: url('/Alltoon/fonts/SpoqaHanSansNeo-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Spoqa Han Sans Neo';
   font-weight: 500;
-  src: url('/fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
+  src: url('/Alltoon/fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Spoqa Han Sans Neo';
   font-weight: 700;
-  src: url('/fonts/SpoqaHanSansNeo-Bold.woff2') format('woff2');
+  src: url('/Alltoon/fonts/SpoqaHanSansNeo-Bold.woff2') format('woff2');
 }
 
 body {
