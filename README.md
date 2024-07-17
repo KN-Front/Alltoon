@@ -11,8 +11,12 @@
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white"/>
   <img src = "https://img.shields.io/badge/recoil-3578E5?style=flat&logo=recoil&logoColor=white"/> 
   <img src = "https://img.shields.io/badge/reactquery-FF4154?style=flat&logo=reactquery&logoColor=white"/> 
-  <img src = "https://img.shields.io/badge/tailwindcss-06B6D4?style=flat&logo=tailwindcss&logoColor=white"/> 
+  <img src = "https://img.shields.io/badge/tailwindcss-06B6D4?style=flat&logo=tailwindcss&logoColor=white"/>
 </div>
+
+### ~ing
+
+  <img src = "https://img.shields.io/badge/next.js-06B6D4?style=flat&logo=next.js&logoColor=white"/>
 
 ## Main
 
