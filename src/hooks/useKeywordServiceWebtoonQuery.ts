@@ -22,10 +22,12 @@ export const useKeywordServiceWebtoonQuery = (
       });
     },
     {
-      select: (data) => {
+      onSuccess: (data) => {
         setNaverWebtoonCount(countWebtoonsByService(data, 'NAVER'));
         setKakaoWebtoonCount(countWebtoonsByService(data, 'KAKAO'));
         setKakaoPageWebtoonCount(countWebtoonsByService(data, 'KAKAO_PAGE'));
+      },
+      select: (data) => {
         return filterByService(searchService, data);
       },
     },
