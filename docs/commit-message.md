@@ -68,11 +68,11 @@ Type은 Commit의 종류를 나타냅니다.
 |perf|**성능 개선**|⚡️|⚡ perf(api): optimize database query for faster response|
 |refactor|기능 추가(feat), 버그수정(fix), 성능 개선(perf)을 제외한 코드 수정|♻️|♻️ refactor(api): simplify error handling|
 |style|code style 변경(Code Formatting, 세미콜론(;) 누락 등)|🎨|🎨 style: format code according to style guidelines|
-|design|사용자 UI 디자인 변경 (CSS 등)|💄|💄 style(ui): update button styles|
+|design|사용자 UI 디자인 변경 (CSS 등)|💄|💄 design(ui): update button styles|
 |test|test code, refactoring test code 추가|🧪|🧪 test(api): add unit tests for authentication service|
 |revert|이전 커밋으로 회귀할 때|⏪️|⏪ revert: undo last commit|
-|build|빌드 파일 또는 외부 종속성에 영향을 미치는 수정|~~💚~~|
-|ci|CI 설정 파일 수정|
+|build|빌드 파일 또는 외부 종속성에 영향을 미치는 수정|🛠️|🛠️ build(dependencies): update npm packages
+|ci|CI 설정 파일 수정|🔄|🔄 ci(workflow): modify GitHub Actions workflow
 |chore|빌드 업무 수정, 패키지 매니저 수정(.gitignore 수정 같은 경우)|⬆️⬇️|⬆️ chore(dependencies): Update axios to version 1.6.4
 |rename|파일 혹은 폴더명을 수정한 경우|🚚|🚚 rename: change component file names
 |remove|파일을 삭제한 경우|🔥|🔥 remove: delete obsolete utility functions
