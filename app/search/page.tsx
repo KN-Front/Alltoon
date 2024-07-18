@@ -4,11 +4,13 @@ import Sidebar from './components/Sidebar';
 
 const SearchPage = () => {
   return (
-    <div className="lg:px-24 mx-auto justify-center lg:mt-8 pt-10 overflow-hidden">
+    <div className="justify-center px-4 pt-10 mx-auto mt-8 overflow-hidden md:px-24">
       <Search />
-      <div className="body mt-4 flex flew-row space-x-4">
+      <div className="flex flex-col mt-4 md:flex-row">
         <Sidebar />
-        <SearchList />
+        <div className="flex-1 mt-4 md:ml-4 md:mt-0">
+          <SearchList />
+        </div>
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [weekProvider, setWeekProvider] = useState('NAVER');
   const [updateDay, setUpdateDay] = useState('mon');
   const [searchValue, setSearchValue] = useState('');
-  const [searchProvider, setSearchProvider] = useState('ALL');
+  const [searchProvider, setSearchProvider] = useState('All');
   const [naverWebtoonCount, setNaverWebtoonCount] = useState(0);
   const [kakaoWebtoonCount, setKakaoWebtoonCount] = useState(0);
   const [kakaoPageWebtoonCount, setKakaoPageWebtoonCount] = useState(0);
