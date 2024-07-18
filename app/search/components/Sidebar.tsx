@@ -47,7 +47,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="hidden lg:block w-60 min-h-[64rem] overflow-auto rounded-lg bg-zinc-200 border border-zinc-700/10 dark:bg-zinc-700/50">
+      <div className="hidden md:block w-52 min-h-[64rem] overflow-auto rounded-lg bg-zinc-200 border border-zinc-700/10 dark:bg-zinc-700/50">
         <div className="p-4">
           <div className="flex flex-col mt-1 overflow-auto">
             {services.map(renderServiceOption)}
@@ -55,7 +55,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <section className="items-center block gap-2 p-4 lg:hidden">
+      <section className="items-center block gap-2 p-4 md:hidden">
         <div className="flex items-center gap-2 p-4 bounded-lg b dark:border-zinc-500">
           {services.map((service) => (
             <button

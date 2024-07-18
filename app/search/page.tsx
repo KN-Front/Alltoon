@@ -6,7 +6,7 @@ const SearchPage = () => {
   return (
     <div className="justify-center px-24 pt-10 mx-auto mt-8 overflow-hidden">
       <Search />
-      <div className="mt-4 lg:flex body flew-row">
+      <div className="mt-4 md:flex">
         <Sidebar />
         <SearchList />
       </div>

@@ -22,10 +22,7 @@ const Search = () => {
 
   return (
     <div className="rounded-lg browse-banner bg-zinc-200 dark:bg-zinc-700/50 ">
-      <div
-        id="body"
-        className="relative flex items-center justify-center mx-auto text-center"
-      >
+      <div className="relative flex items-center justify-center mx-auto text-center">
         <div className="flex flex-col mt-16">
           <h1 className="font-semibold text-slate-900 dark:text-dark-white md:text-xl lg:text-2xl">
             Find the webtoons you're looking for!
