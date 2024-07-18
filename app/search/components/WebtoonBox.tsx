@@ -7,19 +7,27 @@ interface WebtoonBoxProps {
 
 const WebtoonBox: React.FC<WebtoonBoxProps> = ({ webtoon }) => {
   return (
-    <li className="flex flex-col cursor-pointer list-non4 md:w-[120px] lg:w-[140px] w-[120px] box-content tap-highlight-transparent">
-      <div className="relative flex flex-col border-none rounded-none">
-        <span className="relative z-10 flex w-full overflow-hidden rounded-lg">
-          <div className="relative z-10 flex w-full h-[160px] md:h-[180px] lg:h-[200px] overflow-hidden bg-transparent rounded-lg animate-none backface-hidden">
-            <img
-              className="inset-0 object-cover w-full h-full text-transparent transform translate-z-0 backface-hidden image-optimize-contrast"
-              src={webtoon.thumbnail[0]}
-              alt={webtoon.title}
-            ></img>
-          </div>
-        </span>
+    <div className="flex items-center p-2 border border-gray-200 rounded-md shadow-sm">
+      <div className="flex-none w-[60px] h-[60px] overflow-hidden rounded-lg">
+        <a href={webtoon.url}>
+          <img
+            className="object-cover w-full h-full"
+            src={webtoon.thumbnail[0]}
+            alt={webtoon.title}
+          />
+        </a>
       </div>
-    </li>
+      <div className="flex flex-col ml-4">
+        <div className="text-sm font-bold text-black dark:text-white">
+          <a href={webtoon.url} title={webtoon.title}>
+            {webtoon.title}
+          </a>
+        </div>
+        <div className="text-xs text-gray-500 dark:text-gray-400">
+          {webtoon.authors.join(', ')}
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -17,7 +17,7 @@ const SearchList = () => {
   }
 
   return (
-    <div className="flex flex-wrap w-full gap-4 p-4 place-content-center">
+    <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2">
       {data?.webtoons.map((webtoon) => (
         <WebtoonBox key={webtoon.id} webtoon={webtoon} />
       ))}
