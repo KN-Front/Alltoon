@@ -22,7 +22,6 @@ const Search = () => {
 
   return (
     <div>
-      {/* md 이상 */}
       <div className="hidden rounded-lg md:block browse-banner bg-zinc-200 dark:bg-zinc-700/50 ">
         <div
           id="body"
@@ -56,7 +55,7 @@ const Search = () => {
 
       <div className="flex items-center block p-4 rounded-lg md:hidden bg-zinc-200 dark:bg-zinc-700/50">
         <input
-          className="flex-1 bg-transparent border-none text-slate-900 dark:text-dark-white focus:outline-none"
+          className="flex-1 text-xs bg-transparent border-none text-slate-900 dark:text-dark-white focus:outline-none sm:text-sm"
           placeholder="제목, 작가명"
           onChange={setKeyword}
           onKeyDown={handleEnter}
@@ -64,7 +63,7 @@ const Search = () => {
         />
         <button
           onClick={search}
-          className="ml-2 text-light-text dark:text-dark-white"
+          className="ml-2 text-xs text-light-text dark:text-dark-white sm:text-sm"
         >
           검색
         </button>
