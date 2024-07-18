@@ -8,6 +8,16 @@ module.exports = {
         sans: ['Spoqa Han Sans Neo', 'sans-serif'],
       },
       colors: {
+        light: {
+          bg: '#ffffff',
+          text: '#000000',
+          primary: '#1f2937', // gray-800
+          secondary: '#4b5563', // gray-600
+          third: '#9ca3af', // gray-400
+          'bg-primary': '#ffffff',
+          'bg-secondary': '#e5e7eb', // gray-200
+          'bg-third': '#f9fafb', // gray-50
+        },
         dark: {
           bg: '#000000',
           white: '#ffffff',
