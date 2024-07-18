@@ -19,19 +19,21 @@ const Weeks = () => {
   };
 
   return (
-    <div className="col-span-8 space-x-8 lg:mt-0 mt-4 justify-left flex items-center mx-auto h-24 p-14">
-      {weeks.map((item) => (
-        <div
-          className={`relative text-gray-400 font-medium transition-all duration-200 hover:text-slate-900 dark:hover:text-white cursor-pointer ${
-            item.key === updateDay ? 'text-slate-900 dark:text-white' : ''
-          }`}
-          key={item.key}
-          onClick={() => handleWeekClick(item)}
-        >
-          {item.key}
-        </div>
-      ))}
-    </div>
+    <section className="relative flex mb-5 mt-5 h-10 border-b border-gray-300">
+      <ul className="p-0 flex flex-row w-full items-center justify-between m-0 h-10 font-medium">
+        {weeks.map((item) => (
+          <li
+            className={`flex w-full h-full items-center text-gray-400 justify-center cursor-pointer text-base leading-snug hover:text-slate-900 dark:hover:text-white ${
+              item.key === updateDay ? 'text-slate-900 dark:text-white' : ''
+            }`}
+            key={item.key}
+            onClick={() => handleWeekClick(item)}
+          >
+            {item.key}
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 

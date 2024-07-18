@@ -27,3 +27,23 @@ export const getUpdateWeekArrayToString = (updateWeek: Array<string>) => {
     })
     .join(',');
 };
+
+export const getCurrentDayOfWeek = (lang: string): string => {
+  const days_kor = [
+    '일요일',
+    '월요일',
+    '화요일',
+    '수요일',
+    '목요일',
+    '금요일',
+    '토요일',
+  ];
+  const days_eng = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+
+  const today = new Date().getDay();
+  if (lang === 'kor') {
+    return days_kor[today];
+  } else {
+    return days_eng[today];
+  }
+};

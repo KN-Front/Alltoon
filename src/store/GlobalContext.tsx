@@ -18,6 +18,8 @@ interface ContextProps {
   setKakaoPageWebtoonCount: React.Dispatch<React.SetStateAction<number>>;
   darkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  currentMenu: string;
+  setCurrentMenu: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const GlobalContext = createContext<ContextProps | null>(null);
@@ -26,11 +28,12 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [weekProvider, setWeekProvider] = useState('NAVER');
   const [updateDay, setUpdateDay] = useState('mon');
   const [searchValue, setSearchValue] = useState('');
-  const [searchProvider, setSearchProvider] = useState('ALL');
+  const [searchProvider, setSearchProvider] = useState('All');
   const [naverWebtoonCount, setNaverWebtoonCount] = useState(0);
   const [kakaoWebtoonCount, setKakaoWebtoonCount] = useState(0);
   const [kakaoPageWebtoonCount, setKakaoPageWebtoonCount] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
+  const [currentMenu, setCurrentMenu] = useState('week');
   return (
     <GlobalContext.Provider
       value={{
@@ -50,6 +53,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
         setKakaoPageWebtoonCount,
         darkMode,
         setDarkMode,
+        currentMenu,
+        setCurrentMenu,
       }}
     >
       {children}
