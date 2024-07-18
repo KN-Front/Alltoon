@@ -56,10 +56,10 @@ const Sidebar = () => {
       </div>
 
       <section className="p-4 md:hidden">
-        <div className="flex items-center gap-2 p-4 bounded-lg b dark:border-zinc-500">
+        <div className="flex items-center gap-2 dark:border-zinc-500">
           {services.map((service) => (
             <button
-              className={`text-xs md:text-base px-4 py-2 rounded-full border border-gray-300 text-gray-400 hover:bg-black hover:text-white dark:bg-black dark:hover:bg-white dark:hover:text-black transition-colors duration-300 ${
+              className={`px-2 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-full border border-gray-300 text-gray-400 hover:bg-black hover:text-white dark:bg-black dark:hover:bg-white dark:hover:text-black transition-colors duration-300 ${
                 searchProvider === service.id
                   ? 'bg-black text-white dark:text-black dark:bg-white'
                   : 'text-black dark:text-gray-400'
