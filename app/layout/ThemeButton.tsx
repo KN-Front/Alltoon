@@ -3,15 +3,18 @@ import { DarkMode } from '@/constants/darkMode';
 
 const ThemeButton = () => {
   const getInitialTheme = () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme === DarkMode.ON;
-    } else {
-      const prefersDark = window.matchMedia(
-        '(prefers-color-scheme: dark)',
-      ).matches;
-      return prefersDark;
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme === DarkMode.ON;
+      } else {
+        const prefersDark = window.matchMedia(
+          '(prefers-color-scheme: dark)',
+        ).matches;
+        return prefersDark;
+      }
     }
+    return false;
   };
 
   const [darkMode, setDarkMode] = useState(getInitialTheme);
