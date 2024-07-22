@@ -1,15 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DarkMode } from '@/constants/darkMode';
-import { useAppState } from '@/hooks/useAppState';
 
 const ThemeButton = () => {
-  const { darkMode, setDarkMode } = useAppState();
+  const getInitialTheme = () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === DarkMode.ON;
+    } else {
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches;
+      return prefersDark;
+    }
+  };
+
+  const [darkMode, setDarkMode] = useState(getInitialTheme);
+
   useEffect(() => {
     const themeClass = darkMode ? DarkMode.ON : DarkMode.OFF;
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', themeClass);
-    }
-
+    localStorage.setItem('theme', themeClass);
     document.documentElement.classList.toggle(DarkMode.ON, darkMode);
   }, [darkMode]);
 
