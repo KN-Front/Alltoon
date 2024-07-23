@@ -1,4 +1,5 @@
 import './global.css';
+import ClientLayout from './layout/ClientLayout';
 
 export const metadata = {
   title: '올툰 | 네이버 웹툰, 카카오 웹툰, 카카오페이지 웹툰 모두 여기서!',
@@ -43,7 +44,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ko">
       <body className="flex justify-center min-h-screen">
-        <div className="w-full max-w-[1430px] mx-auto md:p-4">{children}</div>
+        <div className="w-full max-w-[1430px] mx-auto md:p-4">
+          <ClientLayout>{children}</ClientLayout>
+        </div>
       </body>
     </html>
   );
