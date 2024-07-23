@@ -10,9 +10,7 @@ const Search = () => {
   const debounceSearchTerm = useDebounce(inputValue, 500);
 
   useEffect(() => {
-    if (debounceSearchTerm) {
-      setSearchValue(debounceSearchTerm);
-    }
+    setSearchValue(debounceSearchTerm);
   }, [debounceSearchTerm, setSearchValue]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
