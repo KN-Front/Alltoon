@@ -1,8 +1,8 @@
 import React from 'react';
-import WeekPage from './week/page';
+import ClientLayout from './layout/ClientLayout';
 
-const HomePage = () => {
-  return <WeekPage />;
+const HomePage = ({ children }: { children: React.ReactNode }) => {
+  return <ClientLayout>{children}</ClientLayout>;
 };
 
 export default HomePage;
