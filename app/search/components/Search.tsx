@@ -1,23 +1,20 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAppState } from '@/hooks/useAppState';
+import useDebounce from '@/hooks/useDebounce';
 
 const Search = () => {
-  const [inputValue, setInputValue] = useState<string>('');
   const { setSearchValue } = useAppState();
+  const [inputValue, setInputValue] = useState('');
 
-  const setKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const debounceSearchTerm = useDebounce(inputValue, 500);
+
+  useEffect(() => {
+    setSearchValue(debounceSearchTerm);
+  }, [debounceSearchTerm, setSearchValue]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-  };
-
-  const search = () => {
-    setSearchValue(inputValue);
-  };
-
-  const handleEnter = (e: any) => {
-    if (e.key === 'Enter') {
-      setSearchValue(inputValue);
-    }
   };
 
   return (
@@ -33,20 +30,15 @@ const Search = () => {
             </h1>
             <div className="flex space-x-2 mt-3.5 text-center items-center mx-auto bg-white dark:bg-dark-bg-third border border-zinc-700/20 px-4 rounded-lg">
               <div className="absolute justify-center mr-4 space-x-4">
-                <button
-                  onClick={() => {
-                    search();
-                  }}
-                >
-                  oo
+                <button>
+                  oo<i className="fa-solid fa-search text-[17px] mt-1"></i>
                 </button>
-                <i className="fa-solid fa-search text-[17px] mt-1"></i>
               </div>
               <input
                 className="text-slate-900 dark:text-dark-white bg-zinc-700/20 navbar-input px-6 border !w-[18rem] lg:!w-[32rem] border-zinc-700/10"
                 placeholder="Search Webtoon"
-                onChange={setKeyword}
-                onKeyDown={handleEnter}
+                onChange={handleInputChange}
+                value={inputValue}
               />
             </div>
           </div>
@@ -57,16 +49,9 @@ const Search = () => {
         <input
           className="flex-1 text-xs bg-transparent border-none text-slate-900 dark:text-dark-white focus:outline-none sm:text-sm"
           placeholder="제목, 작가명"
-          onChange={setKeyword}
-          onKeyDown={handleEnter}
+          onChange={handleInputChange}
           value={inputValue}
         />
-        <button
-          onClick={search}
-          className="ml-2 text-xs text-light-text dark:text-dark-white sm:text-sm"
-        >
-          검색
-        </button>
       </div>
     </div>
   );
