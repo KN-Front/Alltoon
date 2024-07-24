@@ -1,6 +1,5 @@
 import { getSearchWebtoonInfo } from '@/api/webtoonAPI';
 import { countWebtoonsByService, filterByService } from '@/utils/webtoon';
-
 import { webtoonInfo } from '@/types/webtoon';
 import { useQuery } from 'react-query';
 import { useAppState } from './useAppState';
@@ -14,22 +13,17 @@ export const useKeywordServiceWebtoonQuery = (
     setKakaoWebtoonCount,
     setKakaoPageWebtoonCount,
   } = useAppState();
+
   return useQuery<webtoonInfo>(
     ['getSearchWebtoonInfo', searchValue, searchService],
-    () => {
-      return getSearchWebtoonInfo({
-        keyword: searchValue,
-      });
-    },
-    {
-      onSuccess: (data) => {
-        setNaverWebtoonCount(countWebtoonsByService(data, 'NAVER'));
-        setKakaoWebtoonCount(countWebtoonsByService(data, 'KAKAO'));
-        setKakaoPageWebtoonCount(countWebtoonsByService(data, 'KAKAO_PAGE'));
-      },
-      select: (data) => {
-        return filterByService(searchService, data);
-      },
+    async () => {
+      const data = await getSearchWebtoonInfo({ keyword: searchValue });
+
+      setNaverWebtoonCount(countWebtoonsByService(data, 'NAVER'));
+      setKakaoWebtoonCount(countWebtoonsByService(data, 'KAKAO'));
+      setKakaoPageWebtoonCount(countWebtoonsByService(data, 'KAKAO_PAGE'));
+
+      return filterByService(searchService, data);
     },
   );
 };
