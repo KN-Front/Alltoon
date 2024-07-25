@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Provider from './components/Provider';
 import WebtoonList from './components/WebtoonList';
 import Weeks from './components/Weeks';
-import ClientLayout from 'app/layout/ClientLayout';
 
 const WeekPage = () => {
   return (

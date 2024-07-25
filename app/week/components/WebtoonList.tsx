@@ -1,5 +1,3 @@
-'use client';
-
 import Loading from '@/components/WebtoonLoading';
 import ScrollDetector from '@/components/ScrollDetector';
 import WebtoonBox from './WebtoonBox';

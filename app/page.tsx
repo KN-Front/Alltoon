@@ -1,6 +1,10 @@
 import React from 'react';
-
-const HomePage = ({ children }: { children: React.ReactNode }) => {
+import WeekPage from './week/page';
+const HomePage = ({
+  children = <WeekPage />,
+}: {
+  children: React.ReactNode;
+}) => {
   return <div>{children}</div>;
 };
 

@@ -1,4 +1,3 @@
-'use client';
 import { initialPageInfo } from '@/constants/initialValues';
 import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
