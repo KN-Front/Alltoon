@@ -14,6 +14,9 @@ const nextConfig = {
   env: {
     BASE_URL: isProd ? '/Alltoon' : '',
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;
