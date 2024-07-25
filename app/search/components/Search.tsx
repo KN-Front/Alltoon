@@ -1,4 +1,3 @@
-'use client';
 import React, { useState, useEffect } from 'react';
 import { useAppState } from '@/hooks/useAppState';
 import useDebounce from '@/hooks/useDebounce';

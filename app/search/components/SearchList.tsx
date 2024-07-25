@@ -1,4 +1,3 @@
-'use client';
 import WebtoonLoading from '@/components/WebtoonLoading';
 
 import WebtoonBox from './WebtoonBox';

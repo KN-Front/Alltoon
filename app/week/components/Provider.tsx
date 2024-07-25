@@ -1,4 +1,3 @@
-'use client';
 import { useAppState } from '@/hooks/useAppState';
 import React from 'react';
 

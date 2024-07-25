@@ -1,3 +1,4 @@
+'use client';
 import Search from './components/Search';
 import SearchList from './components/SearchList';
 import Sidebar from './components/Sidebar';
