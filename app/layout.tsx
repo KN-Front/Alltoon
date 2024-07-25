@@ -1,12 +1,13 @@
 import './global.css';
 import ClientLayout from './layout/ClientLayout';
 
+const baseURL = process.env.BASE_URL || '';
 export const metadata = {
   title: '올툰 | 네이버 웹툰, 카카오 웹툰, 카카오페이지 웹툰 모두 여기서!',
   description:
     '올툰에서는 네이버 웹툰, 카카오 웹툰, 카카오페이지 웹툰을 모두 즐길 수 있습니다. 다양한 웹툰을 한 곳에서 만나보세요!',
   icons: {
-    icon: '/favicon.ico',
+    icon: `${baseURL}/favicon.ico`,
   },
   openGraph: {
     type: 'website',
